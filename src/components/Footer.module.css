@@ -81,3 +81,29 @@
     gap: 0;
   }
 }
+/* Social media icons */
+.socialIcons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #e5e5e5;
+  transition: background 0.2s, transform 0.2s, color 0.2s;
+}
+.socialLink:hover {
+  background: rgba(167, 139, 250, 0.25);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+.socialIcon {
+  width: 18px;
+  height: 18px;
+}

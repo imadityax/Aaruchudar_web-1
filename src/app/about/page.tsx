@@ -59,10 +59,10 @@ export default function AboutPage() {
           <section className="rounded-2xl p-8 backdrop-blur-md bg-white/5 border border-white/10">
             <h2 className="text-2xl font-semibold text-white mb-3">What We Do</h2>
             <ul className="space-y-3 text-gray-300">
-              <li className="flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-purple-400" aria-hidden /> HI Labs for deep practice</li>
-              <li className="flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-purple-400" aria-hidden /> Cohort-based Courses</li>
-              <li className="flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-purple-400" aria-hidden /> Action-focused Workshops</li>
-              <li className="flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-purple-400" aria-hidden /> Community Events</li>
+              <li className="flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-purple-400" aria-hidden /> Human intelligence Labs for deep practice</li>
+              <li className="flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-purple-400" aria-hidden /> Human intelligence Courses</li>
+              <li className="flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-purple-400" aria-hidden /> Human intelligence Workshop</li>
+              <li className="flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-purple-400" aria-hidden /> Human intelligence Events</li>
             </ul>
           </section>
 
@@ -70,10 +70,10 @@ export default function AboutPage() {
             <h2 className="text-2xl font-semibold text-white mb-3">Get Involved</h2>
             <p className="text-gray-300 mb-4">Join a program that fits your current pathway.</p>
             <div className="flex flex-wrap gap-3">
-              <Link href="/hi-labs" className="px-4 py-2 rounded-md border border-white/10 text-gray-200 hover:bg-white/10 transition">Explore Labs</Link>
-              <Link href="/hi-courses" className="px-4 py-2 rounded-md border border-white/10 text-gray-200 hover:bg-white/10 transition">Explore Courses</Link>
-              <Link href="/hi-workshops" className="px-4 py-2 rounded-md border border-white/10 text-gray-200 hover:bg-white/10 transition">Explore Workshops</Link>
-              <Link href="/hi-events" className="px-4 py-2 rounded-md border border-white/10 text-gray-200 hover:bg-white/10 transition">Explore Events</Link>
+              <Link href="/hi-labs" className="px-4 py-2 rounded-md border border-white/10 text-gray-200 hover:bg-white/10 transition">Explore Human intelligence Labs</Link>
+              <Link href="/hi-courses" className="px-4 py-2 rounded-md border border-white/10 text-gray-200 hover:bg-white/10 transition">Explore Human intelligence Courses</Link>
+              <Link href="/hi-workshops" className="px-4 py-2 rounded-md border border-white/10 text-gray-200 hover:bg-white/10 transition">Explore Human intelligence Workshop</Link>
+              <Link href="/hi-events" className="px-4 py-2 rounded-md border border-white/10 text-gray-200 hover:bg-white/10 transition">Explore Human intelligence Events</Link>
             </div>
           </section>
 
@@ -93,10 +93,10 @@ export default function AboutPage() {
               <div className="space-y-2">
                 <h3 className="text-lg font-semibold text-white">Programs</h3>
                 <ul className="space-y-2">
-                  <li className="flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-purple-400" aria-hidden /> HI Labs — Research, mentorship, project delivery</li>
-                  <li className="flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-purple-400" aria-hidden /> HI Courses — Curriculum, cohorts, certification</li>
-                  <li className="flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-purple-400" aria-hidden /> HI Workshops — Facilitation, content, outcomes</li>
-                  <li className="flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-purple-400" aria-hidden /> Events — Community, speakers, partnerships</li>
+                  <li className="flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-purple-400" aria-hidden /> Human intelligence Labs — Research, mentorship, project delivery</li>
+                  <li className="flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-purple-400" aria-hidden /> Human intelligence Courses — Curriculum, cohorts, certification</li>
+                  <li className="flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-purple-400" aria-hidden /> Human intelligence Workshop — Facilitation, content, outcomes</li>
+                  <li className="flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-purple-400" aria-hidden /> Human intelligence Events — Community, speakers, partnerships</li>
                 </ul>
               </div>
               <div className="space-y-2">

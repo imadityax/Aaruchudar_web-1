@@ -22,7 +22,7 @@ export default function TestimonialsPage() {
       rating: 5,
       date: 'May 2024',
       text:
-        'HI Labs provided structured exercises that improved focus and confidence across my class. The progress tracking made outcomes clear and actionable.',
+        'Human intelligence Labs provided structured exercises that improved focus and confidence across my class. The progress tracking made outcomes clear and actionable.',
       avatar: '/reviews/1000210449.jpeg',
     },
     {

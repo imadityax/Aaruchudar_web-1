@@ -28,7 +28,7 @@ export default function Testimonials() {
       role: 'Entrepreneur',
       image: '/logo2.png',
       rating: 5,
-      text: 'The HI Labs program transformed my approach to leadership. The clarity thinking workshop was particularly insightful and helped me make better strategic decisions for my business.',
+      text: 'The Human intelligence Labs program transformed my approach to leadership. The clarity thinking workshop was particularly insightful and helped me make better strategic decisions for my business.',
       date: 'January 2024'
     },
     {

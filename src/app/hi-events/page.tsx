@@ -114,7 +114,7 @@ const HIEventsPage = () => {
     const end = new Date(start.getTime() + 60 * 60 * 1000);
     const toICSDate = (d: Date) =>
       `${d.getUTCFullYear()}${String(d.getUTCMonth() + 1).padStart(2, '0')}${String(d.getUTCDate()).padStart(2, '0')}T${String(d.getUTCHours()).padStart(2, '0')}${String(d.getUTCMinutes()).padStart(2, '0')}${String(d.getUTCSeconds()).padStart(2, '0')}Z`;
-    const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//HI Events//EN\nBEGIN:VEVENT\nUID:${event.id}@hi-events\nDTSTAMP:${toICSDate(new Date())}\nDTSTART:${toICSDate(start)}\nDTEND:${toICSDate(end)}\nSUMMARY:${event.title}\nDESCRIPTION:${(event.description || '').replace(/\n/g, ' ')}\nLOCATION:${event.location || event.platform || ''}\nEND:VEVENT\nEND:VCALENDAR`;
+    const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Human intelligence Events//EN\nBEGIN:VEVENT\nUID:${event.id}@hi-events\nDTSTAMP:${toICSDate(new Date())}\nDTSTART:${toICSDate(start)}\nDTEND:${toICSDate(end)}\nSUMMARY:${event.title}\nDESCRIPTION:${(event.description || '').replace(/\n/g, ' ')}\nLOCATION:${event.location || event.platform || ''}\nEND:VEVENT\nEND:VCALENDAR`;
     const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -130,7 +130,7 @@ const HIEventsPage = () => {
         <div className="flex flex-col items-center">
           <div className={styles['loading-spinner'] + " w-20 h-20 border-4 border-white/30 border-t-white rounded-full"} />
           <h2 className="text-3xl font-bold text-white mt-6 animate-fade-in">
-            HI Events
+            Human intelligence Events
           </h2>
           <p className="text-white/70 mt-2 animate-fade-in">
             Loading amazing experiences...
@@ -161,7 +161,7 @@ const HIEventsPage = () => {
         <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/images/hi-events-banner.jpg')" }} aria-hidden />
         <div className="relative z-10 max-w-5xl mx-auto text-center">
           <motion.h1 className="text-5xl md:text-6xl font-extrabold mb-4 text-white" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            HI <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">Events</span>
+            Human intelligence Events
           </motion.h1>
           <motion.p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.15 }}>
             Live webinars and campus sessions on psychology, innovation, and human growth. Join the community and never stop learning.

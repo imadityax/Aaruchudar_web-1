@@ -99,7 +99,7 @@ const SolutionsSection = () => (
           <span className={styles.solutionBadge}>Training</span>
         </div>
         <div className={styles.solutionMedia}>
-          <Image src="/images/hi-labs-banner.jpg" alt="HI Labs" width={800} height={600} className="w-full h-full object-cover" />
+          <Image src="/images/hi-labs-banner.jpg" alt="Human intelligence Labs" width={800} height={600} className="w-full h-full object-cover" />
         </div>
         <div className={styles.solutionBody}>
           <p className={`${styles.solutionLine} font-semibold`}>Human Intelligence Labs (HI Labs) -</p>
@@ -120,7 +120,7 @@ const SolutionsSection = () => (
 const WhatAreHILabs = () => (
   <section className={`${styles.container} ${styles.section} text-center`}>
     <h2 className={styles.sectionTitle}>What Are Human Intelligence Labs?</h2>
-    <p className="text-white/85 text-lg font-medium">HI Labs are neuroscience-driven programs that activate clarity, focus, and ethical leadership. Each lab targets a core human skill, blending cognitive science with practical training for measurable outcomes.</p>
+    <p className="text-white/85 text-lg font-medium">Human intelligence Labs are neuroscience-driven programs that activate clarity, focus, and ethical leadership. Each lab targets a core human skill, blending cognitive science with practical training for measurable outcomes.</p>
   </section>
 );
 
@@ -258,7 +258,7 @@ const WhoIsThisFor = () => (
           <span className={styles.audienceTitle}>Educators & Leaders</span>
         </div>
         <div className={styles.audienceBody}>
-          <p className={styles.audienceLine}>Train ethical, confident leadership habits with HI Labs routines.</p>
+          <p className={styles.audienceLine}>Train ethical, confident leadership habits with Human intelligence Labs routines.</p>
         </div>
         <div className={styles.audienceCTA}>
           <button className={styles.audienceBtnPrimary}>Start Track</button>
@@ -365,7 +365,7 @@ const Pricing = () => (
         <div className={styles.pricingPrice}>Custom Quote</div>
         <div className={styles.pricingSub}>Annual program · Org-wide</div>
         <div className={styles.pricingFeatures}>
-          <div className={styles.pricingFeature}><span className={styles.pricingDot} />Full HI Labs Suite</div>
+          <div className={styles.pricingFeature}><span className={styles.pricingDot} />Full Human intelligence Labs Suite</div>
           <div className={styles.pricingFeature}><span className={styles.pricingDot} />Leadership & cohort tracks</div>
           <div className={styles.pricingFeature}><span className={styles.pricingDot} />Measurement & reporting</div>
         </div>
@@ -442,15 +442,15 @@ const ExplorePrograms = () => (
       Structured cognitive development pathways designed for clarity, creativity, and long-term performance.
     </p>
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
-      {/* HI Labs */}
+      {/* Human intelligence Labs */}
       <div className="rounded-2xl overflow-hidden bg-white/5 border border-white/10 backdrop-blur shadow-xl">
         <div className="relative h-40 w-full">
-          <Image src="/images/hi-labs-banner.jpg" alt="HI Labs" fill className="object-cover" />
+          <Image src="/images/hi-labs-banner.jpg" alt="Human intelligence Labs" fill className="object-cover" />
         </div>
         <div className="p-6">
           <div className="flex items-center gap-2 mb-3">
             <Image src="/globe.svg" alt="labs icon" width={22} height={22} />
-            <span className="font-semibold text-white">HI Labs</span>
+            <span className="font-semibold text-white">Human intelligence Labs</span>
           </div>
           <p className="text-white/80 text-sm leading-6">
             Cutting-edge research and experiential learning spaces designed to foster innovation, critical thinking, and leadership development.
@@ -468,15 +468,15 @@ const ExplorePrograms = () => (
         </div>
       </div>
 
-      {/* HI Courses */}
+      {/* Human intelligence Courses */}
       <div className="rounded-2xl overflow-hidden bg-white/5 border border-white/10 backdrop-blur shadow-xl">
         <div className="relative h-40 w-full">
-          <Image src="/images/hi-courses-banner.jpg" alt="HI Courses" fill className="object-cover" />
+          <Image src="/images/hi-courses-banner.jpg" alt="Human intelligence Courses" fill className="object-cover" />
         </div>
         <div className="p-6">
           <div className="flex items-center gap-2 mb-3">
             <Image src="/file.svg" alt="courses icon" width={22} height={22} />
-            <span className="font-semibold text-white">HI Courses</span>
+            <span className="font-semibold text-white">Human intelligence Courses</span>
           </div>
           <p className="text-white/80 text-sm leading-6">
             Transformative educational programs blending practical skills with deep insights for holistic career growth.
@@ -494,15 +494,15 @@ const ExplorePrograms = () => (
         </div>
       </div>
 
-      {/* HI Workshops */}
+      {/* Human intelligence Workshop */}
       <div className="rounded-2xl overflow-hidden bg-white/5 border border-white/10 backdrop-blur shadow-xl">
         <div className="relative h-40 w-full">
-          <Image src="/images/hi-workshops-banner.jpg" alt="HI Workshops" fill className="object-cover" />
+          <Image src="/images/hi-workshops-banner.jpg" alt="Human intelligence Workshop" fill className="object-cover" />
         </div>
         <div className="p-6">
           <div className="flex items-center gap-2 mb-3">
             <Image src="/window.svg" alt="workshops icon" width={22} height={22} />
-            <span className="font-semibold text-white">HI Workshops</span>
+            <span className="font-semibold text-white">Human intelligence Workshop</span>
           </div>
           <p className="text-white/80 text-sm leading-6">
             Hands-on collaborative sessions with practical tools for teamwork, creativity, and strategic execution.
@@ -520,15 +520,15 @@ const ExplorePrograms = () => (
         </div>
       </div>
 
-      {/* HI Events */}
+      {/* Human intelligence Events */}
       <div className="rounded-2xl overflow-hidden bg-white/5 border border-white/10 backdrop-blur shadow-xl">
         <div className="relative h-40 w-full">
-          <Image src="/images/hi-events-banner.jpg" alt="HI Events" fill className="object-cover" />
+          <Image src="/images/hi-events-banner.jpg" alt="Human intelligence Events" fill className="object-cover" />
         </div>
         <div className="p-6">
           <div className="flex items-center gap-2 mb-3">
             <Image src="/gem.png" alt="events icon" width={22} height={22} />
-            <span className="font-semibold text-white">HI Events</span>
+            <span className="font-semibold text-white">Human intelligence Events</span>
           </div>
           <p className="text-white/80 text-sm leading-6">
             Immersive gatherings of innovators, leaders, and creators for meaningful networking and growth.

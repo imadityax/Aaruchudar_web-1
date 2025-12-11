@@ -70,7 +70,7 @@ const ProgramCard = ({ data }: { data: any }) => (
 const programCards = [
   {
     id: 1,
-    title: "HI Labs",
+    title: "Human intelligence Labs",
     image: "/images/hi-labs-banner.jpg",
     icon: "/globe.svg",
     description:
@@ -85,7 +85,7 @@ const programCards = [
   },
   {
     id: 2,
-    title: "HI Courses",
+    title: "Human intelligence Courses",
     image: "/images/hi-courses-banner.jpg",
     icon: "/file.svg",
     description:
@@ -100,7 +100,7 @@ const programCards = [
   },
   {
     id: 3,
-    title: "HI Workshops",
+    title: "Human intelligence Workshop",
     image: "/images/hi-workshops-banner.jpg",
     icon: "/window.svg",
     description:
@@ -116,7 +116,7 @@ const programCards = [
   },
   {
     id: 4,
-    title: "HI Events",
+    title: "Human intelligence Events",
     image: "/images/hi-events-banner.jpg",
     icon: "/gem.png",
     description:
