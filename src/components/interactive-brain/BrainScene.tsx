@@ -8,8 +8,8 @@ import type { RegionKey } from './InteractiveBrain';
 import { REGION_INFO } from './InteractiveBrain';
 import type { MeshStandardMaterial } from 'three';
 
-// Pre-load the model
-useGLTF.preload('/models/brain_areas.glb');
+// Removed global preload to prevent warnings when the component isn't used immediately
+// useGLTF.preload('/models/brain_areas.glb');
 
 // Define colors for each brain region
 const defaultRegionColors = {

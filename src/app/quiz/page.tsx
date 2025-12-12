@@ -105,7 +105,7 @@ function QuizPage(): JSX.Element {
     try {
       const controller = new AbortController();
       const t = setTimeout(() => controller.abort(), 10000); // 10s timeout for mobile
-      const res = await fetch("/quiz-questions.json", { signal: controller.signal, cache: "no-store" });
+      const res = await fetch("/api/quiz", { signal: controller.signal, cache: "no-store" });
       clearTimeout(t);
       if (!res.ok) throw new Error(`Failed to load quiz (${res.status})`);
       const data: any = await res.json();
@@ -193,7 +193,7 @@ function QuizPage(): JSX.Element {
     try {
       const controller = new AbortController();
       const t = setTimeout(() => controller.abort(), 10000);
-      const res = await fetch("/quiz-questions.json", { signal: controller.signal, cache: "no-store" });
+      const res = await fetch("/api/quiz", { signal: controller.signal, cache: "no-store" });
       clearTimeout(t);
       if (!res.ok) throw new Error(`Failed to load quiz (${res.status})`);
       const data: any = await res.json();
