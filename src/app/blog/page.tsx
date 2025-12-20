@@ -1,18 +1,12 @@
 'use client';
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, Search } from "lucide-react";
 import "./BlogPage.css";
 
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1500);
-    return () => clearTimeout(timer);
-  }, []);
 
   const categories = ["All", "Innovation", "Psychology", "Intellectual Growth", "Technology", "Research"];
 
@@ -72,45 +66,8 @@ export default function BlogPage() {
 
   return (
     <>
-      {/* Loading Screen */}
-      <AnimatePresence>
-        {isLoading && (
-          <motion.div
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9999] bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center"
-          >
-            <div className="text-center">
-              <motion.div
-                className="w-16 h-16 border-4 border-white/20 border-t-white rounded-full mx-auto mb-4"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-              />
-              <motion.p
-                className="text-white text-lg font-semibold"
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                Loading Blog...
-              </motion.p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Main Container */}
       <div className="blog-container pt-16 md:pt-24 pb-20" role="main" aria-label="Blog content">
-        {/* Back Button */}
-        <motion.button
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          onClick={() => window.location.href = '/'}
-          className="absolute top-4 left-4 md:fixed md:top-6 md:left-6 z-40 px-4 md:px-6 py-2 md:py-3 bg-white/10 backdrop-blur-lg text-white text-sm md:text-base font-semibold rounded-full hover:bg-white/20 transition-all border border-white/20 shadow-xl hover:scale-105"
-          aria-label="Go back to home"
-        >
-          ← Back to Home
-        </motion.button>
-
         {/* Hero Section */}
         <section className="hero-section px-6">
           <div className="hero-bg" />
@@ -130,10 +87,10 @@ export default function BlogPage() {
               </motion.span>
 
               <h1 className="hero-title">
-                <span className="block bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-300 bg-clip-text text-transparent">
                   Aaruchudar
                 </span>
-                <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 bg-clip-text text-transparent">
                   Blog
                 </span>
               </h1>
@@ -258,19 +215,32 @@ export default function BlogPage() {
 
         {/* Newsletter */}
         <section className="newsletter px-6">
-          <div className="container text-center">
-            <h2 className="newsletter-title">Stay Ahead of the Curve</h2>
-            <p className="newsletter-subtitle">
-              Join thousands of innovators who rely on our insights to stay informed about the latest trends.
-            </p>
-            <div className="newsletter-form">
-              <input type="email" placeholder="Enter your email" className="newsletter-input" aria-label="Email address" />
-              <button className="newsletter-btn" aria-label="Subscribe to newsletter">Subscribe Now</button>
-            </div>
-            <div className="newsletter-features">
-              <span>✓ No spam, ever</span>
-              <span>✓ Weekly insights</span>
-              <span>✓ Unsubscribe anytime</span>
+          <div className="container">
+            {/* Card wrapper inside container for professional layout */}
+            <div className="text-center">
+              <div className="newsletter-title">Stay Ahead of the Curve</div>
+              <p className="newsletter-subtitle">
+                Join thousands of innovators who rely on our insights to stay informed about the latest trends.
+              </p>
+
+              {/* Form and features column */}
+              <div className="newsletter-form grid">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="newsletter-input"
+                  aria-label="Email address"
+                />
+                <button className="newsletter-btn" aria-label="Subscribe to newsletter">
+                  Subscribe Now
+                </button>
+              </div>
+
+              <div className="newsletter-features">
+                <span>No spam, ever</span>
+                <span>Weekly insights</span>
+                <span>Unsubscribe anytime</span>
+              </div>
             </div>
           </div>
         </section>

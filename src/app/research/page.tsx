@@ -1,12 +1,12 @@
 export default function ResearchPage() {
   return (
-    // Dark-only theme background
-    <section className="min-h-screen px-4 sm:px-6 lg:px-8 py-16 bg-gradient-to-b from-gray-900 via-gray-900 to-gray-900">
+    // Switch to light theme background
+    <section className="min-h-screen px-4 sm:px-6 lg:px-8 py-16 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Hero */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">Research</h1>
-          <p className="mt-4 text-lg sm:text-xl text-gray-300">
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900">Research</h1>
+          <p className="mt-4 text-lg sm:text-xl text-gray-600">
             Advancing learning with neuroscience, visualization, and interactive design.
           </p>
         </div>
@@ -29,10 +29,10 @@ export default function ResearchPage() {
           ].map((card) => (
             <div
               key={card.title}
-              className="rounded-2xl border border-gray-800 bg-gray-800/70 backdrop-blur p-6 shadow-sm hover:shadow-md transition-shadow hover:border-orange-500"
+              className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow hover:border-orange-300"
             >
-              <h2 className="text-xl font-semibold text-white">{card.title}</h2>
-              <p className="mt-2 text-gray-300">{card.desc}</p>
+              <h2 className="text-xl font-semibold text-gray-900">{card.title}</h2>
+              <p className="mt-2 text-gray-600">{card.desc}</p>
             </div>
           ))}
         </div>
@@ -40,10 +40,10 @@ export default function ResearchPage() {
         {/* Featured Projects */}
         <div className="mb-14">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-bold text-white">Featured Projects</h2>
+            <h2 className="text-2xl font-bold text-gray-900">Featured Projects</h2>
             <a
               href="/blog"
-              className="text-sm font-medium text-orange-400 hover:text-orange-300"
+              className="text-sm font-medium text-orange-600 hover:text-orange-500"
             >
               See all
             </a>
@@ -71,16 +71,16 @@ export default function ResearchPage() {
             ].map((proj) => (
               <article
                 key={proj.title}
-                className="rounded-2xl border border-gray-800 bg-gray-800/70 backdrop-blur shadow-sm hover:shadow-md transition p-6"
+                className="rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition p-6"
               >
-                <div className="text-sm text-orange-400 font-semibold">{proj.label}</div>
-                <h3 className="mt-1 text-lg font-semibold text-white">{proj.title}</h3>
-                <p className="mt-2 text-gray-300">{proj.desc}</p>
+                <div className="text-sm text-orange-700 font-semibold">{proj.label}</div>
+                <h3 className="mt-1 text-lg font-semibold text-gray-900">{proj.title}</h3>
+                <p className="mt-2 text-gray-600">{proj.desc}</p>
                 <div className="mt-4 flex gap-2">
                   {proj.tags.map((t) => (
                     <span
                       key={t}
-                      className="px-2 py-1 text-xs rounded-full bg-orange-900/40 text-orange-300"
+                      className="px-2 py-1 text-xs rounded-full bg-orange-100 text-orange-700"
                     >
                       {t}
                     </span>
@@ -92,27 +92,27 @@ export default function ResearchPage() {
         </div>
 
         {/* Publications / Highlights */}
-        <div className="rounded-2xl border border-gray-800 bg-gray-800/70 backdrop-blur p-6 mb-14 shadow-sm">
-          <h2 className="text-2xl font-bold text-white">Highlights</h2>
+        <div className="rounded-2xl border border-gray-200 bg-white p-6 mb-14 shadow-sm">
+          <h2 className="text-2xl font-bold text-gray-900">Highlights</h2>
           <ul className="mt-4 space-y-3">
             <li className="flex items-start gap-2">
-              <span className="px-2 py-0.5 text-xs rounded bg-gray-900/40 text-gray-300">Preprint</span>
-              <span className="text-gray-200">Interactive brain atlas prototype using WebGL and Three.js.</span>
+              <span className="px-2 py-0.5 text-xs rounded bg-gray-100 text-gray-700">Preprint</span>
+              <span className="text-gray-800">Interactive brain atlas prototype using WebGL and Three.js.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="px-2 py-0.5 text-xs rounded bg-orange-900/40 text-orange-300">Study</span>
-              <span className="text-gray-200">Quiz-driven learning modules to reinforce neuroanatomy concepts.</span>
+              <span className="px-2 py-0.5 text-xs rounded bg-orange-100 text-orange-700">Study</span>
+              <span className="text-gray-800">Quiz-driven learning modules to reinforce neuroanatomy concepts.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="px-2 py-0.5 text-xs rounded bg-gray-900/40 text-gray-300">Program</span>
-              <span className="text-gray-200">Community workshops and lab sessions focused on hands-on learning.</span>
+              <span className="px-2 py-0.5 text-xs rounded bg-gray-100 text-gray-700">Program</span>
+              <span className="text-gray-800">Community workshops and lab sessions focused on hands-on learning.</span>
             </li>
           </ul>
         </div>
 
         {/* Team */}
         <div className="mb-14">
-          <h2 className="text-2xl font-bold text-white mb-4">Team</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Team</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {[
               { name: "Research Lead", role: "Neuroscience & EdTech" },
@@ -121,14 +121,14 @@ export default function ResearchPage() {
             ].map((m) => (
               <div
                 key={m.name}
-                className="rounded-2xl border border-gray-800 bg-gray-800/70 backdrop-blur p-6 shadow-sm hover:shadow-md transition"
+                className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow-md transition"
               >
-                <div className="h-10 w-10 rounded-full bg-orange-900/40 text-orange-300 flex items-center justify-center font-bold">
+                <div className="h-10 w-10 rounded-full bg-orange-100 text-orange-700 flex items-center justify-center font-bold">
                   {m.name.split(" ")[0][0]}
                 </div>
                 <div className="mt-3">
-                  <div className="font-semibold text-white">{m.name}</div>
-                  <div className="text-sm text-gray-300">{m.role}</div>
+                  <div className="font-semibold text-gray-900">{m.name}</div>
+                  <div className="text-sm text-gray-600">{m.role}</div>
                 </div>
               </div>
             ))}
@@ -136,12 +136,12 @@ export default function ResearchPage() {
         </div>
 
         {/* CTA banner */}
-        <div className="rounded-2xl border border-orange-700 bg-gradient-to-r from-orange-950/30 to-gray-900 p-8 shadow-sm text-center">
-          <h3 className="text-xl font-bold text-white">Interested in collaborating or learning more?</h3>
-          <p className="mt-2 text-gray-300">We welcome partnerships for research, tools, and community learning.</p>
+        <div className="rounded-2xl border border-orange-300 bg-gradient-to-r from-orange-50 to-white p-8 shadow-sm text-center">
+          <h3 className="text-xl font-bold text-gray-900">Interested in collaborating or learning more?</h3>
+          <p className="mt-2 text-gray-600">We welcome partnerships for research, tools, and community learning.</p>
           <a
             href="/contact"
-            className="inline-block mt-4 px-5 py-2.5 rounded-lg bg-orange-500 text-white hover:bg-orange-400 transition font-medium shadow-sm"
+            className="inline-block mt-4 px-5 py-2.5 rounded-lg bg-orange-600 text-white hover:bg-orange-500 transition font-medium shadow-sm"
           >
             Contact Us
           </a>

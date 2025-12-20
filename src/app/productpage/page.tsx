@@ -552,7 +552,7 @@ const ExplorePrograms = () => (
 export default function ProductPage() {
   return (
     <main className={`${styles.pageBackdrop} pt-16 md:pt-24 pb-20`}>
-      <Navbar />
+      {/* Navbar removed to hide the top bar on the product page */}
       <Hero />
       <SolutionsSection />
       <ExplorePrograms />

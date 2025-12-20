@@ -46,7 +46,7 @@ function Navbar() {
 				role="navigation"
 				aria-label="Primary Navigation"
 			>
-				<div className="w-full px-5 py-2 flex items-center justify-center gap-6 whitespace-nowrap overflow-x-auto no-scrollbar rounded-full backdrop-blur-lg bg-white/2">
+				<div className="w-full px-5 py-2 flex items-center justify-center gap-6 whitespace-nowrap overflow-x-auto no-scrollbar rounded-full backdrop-blur-lg bg-amber-900/40">
 					<Link href="/" className="flex items-center gap-2 pr-4 no-underline" aria-label="Home">
 						<div className="w-9 h-9 rounded-xl overflow-hidden">
 							<Image src="/logo2.png" alt="Aaruchudar logo" width={36} height={36} className="object-cover" />
@@ -87,7 +87,7 @@ function Navbar() {
 
 			{/* Mobile Top Bar */}
 			<div className={`md:hidden fixed top-0 left-0 right-0 z-[998] transition-transform ${show ? 'translate-y-0' : '-translate-y-full'}`}>
-				<div className="flex items-center justify-between px-4 py-3 backdrop-blur-lg bg-white/2 rounded-b-full">
+				<div className="flex items-center justify-between px-4 py-3 backdrop-blur-lg bg-amber-900/40 rounded-b-full">
 					<Link href="/" className="flex items-center gap-2 no-underline" aria-label="Home">
 						<Image src="/logo2.png" alt="Logo" width={32} height={32} className="rounded-lg" />
 						<span className="text-base font-semibold text-white">Aaruchudar</span>
@@ -106,7 +106,7 @@ function Navbar() {
 				</div>
 				{/* Mobile dropdown panel */}
 				<div
-					className={`px-4 overflow-hidden transition-all duration-300 backdrop-blur-lg bg-white/2 ${mobileOpen ? 'max-h-[28rem] py-4 rounded-b-full' : 'max-h-0 py-0'}`}
+					className={`px-4 overflow-hidden transition-all duration-300 backdrop-blur-lg bg-amber-900/40 ${mobileOpen ? 'max-h-[28rem] py-4 rounded-b-full' : 'max-h-0 py-0'}`}
 				>
 					<nav className="grid grid-cols-1 gap-3" aria-label="Mobile navigation">
 						{navItems.map(item => {
@@ -127,7 +127,7 @@ function Navbar() {
 			</div>
 
 			{/* Mobile Bottom Nav */}
-			<nav className="md:hidden fixed bottom-0 left-0 right-0 z-[998] backdrop-blur-lg bg-white/2 flex justify-around py-2 rounded-t-full">
+			<nav className="md:hidden fixed bottom-0 left-0 right-0 z-[998] backdrop-blur-lg bg-amber-900/40 flex justify-around py-2 rounded-t-full">
 				{navItems.map(item => {
 					const isActive = activeTab === item.id;
 					return (
