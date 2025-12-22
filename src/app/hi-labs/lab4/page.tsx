@@ -75,6 +75,7 @@ export default function Lab4Page() {
     tools: 'Listening Tools',
     cases: 'Case Examples',
     games: 'Games & Activities',
+    culture: 'Outcomes',
     journey: 'Journey Beyond',
     reflection: 'Reflection Corner'
   };
@@ -91,7 +92,7 @@ export default function Lab4Page() {
         <div className={styles.brainViewerContainer}>
           <div className={styles.brainViewer}>
             <InteractiveBrain 
-              activeRegions={[activeBrainRegion]}
+              activeRegions={labData.activeRegions}
               labHighlight={true}
               autoRotate={autoRotate}
               onRegionSelect={(region) => region && setActiveBrainRegion(region)}
@@ -139,30 +140,19 @@ export default function Lab4Page() {
             <div className={styles.mainPanel}>
               {activeSection === 'welcome' && (
                 <div>
-                  <h2 className={styles.sectionTitle}>HI LAB 4: {labData.title.toUpperCase()}</h2>
-                  <div className={styles.sectionContent}>
-                    <h3>Focus</h3>
-                    <p className={styles.focusArea}>Listening deeply and Understanding others</p>
-                    
-                    <p>Welcome to Lab 4, where you'll develop the profound skill of deep listening - 
-                    the foundation of meaningful connection, empathy, and understanding. This lab 
-                    activates your brain's social cognition networks to enhance your ability to 
-                    truly hear and understand others at multiple levels.</p>
-                    
-                    <p>Through targeted exercises, you'll strengthen your capacity to decode language, 
-                    read emotional signals, understand perspectives, and respond with empathy and wisdom. 
-                    Transform your relationships through the power of authentic listening.</p>
-
-                    <div className={styles.outcomes}>
-                      <h3>Lab Outcomes</h3>
-                      <ul>
-                        <li>Decode both words and emotions in communication</li>
-                        <li>Develop empathy through mirror neuron activation</li>
-                        <li>Read subtle cues in tone, expression, and body language</li>
-                        <li>Understand others' thoughts, feelings, and perspectives</li>
-                        <li>Build deeper, more meaningful connections through listening</li>
-                      </ul>
-                    </div>
+                  <h2 className={styles.sectionTitle}>Lab 4: The Power of Listening</h2>
+                  <p className={styles.sectionDescription}>
+                    When it comes to fast-moving situations, listening becomes more reactive than tactical. Welcome to The Power of Listening, which enables participants to improve their listening skills by training their brains to be more present in the situation with fewer distractions and the ability to discern the actual meaning.
+                  </p>
+                  <div className={styles.focusArea}>
+                    <h3 className={styles.focusTitle}>Core Theme</h3>
+                    <ul>
+                      <li>Deep Listening: Get comfortable, do not interrupt, do not judge.</li>
+                      <li>Meaning Awareness: Discern significant statements, emotions, and meaning behind words.</li>
+                      <li>Reflective Response: Straightforward, correct, and closely related to the question.</li>
+                      <li>Trust Building: Enhanced psychological safety and connection.</li>
+                      <li>Collaborative Clarity: Communicate more in line and misunderstand less.</li>
+                    </ul>
                   </div>
                 </div>
               )}
@@ -196,40 +186,94 @@ export default function Lab4Page() {
               {activeSection === 'tools' && (
                 <div>
                   <h2 className={styles.sectionTitle}>Listening Tools</h2>
-                  <p>Explore practical tools and techniques for deep listening.</p>
-                  {/* Add listening tools content */}
+                  <p className={styles.sectionDescription}>
+                    Listening tools address internal noise and interruptions through Interruptibility Drills (program responses to impulses), Layered Listening Loops (capture information, emotion, and intent), and Meaning Capture Templates (translate a conversation into clear comprehension).
+                  </p>
                 </div>
               )}
 
               {activeSection === 'cases' && (
                 <div>
                   <h2 className={styles.sectionTitle}>Case Examples</h2>
-                  <p>Learn from real-world scenarios and listening challenges.</p>
-                  {/* Add case examples content */}
+                  <div className={styles.infoGrid}>
+                    <div className={styles.infoCard}>
+                      <h3 className={styles.infoCardTitle}>Example 1</h3>
+                      <p className={styles.infoCardDescription}>
+                        Ravi had a typical reactive style where he responded quickly but missed critical points during feedback conversations. Ravi developed skills using Layered Listening Loops.
+                      </p>
+                      <div className={styles.tagContainer}>
+                        <span className={styles.tag}>Result: Better feedback</span>
+                        <span className={styles.tag}>Enhanced comprehension</span>
+                      </div>
+                    </div>
+                    <div className={styles.infoCard}>
+                      <h3 className={styles.infoCardTitle}>Example 2</h3>
+                      <p className={styles.infoCardDescription}>
+                        Miscommunication among leadership in a team meeting. Listening exercises enabled concentration and clear thinking.
+                      </p>
+                      <div className={styles.tagContainer}>
+                        <span className={styles.tag}>Result: Trust-building dialogue</span>
+                        <span className={styles.tag}>Quick alignment</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )}
 
               {activeSection === 'games' && (
                 <div>
                   <h2 className={styles.sectionTitle}>Games & Activities</h2>
-                  <p>Interactive exercises to strengthen your listening skills.</p>
-                  {/* Add games and activities content */}
+                  <p className={styles.sectionDescription}>
+                    Listening practicals train attention during engagement, helping people listen and respond reflectively rather than reactively. Individuals learn to listen calmly in key conversations.
+                  </p>
+                </div>
+              )}
+
+              {activeSection === 'culture' && (
+                <div>
+                  <h2 className={styles.sectionTitle}>Outcomes: Reactive vs Active</h2>
+                  <div className={styles.contentGrid}>
+                    <div className={styles.brainRegionCard}>
+                      <h3 className={styles.focusTitle}>Reactive Outcomes</h3>
+                      <ul>
+                        <li>Listening is interrupted by internal thoughts, judgements, or urge to respond.</li>
+                        <li>Critical information, feelings, or intentions are missed.</li>
+                        <li>Responses are rapid but often misaligned with the question or input.</li>
+                        <li>Conversations lead to friction, defensiveness, or misunderstandings.</li>
+                        <li>Miscommunication reduces trust and psychological safety.</li>
+                      </ul>
+                    </div>
+                    <div className={styles.brainRegionCard}>
+                      <h3 className={styles.focusTitle}>Active Outcomes</h3>
+                      <ul>
+                        <li>Full presence without interrupting or pre-judging.</li>
+                        <li>Capture meanings, emotions, and intentions under the words.</li>
+                        <li>Responses are reflective, relevant, and specific.</li>
+                        <li>Conversations feel safe, respectful, and productive.</li>
+                        <li>Shared understanding improves alignment, trust, and teamwork.</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               )}
 
               {activeSection === 'journey' && (
                 <div>
                   <h2 className={styles.sectionTitle}>Journey Beyond</h2>
-                  <p>Explore advanced listening and empathy concepts.</p>
-                  {/* Add journey beyond content */}
+                  <p className={styles.sectionDescription}>
+                    Beyond The Power of Listening, listening becomes a deliberate skill: hearing without interrupting, understanding, and responding accordingly. Teams build trust where every voice is heard.
+                  </p>
                 </div>
               )}
 
               {activeSection === 'reflection' && (
                 <div>
                   <h2 className={styles.sectionTitle}>Reflection Corner</h2>
-                  <p>Document your progress and insights in listening mastery.</p>
-                  {/* Add reflection corner content */}
+                  <ul>
+                    <li>How has your view of listening evolved beyond simply hearing the words?</li>
+                    <li>How will you notice drifting away from truly listening—and what helps you return?</li>
+                    <li>What daily habit helps you listen more attentively and with presence?</li>
+                  </ul>
                 </div>
               )}
             </div>

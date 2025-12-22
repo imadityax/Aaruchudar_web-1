@@ -54,6 +54,7 @@ const Footer = () => {
               <li><Link href="/hi-courses" className={styles.link}>Human intelligence Courses</Link></li>
               <li><Link href="/hi-workshops" className={styles.link}>Human intelligence Workshop</Link></li>
               <li><Link href="/hi-events" className={styles.link}>Human intelligence Events</Link></li>
+              <li><Link href="/neuro-tech-suite" className={styles.link}>Neuro Tech Suite</Link></li>
             </ul>
           </div>
           {/* Column 3: Company */}

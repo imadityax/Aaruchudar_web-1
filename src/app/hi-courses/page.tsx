@@ -8,7 +8,7 @@ import { Check, ArrowRight, Filter, Star, Clock, Layers } from 'lucide-react';
 const programs = [
   {
     title: 'Clarity as Culture',
-    description: 'Transform your mindset and create a culture of clear thinking and purposeful action in your personal and professional life.',
+    description: 'Transform your mindset and build a culture of clear thinking and purposeful action in your personal and professional life.',
     features: [
       'Foundations of Clarity & Awareness',
       'Mindset Restructuring Techniques',
@@ -22,10 +22,10 @@ const programs = [
   },
   {
     title: 'Decision Making Without Drama',
-    description: 'Learn to make confident decisions without emotional overwhelm, stress, or analysis paralysis.',
+    description: 'Master the art of confident decision-making free from emotional turmoil, stress, or paralysis through analysis.',
     features: [
       'Understanding Decision Fatigue',
-      'Emotional Detachment Methods',
+      'Emotional Detachment Techniques',
       'Logical Decision Frameworks'
     ],
     duration: '6 weeks',
@@ -36,11 +36,11 @@ const programs = [
   },
   {
     title: 'Inner Focus in Noisy Worlds',
-    description: 'Develop unshakeable focus and concentration skills to thrive in our distraction-filled modern world.',
+    description: 'Focus and concentration are assets in development that will help one make it through a modern world full of distractions.',
     features: [
       'Attention Training Essentials',
-      'Digital Discipline Techniques',
-      'Deep Work System Implementation'
+      'Digital Discipline Methods',
+      'Deep Work Implementation System'
     ],
     duration: '10 weeks',
     level: 'Advanced',
@@ -50,11 +50,11 @@ const programs = [
   },
   {
     title: 'The Power of Listening',
-    description: 'Transform your communication and relationships through the art of deep, active listening.',
+    description: 'Deep, active listening can transform the way you communicate and relate to others.',
     features: [
       'Difference Between Hearing & Listening',
       'Empathic Listening Practices',
-      'Applied Listening Drills'
+      'Listening Applied Drills'
     ],
     duration: '6 weeks',
     level: 'Beginner',
@@ -64,7 +64,7 @@ const programs = [
   },
   {
     title: 'Intelligent Conflict & Recovery',
-    description: 'Navigate conflicts intelligently and build stronger relationships through effective resolution strategies.',
+    description: 'Handle conflict smarter; build better relationships using effective conflict resolution techniques.',
     features: [
       'Understanding Conflict Structure',
       'Emotional Regulation Tools',
@@ -78,11 +78,11 @@ const programs = [
   },
   {
     title: 'Systematic Thinking',
-    description: 'Master the art of systematic thinking to solve complex problems with clarity and precision.',
+    description: 'Master systematic thinking to demystify the complexity of a problem into clear, precise solutions.',
     features: [
-      'Systems Analysis Fundamentals',
+      'Fundamentals of Systems Analysis',
       'Pattern Mapping & Recognition',
-      'Strategic Planning Tools'
+      'Tools of Strategic Planning'
     ],
     duration: '10 weeks',
     level: 'Advanced',
@@ -94,7 +94,7 @@ const programs = [
     title: 'Mind Architect',
     description: 'Advanced program on cognitive architecture and metacognition.',
     features: [
-      'Cognitive System Design',
+      'Design of Cognitive System',
       'Advanced Mental Models',
       'Metacognitive Strategies',
       'Personalized Cognitive Enhancement Plan'
@@ -157,7 +157,7 @@ const HICoursesPage = () => {
           </motion.h1>
 
           <motion.p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.15 }}>
-            Structured programs to build clarity, focus, and intelligent decision-making. Learn by doing with expert guidance.
+            Structured programs designed to elevate how you think, decide and lead. Practical-driven learning, guided by experts.
           </motion.p>
 
           {/* Hero stat badges */}

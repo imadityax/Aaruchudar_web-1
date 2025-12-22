@@ -116,6 +116,15 @@ export default function HILabs() {
 
   return (
     <div className={`${styles.hiLabsContainer} pt-16 md:pt-24 pb-20`}>
+      {/* Program overview */}
+      <div className={`${styles.labsHeader} px-6 max-w-7xl mx-auto`}>
+        <div className={styles.headerBadges} style={{marginBottom:'0.75rem'}}>
+          <span className={styles.headerBadge} aria-label="Program duration">🗓️ Time period: 8–12 months</span>
+          <span className={styles.headerBadge} aria-label="Sessions per lab">📚 Each lab: 8–12 sessions</span>
+          <span className={styles.headerBadge} aria-label="Session duration">⏱️ One session: 40 mins</span>
+        </div>
+      </div>
+
       {/* Page header */}
       <div className={`${styles.labsHeader} px-6 max-w-7xl mx-auto`}>
         <h1>Human Intelligence Labs</h1>

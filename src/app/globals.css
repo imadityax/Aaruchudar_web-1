@@ -24,9 +24,9 @@
   --text-muted: #94A3B8;
   
   /* Background Colors */
-  --background: #0F172A; /* was #FFFFFF */
-  --foreground: #FFFFFF; /* was #0F172A */
-  --surface: #1E293B;    /* was #F8FAFC */
+  --background: #FFFFFF; /* switched to light */
+  --foreground: #0F172A; /* switched to dark text */
+  --surface: #F8FAFC;    /* light surface */
   
   /* Spacing System */
   --space-xs: 0.25rem;
@@ -62,7 +62,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: Arial, sans-serif; /* single global font */
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;

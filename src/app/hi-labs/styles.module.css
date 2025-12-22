@@ -77,6 +77,35 @@
   color: #cbd5e1;
 }
 
+/* Header badges alignment */
+.headerBadges {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.headerBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.65rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #e6f7ff;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.badgeIcon {
+  width: 16px;
+  height: 16px;
+  color: #06ffa5;
+}
+
 /* Brain Viewer Styles */
 .brainViewerContainer {
   position: relative;
@@ -441,6 +470,7 @@
   border-radius: 12px;
   padding: 2rem;
   min-height: 600px;
+  position: relative;
 }
 
 .labContentTitle {
@@ -548,9 +578,9 @@
 .labsHeader h1 {
   font-size: 2.5rem;
   background: linear-gradient(45deg, #00d4ff, #06ffa5);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text; /* standard property for compatibility */
+  -webkit-background-clip: text;
+  color: transparent;
   margin-bottom: 1rem;
 }
 
@@ -1009,4 +1039,30 @@
   .labMappingGrid { gap: 1.25rem; }
   .panelTitle { font-size:1.15rem; }
   .activeLabDetails { margin-top: 0.5rem; }
+}
+
+.sideHeading {
+  position: absolute;
+  left: -140px;
+  top: 0;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #06ffa5;
+  opacity: 0.9;
+  user-select: none;
+}
+
+.sectionTitle {
+  color: #e8f7f2;
+}
+
+/* Make specific headings yellow as requested */
+.focusTitle {
+  color: #f59e0b; /* amber/yellow */
+}
+
+.brainRegionCard h3 {
+  color: #f59e0b; /* Prefrontal Cortex & Anterior Cingulate Cortex title */
 }

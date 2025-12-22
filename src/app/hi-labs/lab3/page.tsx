@@ -75,6 +75,7 @@ export default function Lab3Page() {
     tools: 'Focus Tools',
     cases: 'Case Examples',
     games: 'Attention Games',
+    culture: 'Outcomes',
     journey: 'Journey Beyond',
     reflection: 'Reflection Corner'
   };
@@ -91,7 +92,7 @@ export default function Lab3Page() {
         <div className={styles.brainViewerContainer}>
           <div className={styles.brainViewer}>
             <InteractiveBrain 
-              activeRegions={[activeBrainRegion]}
+              activeRegions={labData.activeRegions}
               labHighlight={true}
               autoRotate={autoRotate}
               onRegionSelect={(region) => region && setActiveBrainRegion(region)}
@@ -139,29 +140,19 @@ export default function Lab3Page() {
             <div className={styles.mainPanel}>
               {activeSection === 'welcome' && (
                 <div>
-                  <h2 className={styles.sectionTitle}>HI LAB 3: {labData.title.toUpperCase()}</h2>
-                  <div className={styles.sectionContent}>
-                    <h3>Focus</h3>
-                    <p className={styles.focusArea}>Improving focus and Reducing distractions</p>
-                    
-                    <p>Welcome to Lab 3, where you'll develop laser-sharp focus and unshakeable concentration 
-                    amidst the chaos of modern life. This lab trains your brain's attention networks to 
-                    filter out distractions and maintain deep focus on what truly matters.</p>
-                    
-                    <p>Through scientifically-designed exercises, you'll strengthen your ability to sustain 
-                    attention, catch your mind when it wanders, and build powerful focus habits that 
-                    transform your productivity and peace of mind.</p>
-
-                    <div className={styles.outcomes}>
-                      <h3>Lab Outcomes</h3>
-                      <ul>
-                        <li>Develop sustained attention that cuts through distractions</li>
-                        <li>Build awareness of when your mind wanders and how to refocus</li>
-                        <li>Create automatic focus habits through repetition and training</li>
-                        <li>Strengthen your mental spotlight to stay locked on important tasks</li>
-                        <li>Transform your relationship with distractions and mental noise</li>
-                      </ul>
-                    </div>
+                  <h2 className={styles.sectionTitle}>Lab 3: Inner Focus in Noisy world</h2>
+                  <p className={styles.sectionDescription}>
+                    Welcome to Inner Focus in Noisy world, which assists the participants in reclaiming control over their attention in a distracted world by learning how to optimize their brains to recognize distractions and develop the ability to filter out distractions and cultivate deep focus. This targets the development of consistent inner focus and productivity and the establishment of a peaceful mind under distracting circumstances.
+                  </p>
+                  <div className={styles.focusArea}>
+                    <h3 className={styles.focusTitle}>Core Theme</h3>
+                    <ul>
+                      <li>Focused Attention: Maintain attention despite internal or external distractions.</li>
+                      <li>Mindfulness Regulation: Recognize focus drift and refocus effortlessly.</li>
+                      <li>Focus Habits: Create repetitive habits of deep focus.</li>
+                      <li>Mental Clarity: Enhance understanding of what matters.</li>
+                      <li>Cool Response: Awareness over tension to distractions.</li>
+                    </ul>
                   </div>
                 </div>
               )}
@@ -194,41 +185,94 @@ export default function Lab3Page() {
 
               {activeSection === 'tools' && (
                 <div>
-                  <h2 className={styles.sectionTitle}>Focus Tools</h2>
-                  <p>Explore practical tools and techniques for maintaining focus.</p>
-                  {/* Add focus tools content */}
+                  <h2 className={styles.sectionTitle}>Focus tools</h2>
+                  <p className={styles.sectionDescription}>
+                    Focus tools help participants for focusing, which allow participants to deal with diverted attentions while tracking their attention movements and aligning tasks based on mental energy and then creating habits of deep focus, resulting in developing high-level focused skills.
+                  </p>
                 </div>
               )}
 
               {activeSection === 'cases' && (
                 <div>
                   <h2 className={styles.sectionTitle}>Case Examples</h2>
-                  <p>Learn from real-world scenarios and attention challenges.</p>
-                  {/* Add case examples content */}
+                  <div className={styles.infoGrid}>
+                    <div className={styles.infoCard}>
+                      <h3 className={styles.infoCardTitle}>Example 1</h3>
+                      <p className={styles.infoCardDescription}>
+                        Meena had a short attention span and was always getting distracted. Meena was able to identify and control sources of distraction by performing the Focus Flow Exercise.
+                      </p>
+                      <div className={styles.tagContainer}>
+                        <span className={styles.tag}>Result: Effortless task focus</span>
+                      </div>
+                    </div>
+                    <div className={styles.infoCard}>
+                      <h3 className={styles.infoCardTitle}>Example 2</h3>
+                      <p className={styles.infoCardDescription}>
+                        In one project team, members lost focus among all those mental and environmental sounds and used attention-drills techniques to maintain their presence in sync.
+                      </p>
+                      <div className={styles.tagContainer}>
+                        <span className={styles.tag}>Result: In-depth discussions</span>
+                        <span className={styles.tag}>Better collaboration</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )}
 
               {activeSection === 'games' && (
                 <div>
-                  <h2 className={styles.sectionTitle}>Attention Games</h2>
-                  <p>Interactive exercises to strengthen your focus and attention.</p>
-                  {/* Add attention games content */}
+                  <h2 className={styles.sectionTitle}>Games & Activities</h2>
+                  <p className={styles.sectionDescription}>
+                    Practical sessions will teach participants how to control their attentions. The focus activities ensure awareness of distractions and teach switching back to focus even under pressure.
+                  </p>
+                </div>
+              )}
+
+              {activeSection === 'culture' && (
+                <div>
+                  <h2 className={styles.sectionTitle}>Outcomes: Reactive vs Active</h2>
+                  <div className={styles.contentGrid}>
+                    <div className={styles.brainRegionCard}>
+                      <h3 className={styles.focusTitle}>Reactive Outcomes</h3>
+                      <ul>
+                        <li>Attention easily diverted by internal or external stimuli.</li>
+                        <li>Frequent task switching between activities.</li>
+                        <li>Distractions lead to stress, annoyance, or mental tiredness.</li>
+                        <li>Lack of awareness about deviating focus causing wasted time and mistakes.</li>
+                        <li>Presence in conversations and tasks is partial or sporadic.</li>
+                      </ul>
+                    </div>
+                    <div className={styles.brainRegionCard}>
+                      <h3 className={styles.focusTitle}>Active Outcomes</h3>
+                      <ul>
+                        <li>Continuous focus despite diversion within and/or outside.</li>
+                        <li>Rapid detection of focus drift and effortless refocusing.</li>
+                        <li>A calm awareness replaces tension when distractions arise.</li>
+                        <li>Greater awareness of priorities and task relevance.</li>
+                        <li>Consistency in focus habits raises productivity.</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               )}
 
               {activeSection === 'journey' && (
                 <div>
-                  <h2 className={styles.sectionTitle}>Journey Beyond</h2>
-                  <p>Explore advanced focus and attention concepts.</p>
-                  {/* Add journey beyond content */}
+                  <h2 className={styles.sectionTitle}>Journey beyond</h2>
+                  <p className={styles.sectionDescription}>
+                    Beyond the Inner focus in noisy world, being present becomes habit. Attendees notice distraction early and remain mentally present in difficult circumstances. Teams build a culture of presence where listening is real, tasks are completed with fewer distractions, and teamwork is smoother.
+                  </p>
                 </div>
               )}
 
               {activeSection === 'reflection' && (
                 <div>
                   <h2 className={styles.sectionTitle}>Reflection Corner</h2>
-                  <p>Document your progress and insights in focus mastery.</p>
-                  {/* Add reflection corner content */}
+                  <ul>
+                    <li>If not productivity, what do you think focus is really about?</li>
+                    <li>How will you know if you’re distracted–and how will you return to focus?</li>
+                    <li>Suggest a daily practice to strengthen inner focus in noisy world.</li>
+                  </ul>
                 </div>
               )}
             </div>

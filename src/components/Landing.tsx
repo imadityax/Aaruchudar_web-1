@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -28,19 +28,17 @@ const features = [
 
 const stats = [
   { value: "8", label: "Intelligence Labs" },
-  { value: "1 - 100", label: "Active Learners" },
-  { value: "50+", label: "Workshops" },
-  { value: "93%", label: "Positive Feedback" },
+  { value: "1200+", label: "Active Learners" },
+  { value: "20+", label: "Workshops" },
+  { value: "96%", label: "Positive Feedback" },
 ];
 
 // ======================= COMPONENT =======================
 export default function Landing() {
   return (
     <>
-
       {/* ================= HERO SECTION ================= */}
       <header className="relative isolate overflow-hidden bg-gradient-to-br from-slate-50 via-cyan-50 to-blue-50 text-slate-900">
-        
         {/* Glowing Orb Background */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(14,165,233,0.18),transparent_60%)]" />
@@ -50,14 +48,13 @@ export default function Landing() {
         {/* Hero Content */}
         <div className="relative mx-auto max-w-7xl px-6 pt-28 pb-28 lg:px-8">
           <div className="max-w-3xl space-y-6">
-
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl leading-tight">
               Unlock <span className="text-cyan-600">Human Intelligence</span>
             </h1>
 
             <p className="text-lg text-slate-700 leading-relaxed">
-              Structured programs, research-driven methods, and continuous assessments that elevate 
-              clarity, decision-making, and innovation.
+              Structured programs, research-driven methods, and continuous
+              assessments that elevate clarity, decision-making, and innovation.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
@@ -77,14 +74,17 @@ export default function Landing() {
             </div>
 
             <div className="mt-10 flex gap-6 text-xs text-slate-500 flex-wrap">
-              {["Daily Quizzes", "Expert Designed", "Personalized Feedback"].map((item) => (
+              {[
+                "Daily Quizzes",
+                "Expert Designed",
+                "Personalized Feedback",
+              ].map((item) => (
                 <div key={item} className="flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-emerald-400" />
                   {item}
                 </div>
               ))}
             </div>
-
           </div>
         </div>
       </header>
@@ -100,8 +100,12 @@ export default function Landing() {
               key={s.label}
               className="rounded-2xl bg-slate-100 p-8 text-center shadow-lg border border-slate-200"
             >
-              <div className="text-4xl font-black text-indigo-700">{s.value}</div>
-              <div className="mt-2 text-sm font-medium text-slate-700">{s.label}</div>
+              <div className="text-4xl font-black text-indigo-700">
+                {s.value}
+              </div>
+              <div className="mt-2 text-sm font-medium text-slate-700">
+                {s.label}
+              </div>
             </div>
           ))}
         </div>
@@ -110,15 +114,14 @@ export default function Landing() {
       {/* ================= CTA ================= */}
       <section className="py-24 bg-gradient-to-br from-slate-50 via-cyan-50 to-blue-50 text-slate-900">
         <div className="mx-auto max-w-3xl px-6 text-center">
-
           <div className="rounded-2xl bg-white/70 backdrop-blur-xl p-12 shadow-2xl border border-slate-200">
             <h2 className="text-3xl font-extrabold sm:text-4xl">
-              Start Your Cognitive Upgrade
+              Transform Your Way of Thinking
             </h2>
 
             <p className="mt-4 text-slate-700 leading-relaxed">
-              Take a complimentary baseline assessment and receive 
-              a personalized roadmap built to accelerate your growth.
+              Take a free baseline assessment and receive a customized roadmap
+              that is going to help accelerate your cognitive improvement.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
@@ -127,7 +130,7 @@ export default function Landing() {
                 className="bg-cyan-600 text-white px-7 py-3 rounded-xl font-semibold shadow-lg 
                            hover:bg-cyan-500 active:scale-[0.98] transition-all"
               >
-                Take Assessment
+                Start Quiz
               </Link>
 
               <Link
@@ -135,14 +138,12 @@ export default function Landing() {
                 className="bg-white/80 border border-slate-200 px-7 py-3 rounded-xl font-semibold text-slate-900 
                            hover:bg-white transition-all"
               >
-                Explore Insights
+                Explore insights
               </Link>
             </div>
-
           </div>
         </div>
       </section>
-
     </>
   );
 }
