@@ -13,3 +13,12 @@ model User {
   password  String
   createdAt DateTime @default(now())
 }
+model Feedback {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  rating    Int
+  text      String
+  approved  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}

@@ -1,23 +1,33 @@
 import { NextResponse } from "next/server";
+import prisma from "@/lib/prisma";
 
-export async function POST(request: Request) {
+export async function POST(req: Request) {
   try {
-    const data = await request.json();
-    const { name, email, rating, feedback } = data ?? {};
+    const body = await req.json();
+    console.log("Incoming feedback:", body);
 
-    if (!name || !email || !feedback || typeof rating !== "number" || rating < 1 || rating > 5) {
-      return NextResponse.json({ error: "Invalid or missing fields" }, { status: 400 });
-    }
+    const { name, email, rating, feedback } = body;
 
-    // TODO: Persist feedback or send notification
-    console.log("FEEDBACK_FORM", { name, email, rating, feedback });
+    const created = await prisma.feedback.create({
+      data: {
+        name,
+        email,
+        rating: Number(rating),
+        text: feedback,
+      },
+    });
+    console.log("Saved feedback:", created);
 
-    return NextResponse.json({ ok: true });
-  } catch (err) {
-    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+    return NextResponse.json({ success: true });
+  } catch (error: any) {
+    console.error("🔥 FEEDBACK API ERROR:", error);
+
+    return NextResponse.json(
+      {
+        error: "Internal server error",
+        details: error?.message,
+      },
+      { status: 500 }
+    );
   }
-}
-
-export function GET() {
-  return NextResponse.json({ message: "Use POST to submit feedback" });
 }

@@ -4,41 +4,59 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 export default function ContactPage() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [contactName, setContactName] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
   const [message, setMessage] = useState("");
+
+  /* ---------------- FEEDBACK FORM STATE ---------------- */
+  const [feedbackName, setFeedbackName] = useState("");
+  const [feedbackEmail, setFeedbackEmail] = useState("");
   const [rating, setRating] = useState<number>(0);
   const [feedback, setFeedback] = useState("");
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
   const [submitting, setSubmitting] = useState(false);
   const [contactStatus, setContactStatus] = useState<string | null>(null);
   const [feedbackStatus, setFeedbackStatus] = useState<string | null>(null);
 
+  /* ---------------- MAIL LINKS ---------------- */
   const mailtoHref = `mailto:hello@aaruchudar.com?subject=Contact from ${encodeURIComponent(
-    name || "Anonymous"
-  )}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+    contactName || "Anonymous"
+  )}&body=${encodeURIComponent(
+    `Name: ${contactName}\nEmail: ${contactEmail}\n\n${message}`
+  )}`;
 
   const feedbackMailtoHref = `mailto:hello@aaruchudar.com?subject=Feedback from ${encodeURIComponent(
-    name || "Anonymous"
-  )}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\nRating: ${rating}/5\n\n${feedback}`)}`;
+    feedbackName || "Anonymous"
+  )}&body=${encodeURIComponent(
+    `Name: ${feedbackName}\nEmail: ${feedbackEmail}\nRating: ${rating}/5\n\n${feedback}`
+  )}`;
 
+  /* ---------------- CONTACT SUBMIT ---------------- */
   const submitContact = async () => {
     setSubmitting(true);
     setContactStatus(null);
+
     try {
-      if (!name || !email || !message) {
+      if (!contactName || !contactEmail || !message) {
         setContactStatus("Please fill all fields.");
         return;
       }
+
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message }),
+        body: JSON.stringify({
+          name: contactName,
+          email: contactEmail,
+          message,
+        }),
       });
-      if (!res.ok) throw new Error("Failed");
+
+      if (!res.ok) throw new Error();
+
       setContactStatus("Message sent successfully.");
-      setName("");
-      setEmail("");
+      setContactName("");
+      setContactEmail("");
       setMessage("");
     } catch {
       setContactStatus("Something went wrong. Please try again.");
@@ -47,21 +65,35 @@ export default function ContactPage() {
     }
   };
 
+  /* ---------------- FEEDBACK SUBMIT ---------------- */
   const submitFeedback = async () => {
     setSubmitting(true);
     setFeedbackStatus(null);
+
     try {
-      if (!name || !email || !rating || !feedback) {
-        setFeedbackStatus("Please provide name, email, rating, and feedback.");
+      if (!feedbackName || !feedbackEmail || !rating || !feedback) {
+        setFeedbackStatus(
+          "Please provide name, email, rating, and feedback."
+        );
         return;
       }
+
       const res = await fetch("/api/feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, rating, feedback }),
+        body: JSON.stringify({
+          name: feedbackName,
+          email: feedbackEmail,
+          rating,
+          feedback,
+        }),
       });
-      if (!res.ok) throw new Error("Failed");
+
+      if (!res.ok) throw new Error();
+
       setFeedbackStatus("Feedback submitted. Thank you!");
+      setFeedbackName("");
+      setFeedbackEmail("");
       setRating(0);
       setFeedback("");
     } catch {
@@ -70,6 +102,7 @@ export default function ContactPage() {
       setSubmitting(false);
     }
   };
+
 
   return (
     <section className="min-h-screen bg-white">
@@ -125,12 +158,13 @@ export default function ContactPage() {
                     <input
                       id="name"
                       type="text"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
+                      value={contactName}
+                      onChange={(e) => setContactName(e.target.value)}
                       className="w-full border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 rounded-md px-3 py-2 bg-white text-gray-900 placeholder:text-gray-400"
                       placeholder="Your name"
                       aria-required
                     />
+
                   </div>
 
                   <div>
@@ -138,12 +172,13 @@ export default function ContactPage() {
                     <input
                       id="email"
                       type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={contactEmail}
+                      onChange={(e) => setContactEmail(e.target.value)}
                       className="w-full border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 rounded-md px-3 py-2 bg-white text-gray-900 placeholder:text-gray-400"
                       placeholder="you@example.com"
                       aria-required
                     />
+
                   </div>
                 </div>
 
@@ -185,6 +220,35 @@ export default function ContactPage() {
                   <h2 id="feedback-form-title" className="text-xl font-medium text-gray-900">Feedback</h2>
                   <p className="text-sm text-gray-600">Rate your experience and leave a comment.</p>
                 </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      value={feedbackName}
+                      onChange={(e) => setFeedbackName(e.target.value)}
+                      className="w-full border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 rounded-md px-3 py-2 bg-white text-gray-900 placeholder:text-gray-400"
+                      placeholder="Your name"
+                      aria-required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      value={feedbackEmail}
+                      onChange={(e) => setFeedbackEmail(e.target.value)}
+                      className="w-full border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 rounded-md px-3 py-2 bg-white text-gray-900 placeholder:text-gray-400"
+                      placeholder="you@example.com"
+                      aria-required
+                    />
+                  </div>
+                </div>
 
                 {/* Rating stars */}
                 <div>
@@ -197,11 +261,10 @@ export default function ContactPage() {
                         onClick={() => setRating(star)}
                         aria-pressed={rating === star}
                         aria-label={`${star} star${star > 1 ? "s" : ""}`}
-                        className={`h-9 w-9 flex items-center justify-center rounded-md transition-all ${
-                          star <= rating
-                            ? "bg-indigo-600 text-white hover:bg-indigo-700 scale-105"
-                            : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                        }`}
+                        className={`h-9 w-9 flex items-center justify-center rounded-md transition-all ${star <= rating
+                          ? "bg-indigo-600 text-white hover:bg-indigo-700 scale-105"
+                          : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                          }`}
                       >
                         ★
                       </button>
