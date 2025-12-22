@@ -1,5 +1,7 @@
+"use client";
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import styles from "./styles.module.css";
 
 const Navbar = () => (
@@ -49,7 +51,7 @@ const Hero = () => (
         <button className={styles.btnOutlineDark}>Book a Demo</button>
         <button className={styles.btnPrimaryDark}>Download Program Deck</button>
       </div>
-      <div className="flex gap-8 mb-2 justify-center">
+      <div className="flex flex-col sm:flex-row gap-6 mb-2 justify-center px-4">
         <StatCard value="+68%" label="Decision Confidence" />
         <StatCard value="+54%" label="Attention Resilience" />
         <StatCard value="1200+" label="Participants" />
@@ -65,113 +67,126 @@ const StatCard = ({ value, label }) => (
   </div>
 );
 
-const SolutionsSection = () => (
-  <section className={`${styles.container} ${styles.section}`}>
-    <h2 className={`${styles.sectionTitle} ${styles.textGradient}`}>
-      Aaruchudar SaaS - HI
-    </h2>
-    <div className={styles.solutionsGrid}>
-      {/* Solution 1 */}
-      <div className={styles.solutionCard}>
-        <div className={styles.solutionHeader}>
-          <span className={styles.solutionTitle}>Solution 1</span>
-          <span className={styles.solutionBadge}>Suite</span>
-        </div>
-        <div className={styles.solutionMedia}>
-          <Image
-            src="/window.svg"
-            alt="Neuro-Tech Suite"
-            width={800}
-            height={600}
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className={styles.solutionBody}>
-          <p className={`${styles.solutionLine} font-semibold`}>
-            Aaruchudar Neuro-Tech Suite - A
-          </p>
-          <p className={styles.solutionLine}>single system that measures,</p>
-          <p className={styles.solutionLine}>trains, and improves your mind</p>
-          <p className={styles.solutionLine}>every day.</p>
-        </div>
-        <div className={styles.solutionCTA}>
-          <button className={styles.solutionBtnPrimary}>Explore Suite</button>
-          <button className={styles.solutionBtnGhost}>Learn More</button>
-        </div>
-      </div>
+const SolutionsSection = () => {
+  const router = useRouter();
 
-      {/* Solution 2 */}
-      <div className={styles.solutionCard}>
-        <div className={styles.solutionHeader}>
-          <span className={styles.solutionTitle}>Solution 2</span>
-          <span className={styles.solutionBadge}>Devices</span>
-        </div>
-        <div className={styles.solutionMedia}>
-          <Image
-            src="/file.svg"
-            alt="Neuro Band and Lens"
-            width={800}
-            height={600}
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className={styles.solutionBody}>
-          <p className={`${styles.solutionLine} font-semibold`}>
-            Neuro Band + Neuro Lens -
-          </p>
-          <p className={styles.solutionLine}>
-            Track your focus, stress, clarity,
-          </p>
-          <p className={styles.solutionLine}>
-            and decision patterns in real time
-          </p>
-          <p className={styles.solutionLine}>
-            like a fitness tracker, but for your
-          </p>
-          <p className={styles.solutionLine}>brain.</p>
-        </div>
-        <div className={styles.solutionCTA}>
-          <a href="/neuro" className={styles.solutionBtnPrimary}>
-            View Devices
-          </a>
-          <button className={styles.solutionBtnGhost}>Specs</button>
-        </div>
-      </div>
+  const handleViewDevices = () => {
+    router.push("/neuro");
+  };
 
-      {/* Solution 3 */}
-      <div className={styles.solutionCard}>
-        <div className={styles.solutionHeader}>
-          <span className={styles.solutionTitle}>Solution 3</span>
-          <span className={styles.solutionBadge}>Training</span>
+  return (
+    <section className={`${styles.container} ${styles.section}`}>
+      <h2 className={`${styles.sectionTitle} ${styles.textGradient}`}>
+        Aaruchudar SaaS - HI
+      </h2>
+      <div className={styles.solutionsGrid}>
+        {/* Solution 1 */}
+        <div className={styles.solutionCard}>
+          <div className={styles.solutionHeader}>
+            <span className={styles.solutionTitle}>Solution 1</span>
+            <span className={styles.solutionBadge}>Suite</span>
+          </div>
+          <div className={styles.solutionMedia}>
+            <Image
+              src="/window.svg"
+              alt="Neuro-Tech Suite"
+              width={800}
+              height={600}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className={styles.solutionBody}>
+            <p className={`${styles.solutionLine} font-semibold`}>
+              Aaruchudar Neuro-Tech Suite - A
+            </p>
+            <p className={styles.solutionLine}>single system that measures,</p>
+            <p className={styles.solutionLine}>
+              trains, and improves your mind
+            </p>
+            <p className={styles.solutionLine}>every day.</p>
+          </div>
+          <div className={styles.solutionCTA}>
+            <button className={styles.solutionBtnPrimary}>Explore Suite</button>
+            <button className={styles.solutionBtnGhost}>Learn More</button>
+          </div>
         </div>
-        <div className={styles.solutionMedia}>
-          <Image
-            src="/images/hi-labs-banner.jpg"
-            alt="Human intelligence Labs"
-            width={800}
-            height={600}
-            className="w-full h-full object-cover"
-          />
+
+        {/* Solution 2 */}
+        <div className={styles.solutionCard}>
+          <div className={styles.solutionHeader}>
+            <span className={styles.solutionTitle}>Solution 2</span>
+            <span className={styles.solutionBadge}>Devices</span>
+          </div>
+          <div className={styles.solutionMedia}>
+            <Image
+              src="/file.svg"
+              alt="Neuro Band and Lens"
+              width={800}
+              height={600}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className={styles.solutionBody}>
+            <p className={`${styles.solutionLine} font-semibold`}>
+              Neuro Band + Neuro Lens -
+            </p>
+            <p className={styles.solutionLine}>
+              Track your focus, stress, clarity,
+            </p>
+            <p className={styles.solutionLine}>
+              and decision patterns in real time
+            </p>
+            <p className={styles.solutionLine}>
+              like a fitness tracker, but for your
+            </p>
+            <p className={styles.solutionLine}>brain.</p>
+          </div>
+          <div className={styles.solutionCTA}>
+            <button
+              className={styles.solutionBtnPrimary}
+              onClick={handleViewDevices}
+            >
+              View Devices
+            </button>
+            <button className={styles.solutionBtnGhost}>Specs</button>
+          </div>
         </div>
-        <div className={styles.solutionBody}>
-          <p className={`${styles.solutionLine} font-semibold`}>
-            Human Intelligence Labs (HI Labs) -
-          </p>
-          <p className={styles.solutionLine}>Daily brain-training</p>
-          <p className={styles.solutionLine}>exercises that build clarity,</p>
-          <p className={styles.solutionLine}>
-            confidence, focus, communication,
-          </p>
-          <p className={styles.solutionLine}>and original thinking.</p>
-        </div>
-        <div className={styles.solutionCTA}>
-          <button className={styles.solutionBtnPrimary}>Explore Labs</button>
-          <button className={styles.solutionBtnGhost}>Curriculum</button>
+
+        {/* Solution 3 */}
+        <div className={styles.solutionCard}>
+          <div className={styles.solutionHeader}>
+            <span className={styles.solutionTitle}>Solution 3</span>
+            <span className={styles.solutionBadge}>Training</span>
+          </div>
+          <div className={styles.solutionMedia}>
+            <Image
+              src="/images/hi-labs-banner.jpg"
+              alt="Human intelligence Labs"
+              width={800}
+              height={600}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className={styles.solutionBody}>
+            <p className={`${styles.solutionLine} font-semibold`}>
+              Human Intelligence Labs (HI Labs) -
+            </p>
+            <p className={styles.solutionLine}>Daily brain-training</p>
+            <p className={styles.solutionLine}>exercises that build clarity,</p>
+            <p className={styles.solutionLine}>
+              confidence, focus, communication,
+            </p>
+            <p className={styles.solutionLine}>and original thinking.</p>
+          </div>
+          <div className={styles.solutionCTA}>
+            <button className={styles.solutionBtnPrimary}>Explore Labs</button>
+            <button className={styles.solutionBtnGhost}>Curriculum</button>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const WhatAreHILabs = () => (
   <section className={`${styles.container} ${styles.section} text-center`}>
