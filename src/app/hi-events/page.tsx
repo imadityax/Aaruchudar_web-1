@@ -36,35 +36,35 @@ const HIEventsPage = () => {
   const upcomingEvents = [
     {
       id: 1,
-      title: "The Science of Flow: How to Enter Peak Performance States",
+      title: "Neuroscience behind achieving the peak performance state",
       type: "webinar",
       date: "September 28, 2025",
       time: "7:00 PM IST",
       platform: "Zoom",
-      description: "Discover the neurological and psychological mechanisms behind flow states and learn practical techniques to achieve peak performance in any domain.",
+      description: "Learn about brain based and cognitive mechanism, and gain practical exposure with techniques to achieve the peak performance in any domain.",
       speaker: "Aashika Nethaji",
       attendees: 245,
       isFeatured: true
     },
     {
       id: 2,
-      title: "Unlocking Cognitive Potential: A Neuroscience Perspective",
+      title: "Cognitive Enhancement and Brain Plasticity: A Neuroscientific Approach",
       type: "webinar",
       date: "October 5, 2025",
       time: "6:30 PM IST",
       platform: "Zoom",
-      description: "Explore cutting-edge neuroscience research on cognitive enhancement and brain plasticity.",
+      description: "Analyze the evidence-based findings on optimizing cognitive function through neural adaptability and brain functions.",
       speaker: "Aashika Nethaji",
       attendees: 189
     },
     {
       id: 3,
-      title: "HI Talks: Redesigning Careers & Identities",
+      title: "HI Talks: Career transition and Identity growth",
       type: "campus",
       date: "October 12, 2025",
       time: "3:00 PM IST",
       location: "IIT Mumbai",
-      description: "Interactive session on navigating career transitions and identity evolution in the modern world.",
+      description: "A guided and interactive workshop exploring the career change, personal growth and identity evolution",
       speaker: "Shiyam Sundar",
       attendees: 150
     }
@@ -164,7 +164,7 @@ const HIEventsPage = () => {
             Human intelligence Events
           </motion.h1>
           <motion.p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.15 }}>
-            Live webinars and campus sessions on psychology, innovation, and human growth. Join the community and never stop learning.
+            Learn, grow, and evolve through live webinars and campus sessions on psychology, innovation, and human potential.
           </motion.p>
           <motion.div className="mt-8 flex flex-wrap justify-center gap-3" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
             <span className="px-3 py-1 rounded-full text-xs md:text-sm border border-white/10 bg-white/5 text-gray-200">Expert speakers</span>

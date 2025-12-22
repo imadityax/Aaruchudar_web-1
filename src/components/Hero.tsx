@@ -165,14 +165,13 @@ export default function Hero() {
           <div className="hero-badge-modern" aria-label="Platform badge">Trusted Cognitive Training Platform</div>
 
           <h1 id="hero-heading" ref={titleRef} className="hero-title-modern">
-            <span>Elevate Your</span>
+            <span>Ignite​‍​‌‍​‍‌​‍​‌‍​‍‌ Your</span>
             <br />
-            <span className="gradient-text-modern">Cognitive Intelligence</span>
+            <span className="gradient-text-modern">Human Potential</span>
           </h1>
 
           <p ref={subtitleRef} className="hero-description-modern">
-            Build measurable mental clarity and performance through research-based exercises,
-            quick assessments, and AI-guided feedback. Train focus, reasoning, and decision-making.
+              How about a training in Human Intelligence which is basically interactive labs, reflective exercises, and personalized human guidance – all aimed at helping you get more clarity, focus and decision power.
           </p>
 
           <div ref={ctaRef} className="hero-buttons-modern" role="navigation" aria-label="Hero actions">
@@ -183,7 +182,7 @@ export default function Hero() {
           <div className="features-grid-modern" aria-hidden>
             <div className="feature-item">
               <div className="feature-icon" aria-hidden></div>
-              <div className="feature-title">Mental Clarity</div>
+              <div className="feature-title">Inner Clarity</div>
             </div>
             <div className="feature-item">
               <div className="feature-icon" aria-hidden></div>
@@ -195,14 +194,14 @@ export default function Hero() {
             </div>
             <div className="feature-item">
               <div className="feature-icon" aria-hidden></div>
-              <div className="feature-title">Science-Backed</div>
+              <div className="feature-title">Research-Driven Methods</div>
             </div>
           </div>
 
           <div className="trust-indicators" aria-hidden>
-            <div>● Daily Quizzes</div>
-            <div>● Expert-Led Programs</div>
-            <div>● Free Baseline Assessment</div>
+            <div>● Daily Cognitive Workouts</div>
+            <div>● Mentor-Led Learning Paths</div>
+            <div>● Free Intelligence Benchmark Test</div>
           </div>
         </div>
 
