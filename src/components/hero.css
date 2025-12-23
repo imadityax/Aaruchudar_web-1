@@ -259,15 +259,9 @@
   
   /* ---------- features ---------- */
   .features-grid-modern {
-    margin-top: 44px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-  }
-  
-  /* Better grid responsiveness for medium screens */
-  @media (max-width: 860px) {
-    .features-grid-modern { grid-template-columns: repeat(2, 1fr); }
+    /* Hide the features grid entirely */
+    display: none !important;
+    margin-top: 0; /* remove extra spacing */
   }
   
   .feature-item {
