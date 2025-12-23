@@ -47,14 +47,64 @@ const shuffleArray = <T,>(arr: T[]) => {
 
 const spring = { type: "spring" as const, stiffness: 500, damping: 28 };
 
+// Static theme class map to avoid dynamic Tailwind strings
+const THEME_CLASS_MAP = {
+  emerald: {
+    // page backgrounds
+    gradientFrom: "from-emerald-50",
+    gradientTo: "to-emerald-50",
+    headerBg: "bg-emerald-50",
+
+    // primary/soft accents
+    softBg: "bg-emerald-500",
+    softText: "text-emerald-500",
+    softBorder: "border-emerald-500",
+
+    // ring/light accents
+    ringBg: "bg-emerald-100",
+    ringBorder: "border-emerald-100",
+
+    // progress shadow accent (emerald)
+    progressShadow: "shadow-[0_6px_20px_rgba(16,185,129,0.18)]",
+  },
+  orange: {
+    // page backgrounds
+    gradientFrom: "from-orange-50",
+    gradientTo: "to-orange-50",
+    headerBg: "bg-orange-50",
+
+    // primary/soft accents
+    softBg: "bg-orange-500",
+    softText: "text-orange-500",
+    softBorder: "border-orange-500",
+
+    // ring/light accents
+    ringBg: "bg-orange-100",
+    ringBorder: "border-orange-100",
+
+    // progress shadow accent (orange)
+    progressShadow: "shadow-[0_6px_20px_rgba(249,115,22,0.18)]",
+  },
+} as const;
+
 /* ------------------------------- Main Page -------------------------------- */
+
+const QUIZ_STATE_VERSION = 2;
 
 function QuizPage(): JSX.Element {
   const [quizData, setQuizData] = useState<QuizData | null>(null);
   const [stage, setStage] = useState<"welcome" | "quiz" | "results" | "review">("welcome");
   const [loading, setLoading] = useState(true);
-  // theme toggle
-  const [theme, setTheme] = useState<"emerald" | "orange">(() => (typeof window !== "undefined" && localStorage.getItem("quiz_theme") === "orange" ? "orange" : "emerald"));
+  // theme toggle: default to emerald on first render (SSR-safe), hydrate from localStorage after mount
+  const [theme, setTheme] = useState<"emerald" | "orange">("emerald");
+
+  // After mount, read stored theme to avoid hydration mismatches
+  useEffect(() => {
+    try {
+      const stored = typeof window !== "undefined" ? localStorage.getItem("quiz_theme") : null;
+      if (stored === "orange" || stored === "emerald") setTheme(stored);
+    } catch {}
+  }, []);
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
@@ -75,8 +125,17 @@ function QuizPage(): JSX.Element {
   // restore session
   useEffect(() => {
     try {
-      const saved = typeof window !== "undefined" ? JSON.parse(localStorage.getItem("quiz_state") || "null") : null;
-      if (saved?.quizData) {
+      const raw = typeof window !== "undefined" ? localStorage.getItem("quiz_state") : null;
+      const saved = raw ? JSON.parse(raw) : null;
+
+      const isValid = Boolean(
+        saved &&
+        saved.version === QUIZ_STATE_VERSION &&
+        Array.isArray(saved?.quizData?.quiz?.questions) &&
+        saved.quizData.quiz.questions.length > 0
+      );
+
+      if (isValid) {
         setQuizData(saved.quizData);
         setSelectedAnswers(saved.selectedAnswers);
         setCurrentQuestion(saved.currentQuestion);
@@ -86,17 +145,22 @@ function QuizPage(): JSX.Element {
         setPaused(false);
         setHiddenOptions(saved.hiddenOptions || {});
         setLifelines(saved.lifelines || { fifty: 1, skip: 1 });
-        return;
+        return; // valid restore, skip fresh load
       }
-    } catch {}
-    // load fresh
+
+      // invalid or outdated cache: remove and load fresh
+      if (typeof window !== "undefined") localStorage.removeItem("quiz_state");
+    } catch {
+      try { if (typeof window !== "undefined") localStorage.removeItem("quiz_state"); } catch {}
+    }
+
     loadQuiz();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // persist session
   useEffect(() => {
-    const payload = { quizData, selectedAnswers, currentQuestion, score, stage, timeLeft, hiddenOptions, lifelines };
+    const payload = { quizData, selectedAnswers, currentQuestion, score, stage, timeLeft, hiddenOptions, lifelines, version: QUIZ_STATE_VERSION };
     try { if (typeof window !== "undefined") localStorage.setItem("quiz_state", JSON.stringify(payload)); } catch {}
   }, [quizData, selectedAnswers, currentQuestion, score, stage, timeLeft, hiddenOptions, lifelines]);
 
@@ -277,27 +341,14 @@ function QuizPage(): JSX.Element {
   const progress = totalQuestions > 0 ? ((currentQuestion + 1) / totalQuestions) * 100 : 0;
   const answeredCount = selectedAnswers.filter((a) => a !== -1).length;
   const current = quizData && totalQuestions > 0 ? quizData.quiz.questions[currentQuestion] : null;
-  const themeClasses = useMemo(() => {
-    const t = theme === "orange" ? {
-      primary: "orange-600",
-      primarySoft: "orange-500",
-      ring: "orange-100",
-      bgFrom: "from-orange-50",
-    } : {
-      primary: "emerald-600",
-      primarySoft: "emerald-500",
-      ring: "emerald-100",
-      bgFrom: "from-emerald-50",
-    };
-    return t;
-  }, [theme]);
+  const themeClasses = useMemo(() => THEME_CLASS_MAP[theme], [theme]);
 
   const hiddenForCurrent = (current ? hiddenOptions[currentQuestion] : []) || [];
 
   /* ------------------------------- render --------------------------------- */
 
   return (
-    <div className={`min-h-screen bg-gradient-to-b ${themeClasses.bgFrom} to-white pt-16 md:pt-24 pb-20`}>
+    <div className={`min-h-screen bg-gradient-to-b ${themeClasses.gradientFrom} to-white pt-16 md:pt-24 pb-20`}>
       {/* top-left Home */}
       <a
         href="/"
@@ -345,7 +396,7 @@ function QuizPage(): JSX.Element {
               initial={{ scale: 0.9 }}
               animate={{ scale: [1, 1.04, 1], rotate: [0, 2, 0] }}
               transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-              className={`w-16 h-16 rounded-full bg-${themeClasses.primarySoft} flex items-center justify-center shadow-2xl`}
+              className={`w-16 h-16 rounded-full ${themeClasses.softBg} flex items-center justify-center shadow-2xl`}
               title="Mascot"
               aria-hidden
             >
@@ -369,9 +420,9 @@ function QuizPage(): JSX.Element {
             <div className="w-full max-w-5xl">
               <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
                 {/* header area with timer */}
-                <div className={`px-8 py-6 flex items-center justify-between gap-4 border-b border-${themeClasses.ring} bg-${themeClasses.bgFrom.replace("from-", "")}`}>
+                <div className={`px-8 py-6 flex items-center justify-between gap-4 border-b ${themeClasses.ringBorder} ${themeClasses.headerBg}`}>
                   <div className="flex items-center gap-4">
-                    <div className={`w-14 h-14 rounded-xl bg-${themeClasses.primarySoft} flex items-center justify-center text-white font-extrabold text-lg shadow-lg`}>Q</div>
+                    <div className={`w-14 h-14 rounded-xl ${themeClasses.softBg} flex items-center justify-center text-white font-extrabold text-lg shadow-lg`}>Q</div>
                     <div>
                       <h1 className="text-2xl font-extrabold text-slate-800">{quizData.quiz.title}</h1>
                       <p className="text-sm text-slate-600">{quizData.quiz.description}</p>
@@ -391,7 +442,7 @@ function QuizPage(): JSX.Element {
 
                     <div className="w-44 bg-white rounded-full h-3 border border-slate-100 overflow-hidden">
                       <motion.div
-                        className={`h-full bg-${themeClasses.primarySoft} shadow-[0_6px_20px_rgba(16,185,129,0.18)]`}
+                        className={`h-full ${themeClasses.softBg} ${themeClasses.progressShadow}`}
                         animate={{ width: `${progress}%` }}
                         transition={{ duration: 0.45, ease: "easeOut" }}
                       />
@@ -400,12 +451,12 @@ function QuizPage(): JSX.Element {
                 </div>
 
                 {/* main content - immersive */}
-                <div className={`px-10 py-10 bg-gradient-to-b from-white ${theme === "emerald" ? "to-emerald-50" : "to-orange-50"} min-h-[460px]`}>
+                <div className={`px-10 py-10 bg-gradient-to-b from-white ${themeClasses.gradientTo} min-h-[460px]`}>
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* left column: question index + lifelines + map */}
                     <div className="space-y-6">
                       <div className="flex items-start justify-center lg:justify-start">
-                        <div className={`w-20 h-20 rounded-full bg-white border border-slate-100 flex items-center justify-center text-2xl font-extrabold text-${themeClasses.primarySoft} shadow`}>
+                        <div className={`w-20 h-20 rounded-full bg-white border border-slate-100 flex items-center justify-center text-2xl font-extrabold ${themeClasses.softText} shadow`}>
                           {currentQuestion + 1}
                         </div>
                       </div>
@@ -442,7 +493,7 @@ function QuizPage(): JSX.Element {
                             const active = i === currentQuestion;
                             return (
                               <button key={i} onClick={() => setCurrentQuestion(i)}
-                                className={`h-8 rounded-md border text-xs ${active ? `border-${themeClasses.primarySoft} bg-${themeClasses.ring}` : answered ? "border-slate-200 bg-slate-50" : "border-slate-100 bg-white"}`}
+                                className={`h-8 rounded-md border text-xs ${active ? `${themeClasses.softBorder} ${themeClasses.ringBg}` : answered ? "border-slate-200 bg-slate-50" : "border-slate-100 bg-white"}`}
                               >{i + 1}</button>
                             );
                           })}
@@ -453,7 +504,7 @@ function QuizPage(): JSX.Element {
                       <div className="bg-white rounded-xl border border-slate-100 p-4 shadow-sm flex items-center justify-between">
                         <div className="text-sm text-slate-700">Streak</div>
                         <div className={`flex-1 ml-3 h-2 bg-slate-100 rounded-full overflow-hidden`}>
-                          <motion.div className={`h-full bg-${themeClasses.primarySoft}`} initial={{ width: 0 }} animate={{ width: `${Math.min(100, streak * 10)}%` }} />
+                          <motion.div className={`h-full ${themeClasses.softBg}`} initial={{ width: 0 }} animate={{ width: `${Math.min(100, streak * 10)}%` }} />
                         </div>
                       </div>
                     </div>
@@ -490,13 +541,13 @@ function QuizPage(): JSX.Element {
                                     transition={spring}
                                     className={`flex items-center gap-4 p-5 rounded-2xl border-2 text-left shadow-sm transition ${
                                       isSelected
-                                        ? `bg-${themeClasses.primarySoft}/90 text-white border-${themeClasses.primarySoft} shadow-lg`
+                                        ? `${themeClasses.softBg} text-white ${themeClasses.softBorder} shadow-lg`
                                         : "bg-white text-slate-800 border-slate-100 hover:shadow-md"
                                     }`}
                                     aria-pressed={isSelected}
                                   >
                                     <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold ${
-                                      isSelected ? "bg-white text-slate-900" : `bg-${themeClasses.ring} text-slate-900`
+                                      isSelected ? "bg-white text-slate-900" : `${themeClasses.ringBg} text-slate-900`
                                     }`}>
                                       {letter}
                                     </div>
@@ -532,7 +583,7 @@ function QuizPage(): JSX.Element {
                                 <button
                                   onClick={handleNext}
                                   disabled={selectedAnswers[currentQuestion] === -1}
-                                  className={`px-6 py-3 rounded-full font-bold text-white ${selectedAnswers[currentQuestion] === -1 ? `bg-${themeClasses.ring} opacity-60 cursor-not-allowed` : `bg-${themeClasses.primarySoft} shadow-md hover:scale-105`}`}
+                                  className={`px-6 py-3 rounded-full font-bold text-white ${selectedAnswers[currentQuestion] === -1 ? `${themeClasses.ringBg} opacity-60 cursor-not-allowed` : `${themeClasses.softBg} shadow-md hover:scale-105`}`}
                                 >
                                   {currentQuestion === totalQuestions - 1 ? "Finish" : "Next"}
                                 </button>
