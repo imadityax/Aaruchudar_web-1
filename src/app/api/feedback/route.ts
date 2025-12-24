@@ -16,11 +16,10 @@ export async function POST(req: Request) {
         text: feedback,
       },
     });
-    console.log("Saved feedback:", created);
+    
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
-    console.error("🔥 FEEDBACK API ERROR:", error);
 
     return NextResponse.json(
       {
