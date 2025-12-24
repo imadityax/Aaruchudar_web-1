@@ -11,11 +11,23 @@ export default function BasicApplicationForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log(formData);
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  const res = await fetch("/api/application", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  });
+
+  if (res.ok) {
     alert("Form submitted successfully");
-  };
+    setFormData({});
+  } else {
+    alert("Something went wrong");
+  }
+};
+
 
   return (
     <>

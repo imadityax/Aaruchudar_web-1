@@ -22,3 +22,17 @@ model Feedback {
   approved  Boolean  @default(false)
   createdAt DateTime @default(now())
 }
+model Application {
+  id              String   @id @default(cuid())
+  name            String
+  dob             DateTime
+  gender          String
+  contact         String
+  email           String
+  educationStatus String
+  institution     String
+  field           String
+  board           String
+  percentage      Float
+  createdAt       DateTime @default(now())
+}
