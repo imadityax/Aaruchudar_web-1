@@ -3,29 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 // ======================= DATA =======================
-const features = [
-  {
-    icon: "/file.svg",
-    title: "Cognitive Depth",
-    text: "Frameworks anchored in neuroscience & behavioral research.",
-  },
-  {
-    icon: "/window.svg",
-    title: "Rapid Iteration",
-    text: "Short feedback loops accelerate measurable progress.",
-  },
-  {
-    icon: "/gem.png",
-    title: "Adaptive Pathways",
-    text: "Personalized sequencing based on assessment signals.",
-  },
-  {
-    icon: "/globe.svg",
-    title: "Community Network",
-    text: "Peer insights & expert guidance amplify retention.",
-  },
-];
-
 const stats = [
   { value: "8", label: "Intelligence Labs" },
   { value: "1200+", label: "Active Learners" },
@@ -37,15 +14,40 @@ const stats = [
 export default function Landing() {
   return (
     <>
+      {/* ================= TOP SCHOLARSHIP BANNER ================= */}
+      <section className="w-full">
+        <Link href="/scholarship-application" className="block">
+          <div className="relative w-full h-[180px] sm:h-[240px] md:h-[300px]">
+            <Image
+              src="/images/WhatsApp Image 2025-12-24 at 12.24.12.jpeg"
+              alt="Scholarship Application Banner"
+              fill
+              priority
+              className="object-cover"
+            />
+
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/20" />
+
+            {/* Banner Text */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="bg-white/80 backdrop-blur px-6 py-3 rounded-xl shadow-lg">
+                <p className="text-lg sm:text-xl font-bold text-slate-900">
+                  🎓 Apply for Scholarship
+                </p>
+              </div>
+            </div>
+          </div>
+        </Link>
+      </section>
+
       {/* ================= HERO SECTION ================= */}
       <header className="relative isolate overflow-hidden bg-gradient-to-br from-slate-50 via-cyan-50 to-blue-50 text-slate-900">
-        {/* Glowing Orb Background */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(14,165,233,0.18),transparent_60%)]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(6,182,212,0.16),transparent_60%)]" />
         </div>
 
-        {/* Hero Content */}
         <div className="relative mx-auto max-w-7xl px-6 pt-28 pb-28 lg:px-8">
           <div className="max-w-3xl space-y-6">
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl leading-tight">
@@ -89,9 +91,6 @@ export default function Landing() {
         </div>
       </header>
 
-      {/* ================= VALUE FEATURES ================= */}
-      {/* Removed "Why It Works" section */}
-
       {/* ================= STATS ================= */}
       <section className="py-24 bg-white">
         <div className="mx-auto max-w-6xl px-6 lg:px-8 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
@@ -121,7 +120,7 @@ export default function Landing() {
 
             <p className="mt-4 text-slate-700 leading-relaxed">
               Take a free baseline assessment and receive a customized roadmap
-              that is going to help accelerate your cognitive improvement.
+              that helps accelerate your cognitive improvement.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
@@ -138,15 +137,15 @@ export default function Landing() {
                 className="bg-white/80 border border-slate-200 px-7 py-3 rounded-xl font-semibold text-slate-900 
                            hover:bg-white transition-all"
               >
-                Explore insights
+                Explore Insights
               </Link>
-              <Link
-  href="/scholarship-application"
-  className="rounded-xl bg-indigo-600 text-white px-6 py-3 shadow-lg hover:bg-indigo-500 transition"
->
-  🎓 Apply for Scholarship
-</Link>
 
+              <Link
+                href="/scholarship-application"
+                className="rounded-xl bg-indigo-600 text-white px-7 py-3 shadow-lg hover:bg-indigo-500 transition"
+              >
+                🎓 Apply for Scholarship
+              </Link>
             </div>
           </div>
         </div>
