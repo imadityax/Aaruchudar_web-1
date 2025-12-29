@@ -17,21 +17,21 @@ export default function Landing() {
       {/* ================= TOP SCHOLARSHIP BANNER ================= */}
       <section className="w-full">
         <Link href="/scholarship-application" className="block">
-          <div className="relative w-full h-[180px] sm:h-[240px] md:h-[300px]">
+          <div className="relative w-full h-[200px] sm:h-[260px] md:h-[320px] lg:h-[380px] bg-black">
             <Image
-              src="/images/WhatsApp Image 2025-12-24 at 12.24.12.jpeg"
+              src="/images/banner.jpg"
               alt="Scholarship Application Banner"
               fill
               priority
-              className="object-cover"
+              className="object-contain"
             />
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/20" />
+            {/* Optional soft overlay */}
+            <div className="absolute inset-0 bg-black/10" />
 
-            {/* Banner Text */}
+            {/* CTA Button */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-white/80 backdrop-blur px-6 py-3 rounded-xl shadow-lg">
+              <div className="bg-white/90 backdrop-blur px-6 py-3 rounded-xl shadow-lg">
                 <p className="text-lg sm:text-xl font-bold text-slate-900">
                   🎓 Apply for Scholarship
                 </p>
@@ -76,16 +76,14 @@ export default function Landing() {
             </div>
 
             <div className="mt-10 flex gap-6 text-xs text-slate-500 flex-wrap">
-              {[
-                "Daily Quizzes",
-                "Expert Designed",
-                "Personalized Feedback",
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400" />
-                  {item}
-                </div>
-              ))}
+              {["Daily Quizzes", "Expert Designed", "Personalized Feedback"].map(
+                (item) => (
+                  <div key={item} className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                    {item}
+                  </div>
+                )
+              )}
             </div>
           </div>
         </div>
