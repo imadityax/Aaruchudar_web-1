@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function BasicApplicationForm() {
   const [formData, setFormData] = useState<Record<string, any>>({});
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -11,22 +12,32 @@ export default function BasicApplicationForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
 
-  const res = await fetch("/api/application", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(formData),
-  });
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  if (res.ok) {
-    alert("Form submitted successfully");
-    setFormData({});
-  } else {
-    alert("Something went wrong");
-  }
-};
+    if (!acceptedTerms) {
+      alert("You must accept the Scholarship Rules & Regulations");
+      return;
+    }
+
+    const res = await fetch("/api/application", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...formData,
+        acceptedTerms: true,
+      }),
+    });
+
+    if (res.ok) {
+      alert("Form submitted successfully");
+      setFormData({});
+      setAcceptedTerms(false);
+    } else {
+      alert("Something went wrong");
+    }
+  };
 
 
   return (
@@ -121,14 +132,59 @@ const handleSubmit = async (e: React.FormEvent) => {
                 required
               />
             </div>
+            {/* TERMS & CONDITIONS */}
+            <div className="terms">
+              <h3>Scholarship Rules & Regulations</h3>
 
-            {/* DECLARATION */}
+              <div className="terms-box">
+                <p>
+                  <strong>1. Scholarship – Full Details</strong><br />
+                  The Scholarship Examination is an initiative designed to identify and
+                  support meritorious students who demonstrate academic potential,
+                  analytical ability, and commitment towards learning. The decision of the
+                  Scholarship Committee shall be final and binding.
+                </p>
+
+                <p>
+                  <strong>2. Eligibility Criteria</strong><br />
+                  Applicants must be enrolled in a recognized institution, provide valid
+                  academic records, submit only one application, and complete registration
+                  within the deadline.
+                </p>
+
+                <p>
+                  <strong>3. Examination Rules</strong><br />
+                  The exam may be online/offline. Any form of malpractice, impersonation,
+                  or use of unfair means will result in immediate disqualification.
+                </p>
+
+                <p>
+                  <strong>4. Instructions</strong><br />
+                  Candidates must ensure stable internet connectivity, follow invigilator
+                  instructions, and manage time responsibly.
+                </p>
+
+                <p>
+                  <strong>5. Do’s & Don’ts</strong><br />
+                  Providing false information, submitting multiple applications, or
+                  attempting influence will lead to disqualification.
+                </p>
+              </div>
+            </div>
+
+
             <div className="declaration">
-              <input type="checkbox" required />
+              <input
+                type="checkbox"
+                checked={acceptedTerms}
+                onChange={(e) => setAcceptedTerms(e.target.checked)}
+                required
+              />
               <span>
-                I confirm that the information provided above is true and correct.
+                I have read, understood, and agree to the Scholarship Rules & Regulations.
               </span>
             </div>
+
 
             {/* SUBMIT */}
             <button type="submit">Submit</button>
@@ -239,6 +295,30 @@ const handleSubmit = async (e: React.FormEvent) => {
         button:hover {
           background: #0891b2;
         }
+          .terms {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.terms h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.terms-box {
+  max-height: 160px;
+  overflow-y: auto;
+  padding: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #334155;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
       `}</style>
     </>
   );
