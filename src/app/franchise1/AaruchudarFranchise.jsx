@@ -20,11 +20,12 @@ import {
   Compass,
   Sparkles,
 } from "lucide-react";
+import ExploreDetailsModal from "./ExploreDetails";
 
-import { useRouter } from "next/navigation";
 
 export default function AaruchudarFranchise() {
-  const router = useRouter();
+
+    const [activeModal, setActiveModal] = useState(null);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
@@ -56,6 +57,7 @@ export default function AaruchudarFranchise() {
 
   const franchiseOptions = [
     {
+      id: "own-a-lab",
       icon: Brain,
       iconColor: "text-cyan-600",
       title: "OWN A LAB",
@@ -73,6 +75,7 @@ export default function AaruchudarFranchise() {
       borderColor: "border-cyan-100",
     },
     {
+      id: "strategic-investor",
       icon: Users,
       iconColor: "text-blue-600",
       title: "BECOME AN INVESTOR",
@@ -90,6 +93,7 @@ export default function AaruchudarFranchise() {
       borderColor: "border-blue-100",
     },
     {
+      id: "global-expansion",
       icon: Globe,
       iconColor: "text-indigo-600",
       title: "GLOBAL EXPANSION",
@@ -522,13 +526,11 @@ export default function AaruchudarFranchise() {
                 </div>
                 {/* Explore Details Button */}
                 <button
-                  onClick={() =>
-                    router.push(`/franchise1/explore-details?type=${option.id}`)
-                  }
-                  className="w-full py-3 bg-gray-900 text-white font-medium rounded-lg hover:bg-gray-800 transition flex items-center justify-center gap-2 group"
+                  onClick={() => setActiveModal(option.id)}
+                  className="w-full py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 flex justify-center items-center gap-2"
                 >
-                  <span>Explore Details</span>
-                  <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  Explore Details
+                  <ChevronRight className="h-4 w-4" />
                 </button>
               </div>
             );
@@ -1006,6 +1008,12 @@ export default function AaruchudarFranchise() {
           </div>
         </div>
       )}
+
+      <ExploreDetailsModal
+        activeModal={activeModal}
+        setActiveModal={setActiveModal}
+        setFormData={setFormData}
+      />
     </div>
   );
 }
