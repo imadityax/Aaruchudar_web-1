@@ -36,3 +36,13 @@ model Application {
   percentage      Float
   createdAt       DateTime @default(now())
 }
+model InternshipRegistration {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String
+  course    String
+  duration  String
+  message   String?
+  createdAt DateTime @default(now())
+}
