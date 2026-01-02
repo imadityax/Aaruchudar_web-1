@@ -19,13 +19,19 @@ import {
   Activity,
   Compass,
   Sparkles,
+  Search,
+  Handshake,
+  GitBranch,
+  FileText,
+  GraduationCap,
+  Rocket,
 } from "lucide-react";
 import ExploreDetailsModal from "./ExploreDetails";
-
+import { useRouter } from "next/navigation";
 
 export default function AaruchudarFranchise() {
-
-    const [activeModal, setActiveModal] = useState(null);
+  const router = useRouter();
+  const [activeModal, setActiveModal] = useState(null);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
@@ -162,6 +168,12 @@ export default function AaruchudarFranchise() {
                 <Play className="h-4 w-4" />
                 Watch Demo
               </button>
+              <button
+                onClick={() => router.back()}
+                className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition"
+              >
+                Back
+              </button>
             </div>
 
             <button
@@ -191,10 +203,6 @@ export default function AaruchudarFranchise() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 relative">
           <div className="text-center max-w-4xl mx-auto">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-8 border border-white/20">
-              <Shield className="h-4 w-4 text-cyan-300" />
-              <span className="text-sm text-cyan-100 font-medium">
-                TRUSTED FRANCHISE NETWORK
-              </span>
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
@@ -689,53 +697,53 @@ export default function AaruchudarFranchise() {
           </div>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 ">
-              {[
-                {
-                  label: "Initial Investment",
-                  value: "₹25-50L",
-                  detail: "Setup, tech, training & marketing",
-                },
-                {
-                  label: "Monthly Operating",
-                  value: "₹3-5L",
-                  detail: "Staff, rent, utilities",
-                },
-                {
-                  label: "Monthly Revenue",
-                  value: "₹8-12L",
-                  detail: "300-400 active clients",
-                },
-                {
-                  label: "Payback Period",
-                  value: "18-24 months",
-                  detail: "Standard model",
-                },
-                {
-                  label: "5-Year ROI",
-                  value: "350-400%",
-                  detail: "Conservative",
-                },
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm  "
-                >
-                  <div className="flex justify-between items-start mb-2 ">
-                    <h4 className="font-semibold text-gray-900">
-                      {item.label}
-                    </h4>
-                    <span className="text-2xl font-bold bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">
-                      {item.value}
-                    </span>
+              <h3 className="text-xl font-bold text-gray-900">Investment Structure (Indicative)</h3>
+              {/* Table style card */}
+              <div className="relative overflow-hidden rounded-2xl border border-gray-100 shadow-sm bg-white">
+                {/* subtle pattern */}
+                <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{backgroundImage: "radial-gradient(circle at 20% 20%, #06b6d4 2px, transparent 2px), radial-gradient(circle at 80% 60%, #3b82f6 2px, transparent 2px)", backgroundSize: "24px 24px"}} />
+                <div className="relative">
+                  <div className="grid grid-cols-2 md:grid-cols-3 text-xs uppercase tracking-wide text-gray-500 border-b border-gray-100">
+                    <div className="px-4 py-3 font-medium">Item</div>
+                    <div className="px-4 py-3 font-medium">Amount</div>
+                    <div className="hidden md:block px-4 py-3 font-medium">Notes</div>
                   </div>
-                  <p className="text-sm text-gray-600 ">{item.detail}</p>
+
+                  {[
+                    { label: "Total Investment Range", value: "₹46 – ₹65 Lakhs", note: "" },
+                    { label: "Franchise Fee (one-time)", value: "₹4 – ₹6 Lakhs", note: "Enrollment" },
+                    { label: "Interior & Space Setup", value: "₹12 – ₹18 Lakhs", note: "Fit-out" },
+                    { label: "Furniture & Physical Infrastructure", value: "₹6 – ₹8 Lakhs", note: "Fixtures" },
+                    { label: "Cognitive Tools & other Devices", value: "₹6 – ₹10 Lakhs", note: "Core devices" },
+                    { label: "Initial Curriculum & Licensing", value: "Included", note: "IP access" },
+                    { label: "Initial Marketing & Launch", value: "₹2 – ₹3 Lakhs", note: "Go-live" },
+                    { label: "Working Capital (3–4 months)", value: "₹6 – ₹8 Lakhs", note: "Ops buffer" },
+                  ].map((row, idx) => (
+                    <div key={idx} className={`grid grid-cols-2 md:grid-cols-3 items-center ${idx % 2 === 0 ? "bg-white" : "bg-gray-50"} border-b border-gray-100 last:border-b-0`}> 
+                      <div className="px-4 py-4">
+                        <div className="font-semibold text-gray-900">{row.label}</div>
+                      </div>
+                      <div className="px-4 py-4">
+                        <span className="text-lg font-bold bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">{row.value}</span>
+                      </div>
+                      <div className="hidden md:block px-4 py-4">
+                        <span className="text-sm text-gray-600">{row.note}</span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              <div className="bg-gradient-to-br from-cyan-50 to-blue-50 p-4 rounded-lg border border-cyan-100">
+                <p className="text-sm text-gray-700">
+                  Note: The cost of tools are separate and mandatory, unlike salons or food franchises. This is your core IP delivery layer.
+                </p>
+              </div>
             </div>
+
+            {/* Right side remains unchanged */}
             <div className="bg-gradient-to-br from-cyan-50 to-blue-50 p-12 rounded-3xl border border-cyan-100">
-              <h3 className="text-2xl font-bold text-gray-900 mb-8">
-                Why Aaruchudar Wins
-              </h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-8">Why Aaruchudar Wins</h3>
               <ul className="space-y-4">
                 {[
                   "Recurring revenue model",
@@ -752,6 +760,110 @@ export default function AaruchudarFranchise() {
                 ))}
               </ul>
             </div>
+          </div>
+
+          {/* Timeline: Bring down under Investment & Returns */}
+          <div className="mt-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+              Implementation Timeline
+            </h3>
+            <div className="relative">
+              {/* line */}
+              <div className="hidden md:block absolute top-8 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-200 via-blue-200 to-cyan-200" />
+              <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+                {(() => {
+                  const steps = [
+                    { week: 1, title: "Discovery & Assessment", desc: "Platform evaluation and alignment" },
+                    { week: 2, title: "Integration Planning", desc: "Technical roadmap development" },
+                    { week: 4, title: "Implementation", desc: "API integration and testing" },
+                    { week: 6, title: "Launch", desc: "Go-live with first cohort" },
+                    { week: 12, title: "Optimization", desc: "Performance review and scaling" },
+                  ];
+                  const colors = [
+                    { dot: "from-cyan-500 to-blue-600", bg: "bg-cyan-100", header: "text-cyan-800", shadow: "shadow-cyan-200" },
+                    { dot: "from-indigo-500 to-purple-600", bg: "bg-indigo-100", header: "text-indigo-800", shadow: "shadow-indigo-200" },
+                    { dot: "from-green-500 to-emerald-600", bg: "bg-green-100", header: "text-green-800", shadow: "shadow-green-200" },
+                    { dot: "from-orange-500 to-amber-600", bg: "bg-amber-100", header: "text-orange-800", shadow: "shadow-amber-200" },
+                    { dot: "from-pink-500 to-rose-600", bg: "bg-pink-100", header: "text-pink-800", shadow: "shadow-pink-200" },
+                  ];
+                  return steps.map((step, idx) => {
+                    const c = colors[idx % colors.length];
+                    return (
+                      <div key={idx} className="relative">
+                        {/* dot */}
+                        <div className="hidden md:flex justify-center">
+                          <div className={`w-4 h-4 rounded-full bg-gradient-to-r ${c.dot} border-2 border-white shadow-md`} />
+                        </div>
+                        <div className={`mt-4 ${c.bg} rounded-xl p-5 shadow-md hover:shadow-lg transition`}>
+                          <div className={`text-sm font-semibold ${c.header}`}>Week {step.week}</div>
+                          <div className="text-gray-900 font-bold mt-1">{step.title}</div>
+                          <div className="text-gray-700 text-sm mt-1">{step.desc}</div>
+                        </div>
+                      </div>
+                    );
+                  });
+                })()}
+              </div>
+            </div>
+          </div>
+
+          {/* Roadmap: exact like provided image */}
+          <div className="mt-20">
+            <h3 className="text-3xl font-bold text-gray-900 text-center mb-12">Aaruchudar Franchise Roadmap</h3>
+            {(() => {
+              const steps = [
+                { num: 1, icon: Search, title: "Inquiry", desc: "Filing for contact and Franchise Brochure briefing" },
+                { num: 2, icon: Handshake, title: "One on One Meet", desc: "No-Obligation session to explore vision and investment chances" },
+                { num: 3, icon: GitBranch, title: "Select Partnership Model", desc: "Own Lab, Strategic Investor, or Global Expansion" },
+                { num: 4, icon: FileText, title: "Agreement & Onboarding", desc: "Formalize partnership and kick off onboarding" },
+                { num: 5, icon: GraduationCap, title: "Training Sessions", desc: "Facilitator training and operations setup" },
+                { num: 6, icon: Rocket, title: "Public Launch", desc: "Open your center and begin delivering labs" },
+              ];
+              const palettes = [
+                { badge: "bg-cyan-600", ring: "ring-cyan-200", text: "text-cyan-700", card: "bg-cyan-50" },
+                { badge: "bg-indigo-600", ring: "ring-indigo-200", text: "text-indigo-700", card: "bg-indigo-50" },
+                { badge: "bg-emerald-600", ring: "ring-emerald-200", text: "text-emerald-700", card: "bg-emerald-50" },
+                { badge: "bg-amber-600", ring: "ring-amber-200", text: "text-amber-700", card: "bg-amber-50" },
+                { badge: "bg-rose-600", ring: "ring-rose-200", text: "text-rose-700", card: "bg-rose-50" },
+                { badge: "bg-purple-600", ring: "ring-purple-200", text: "text-purple-700", card: "bg-purple-50" },
+              ];
+              return (
+                <div className="relative">
+                  {/* connectors for large screens */}
+                  <div className="hidden lg:block absolute top-[68px] left-0 right-0">
+                    <div className="flex justify-between items-center px-4">
+                      {steps.map((_, i) => (
+                        <div key={i} className="flex-1 h-0.5 bg-gray-200 mx-2" />
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                    {steps.map((step, idx) => {
+                      const c = palettes[idx % palettes.length];
+                      const Icon = step.icon;
+                      return (
+                        <div key={idx} className="flex flex-col items-center text-center">
+                          {/* number badge */}
+                          <div className="w-10 h-10 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center shadow-sm">
+                            <span className="font-bold text-gray-700">{step.num}</span>
+                          </div>
+                          {/* icon badge */}
+                          <div className={`mt-4 w-20 h-20 rounded-full ${c.badge} shadow-lg ring-4 ${c.ring} flex items-center justify-center`}>
+                            <Icon className="h-9 w-9 text-white" />
+                          </div>
+                          {/* card */}
+                          <div className={`mt-6 ${c.card} border border-gray-100 rounded-xl p-4 w-full max-w-[240px] shadow-sm`}> 
+                            <div className={`text-sm font-semibold ${c.text}`}>{step.title}</div>
+                            <div className="text-gray-700 text-xs mt-2">{step.desc}</div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         </div>
       </div>
@@ -992,18 +1104,14 @@ export default function AaruchudarFranchise() {
             >
               <X className="h-8 w-8" />
             </button>
-            <div className="aspect-video bg-gray-900 rounded-xl overflow-hidden">
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-20 h-20 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Play className="h-10 w-10 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">
-                    Franchise Success Stories
-                  </h3>
-                  <p className="text-gray-400">Video content placeholder</p>
-                </div>
-              </div>
+            <div className="aspect-video bg-black rounded-xl overflow-hidden">
+              <video
+                src="/images/VIDEO-2026-01-02-18-47-13.mp4"
+                className="w-full h-full"
+                controls
+                autoPlay
+                playsInline
+              />
             </div>
           </div>
         </div>

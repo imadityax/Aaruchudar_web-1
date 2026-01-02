@@ -399,23 +399,28 @@ const ExploreDetailsModal = ({ activeModal, setActiveModal, setFormData }) => {
             {content.timeline && (
               <div className="mb-12">
                 <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Implementation Timeline</h3>
-                <div className="relative">
-                  <div className="absolute left-0 right-0 top-1/2 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-600 -translate-y-1/2"></div>
-                  <div className="relative flex justify-between">
-                    {content.timeline.map((step, index) => (
-                      <div key={index} className="flex flex-col items-center">
-                        <div className="w-12 h-12 bg-white border-4 border-cyan-500 rounded-full flex items-center justify-center mb-4 relative z-10">
-                          <div className="text-sm font-bold text-cyan-600">
-                            {step.week ? `${step.week}W` : `${step.month}M`}
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+                  {(() => {
+                    const colors = [
+                      { bg: "bg-cyan-100", header: "text-cyan-800" },
+                      { bg: "bg-indigo-100", header: "text-indigo-800" },
+                      { bg: "bg-green-100", header: "text-green-800" },
+                      { bg: "bg-amber-100", header: "text-orange-800" },
+                      { bg: "bg-pink-100", header: "text-pink-800" },
+                    ];
+                    return content.timeline.map((step, index) => {
+                      const c = colors[index % colors.length];
+                      return (
+                        <div key={index} className={`${c.bg} rounded-xl p-5 shadow-md hover:shadow-lg transition`}>
+                          <div className={`text-sm font-semibold ${c.header}`}>
+                            {step.week ? `Week ${step.week}` : `Month ${step.month}`}
                           </div>
+                          <div className="text-gray-900 font-bold mt-1">{step.title}</div>
+                          <div className="text-gray-700 text-sm mt-1">{step.desc}</div>
                         </div>
-                        <div className="text-center max-w-[200px]">
-                          <h4 className="font-bold text-gray-900 mb-1">{step.title}</h4>
-                          <p className="text-sm text-gray-600">{step.desc}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                      );
+                    });
+                  })()}
                 </div>
               </div>
             )}
