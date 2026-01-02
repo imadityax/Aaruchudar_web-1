@@ -2,9 +2,16 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function AboutPage() {
+  // Set up scroll progress for the hero header
+  const headerRef = React.useRef<HTMLDivElement | null>(null);
+  const { scrollYProgress } = useScroll({ target: headerRef });
+  const titleY = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.5]);
+  const subtitleY = useTransform(scrollYProgress, [0, 1], [0, -20]);
+
   return (
     <div className="min-h-screen bg-[#0b0e17]">
       {/* Back Button */}
@@ -20,7 +27,7 @@ export default function AboutPage() {
       </Link>
 
       {/* Hero */}
-      <header className="relative flex items-center justify-center overflow-hidden py-24 px-8 min-h-[50vh]">
+      <header ref={headerRef} className="relative flex items-center justify-center overflow-hidden py-24 px-8 min-h-[50vh]">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{ backgroundImage: "url('/images/hi-workshops-banner.jpg')" }}
@@ -32,6 +39,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            style={{ y: titleY, opacity: titleOpacity }}
           >
             About <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">Aaruchudar</span>
           </motion.h1>
@@ -40,6 +48,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
+            style={{ y: subtitleY }}
           >
             We unlock human intelligence through practical labs, courses, and workshops focused on clarity, cognition, and innovation.
           </motion.p>

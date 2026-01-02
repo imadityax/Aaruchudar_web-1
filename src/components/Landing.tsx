@@ -73,10 +73,18 @@ export default function Landing() {
               >
                 🔬 Explore Labs
               </Link>
+
+              {/* New Internship CTA */}
+              <Link
+                href="/internship"
+                className="rounded-xl bg-indigo-600 text-white px-6 py-3 shadow-lg hover:bg-indigo-500 active:scale-[0.98] transition-all flex items-center gap-2"
+              >
+                💼 Internships
+              </Link>
             </div>
 
             <div className="mt-10 flex gap-6 text-xs text-slate-500 flex-wrap">
-              {["Daily Quizzes", "Expert Designed", "Personalized Feedback"].map(
+              {["Daily Quizzes", "Expert Designed", "Personalized Feedback", "Internships"].map(
                 (item) => (
                   <div key={item} className="flex items-center gap-2">
                     <span className="h-2 w-2 rounded-full bg-emerald-400" />

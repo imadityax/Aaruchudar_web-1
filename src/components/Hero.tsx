@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic';
 import './hero.css';
 import type { RegionKey } from './interactive-brain/InteractiveBrain';
 import { REGION_INFO } from './interactive-brain/InteractiveBrain';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const BrainShowpiece = dynamic(() => import('./interactive-brain/BrainShowpiece'), { ssr: false });
 
@@ -22,10 +23,17 @@ export default function Hero() {
   const [currentRegionIndex, setCurrentRegionIndex] = useState(0);
   const regionOrder: RegionKey[] = Object.keys(REGION_INFO) as RegionKey[];
 
-  // Auto-cycle brain parts on hero
+  const { scrollYProgress } = useScroll({ target: heroRef });
+  const titleY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0.4]);
+  const subtitleY = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const ctaY = useTransform(scrollYProgress, [0, 1], [0, -20]);
+  const brainY = useTransform(scrollYProgress, [0, 1], [0, 40]);
+  const auroraY = useTransform(scrollYProgress, [0, 1], [0, 60]);
+  const meshY = useTransform(scrollYProgress, [0, 1], [0, 40]);
+
   useEffect(() => {
     if (regionOrder.length === 0) return;
-    // initialize first region
     setActiveRegions([regionOrder[0]]);
     const interval = setInterval(() => {
       setCurrentRegionIndex((prev) => {
@@ -38,20 +46,18 @@ export default function Hero() {
   }, []);
 
   function handleRegionSelect(region: RegionKey | null) {
-    // Ignore manual selection on hero, keep auto cycle
     return;
   }
 
   const regionColorsOverride: Partial<Record<RegionKey, number>> = {
-    Frontal: 0xFF5A5F,     // Airbnb Coral
-    Parietal: 0x2DBE7F,    // Mint Green
-    Temporal: 0xF9A825,    // Amber
-    Occipital: 0x1E88E5,   // Blue
-    Cerebellum: 0x8E24AA,  // Purple
-    Brainstem: 0x26C6DA,   // Teal
+    Frontal: 0xFF5A5F,
+    Parietal: 0x2DBE7F,
+    Temporal: 0xF9A825,
+    Occipital: 0x1E88E5,
+    Cerebellum: 0x8E24AA,
+    Brainstem: 0x26C6DA,
   };
 
-  // build richer particles with variants
   useEffect(() => {
     const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const particleCount = prefersReducedMotion ? 16 : 42;
@@ -162,22 +168,36 @@ export default function Hero() {
     <section ref={heroRef} className="hero-wrapper" aria-label="Hero">
       <div className="hero-inner">
         <div className="hero-content" role="region" aria-labelledby="hero-heading">
-          <div className="hero-badge-modern" aria-label="Platform badge">Trusted Cognitive Training Platform</div>
 
-          <h1 id="hero-heading" ref={titleRef} className="hero-title-modern">
+          <motion.h1
+            id="hero-heading"
+            ref={titleRef}
+            className="hero-title-modern"
+            style={{ y: titleY, opacity: titleOpacity }}
+          >
             <span>Ignite​‍​‌‍​‍‌​‍​‌‍​‍‌ Your</span>
             <br />
             <span className="gradient-text-modern">Human Potential</span>
-          </h1>
+          </motion.h1>
 
-          <p ref={subtitleRef} className="hero-description-modern">
+          <motion.p
+            ref={subtitleRef}
+            className="hero-description-modern"
+            style={{ y: subtitleY }}
+          >
               How about a training in Human Intelligence which is basically interactive labs, reflective exercises, and personalized human guidance – all aimed at helping you get more clarity, focus and decision power.
-          </p>
+          </motion.p>
 
-          <div ref={ctaRef} className="hero-buttons-modern" role="navigation" aria-label="Hero actions">
+          <motion.div
+            ref={ctaRef}
+            className="hero-buttons-modern"
+            role="navigation"
+            aria-label="Hero actions"
+            style={{ y: ctaY }}
+          >
             <Link href="/hi-courses" className="btn-primary-modern" aria-label="Browse courses">Start Training</Link>
             <Link href="/productpage" className="btn-secondary-modern" aria-label="View product details">Explore Platform</Link>
-          </div>
+          </motion.div>
 
           <div className="trust-indicators"  aria-hidden>
             <div>● Daily Cognitive Workouts</div>
@@ -186,8 +206,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right side showpiece */}
-        <div className="hero-brain">
+        <motion.div className="hero-brain" style={{ y: brainY }}>
           <div className="neon-brain-wrap" aria-hidden style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
             <div ref={brainRef} style={{ width: '100%', maxWidth: 520, aspectRatio: '1 / 1', margin: '0 auto' }}>
               <BrainShowpiece 
@@ -202,11 +221,11 @@ export default function Hero() {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      <div className="aurora-layer" aria-hidden />
-      <div className="neural-mesh" aria-hidden />
+      <motion.div className="aurora-layer" aria-hidden style={{ y: auroraY }} />
+      <motion.div className="neural-mesh" aria-hidden style={{ y: meshY }} />
       <div className="noise-layer" aria-hidden />
 
       <div ref={floatingRef} className="floating-area" aria-hidden>
@@ -224,7 +243,6 @@ export default function Hero() {
               left: p.left,
               animationDelay: p.delay,
               animationDuration: p.duration,
-              // motion variables
               ['--scale' as any]: p.scale,
               ['--drift' as any]: p.drift,
               ['--dur' as any]: p.duration,

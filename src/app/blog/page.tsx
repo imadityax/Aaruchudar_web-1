@@ -1,8 +1,9 @@
 'use client';
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Search } from "lucide-react";
 import "./BlogPage.css";
+import React from "react";
 
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -64,12 +65,18 @@ export default function BlogPage() {
   const featuredPost = filteredPosts.find((post) => post.featured);
   const regularPosts = filteredPosts.filter((post) => !post.featured);
 
+  const heroRef = React.useRef<HTMLDivElement | null>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef });
+  const titleY = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.5]);
+  const subtitleY = useTransform(scrollYProgress, [0, 1], [0, -20]);
+
   return (
     <>
       {/* Main Container */}
       <div className="blog-container pt-16 md:pt-24 pb-20" role="main" aria-label="Blog content">
         {/* Hero Section */}
-        <section className="hero-section px-6">
+        <section ref={heroRef} className="hero-section px-6">
           <div className="hero-bg" />
           <div className="hero-content-wrapper">
             <motion.div
@@ -86,18 +93,18 @@ export default function BlogPage() {
                 ✨ Insights & Innovation
               </motion.span>
 
-              <h1 className="hero-title">
+              <motion.h1 className="hero-title" style={{ y: titleY, opacity: titleOpacity }}>
                 <span className="block bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-300 bg-clip-text text-transparent">
                   Aaruchudar
                 </span>
                 <span className="block bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 bg-clip-text text-transparent">
                   Blog
                 </span>
-              </h1>
+              </motion.h1>
 
-              <p className="text-xl text-white/80 max-w-3xl mx-auto">
+              <motion.p className="text-xl text-white/80 max-w-3xl mx-auto" style={{ y: subtitleY }}>
                 Human Intelligence Is Not A Fixed Trait, But A Dynamic Potential
-              </p>
+              </motion.p>
 
               {/* Search */}
               <div className="search-wrapper">
