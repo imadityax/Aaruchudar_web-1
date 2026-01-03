@@ -42,6 +42,12 @@ export default function AaruchudarFranchise() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedLabIndices, setSelectedLabIndices] = useState([]);
+  const toggleLabSelection = (idx) => {
+    setSelectedLabIndices((prev) =>
+      prev.includes(idx) ? prev.filter((i) => i !== idx) : [...prev, idx]
+    );
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -235,26 +241,35 @@ export default function AaruchudarFranchise() {
                 className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 flex items-center gap-3 group"
               >
                 <Play className="h-5 w-5" />
-                <span>Watch Success Stories</span>
+                <span>Watch video</span>
               </button>
             </div>
 
-            <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            {/* Planned Ahead heading */}
+            <div className="mt-12">
+              <h2 className="text-xl md:text-2xl font-semibold text-white/90">Planned Ahead</h2>
+              <p className="text-sm text-white/60 mt-1">2026 Goals</p>
+            </div>
+
+            {/* 2026 goals chips (replaces stats) */}
+            <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               {[
-                { label: "Franchises", value: "150", suffix: "+" },
-                { label: "Cities", value: "45", suffix: "+" },
-                { label: "Success Rate", value: "96", suffix: "%" },
-                { label: "Avg ROI", value: "3.2", suffix: " Years" },
-              ].map((stat, index) => (
+                { label: "Franchises", value: "150+" },
+                { label: "Cities", value: "45+" },
+                { label: "Success Rate", value: "96%", note: "(in market validation)" },
+                { label: "Avg ROI", value: "3.2 Years" },
+              ].map((goal, index) => (
                 <div
                   key={index}
-                  className="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10"
+                  className="bg-white/5 backdrop-blur-sm p-4 rounded-2xl border border-white/20"
                 >
                   <div className="text-3xl font-bold text-white">
-                    {stat.value}
-                    <span className="text-cyan-300">{stat.suffix}</span>
+                    {goal.value}
                   </div>
-                  <div className="text-sm text-gray-300 mt-1">{stat.label}</div>
+                  <div className="text-sm text-gray-300 mt-1">{goal.label}</div>
+                  {goal.note && (
+                    <div className="text-xs text-white/60 mt-0.5">{goal.note}</div>
+                  )}
                 </div>
               ))}
             </div>
@@ -320,164 +335,197 @@ export default function AaruchudarFranchise() {
           </h3>
           <br></br>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Cognitive Intelligence */}
-            <div className="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-xl transition-all">
-              <Brain className="h-10 w-10 text-cyan-600 mb-5" />
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">
-                Cognitive & Brain Games (Mental Intelligence)
-              </h4>
-              <ul className="text-sm text-gray-700 space-y-2">
-                <li>
-                  <span className="font-semibold">Purpose:</span> Focus, memory,
-                  reasoning, problem-solving
-                </li>
-                <li>
-                  <span className="font-semibold">Activities:</span> Pattern
-                  recognition, logic puzzles, decoding games, working memory
-                  drills, speed accuracy tasks
-                </li>
-                <li>
-                  <span className="font-semibold">Brain Areas:</span> Prefrontal
-                  cortex, hippocampus, parietal lobes
-                </li>
-                <li>
-                  <span className="font-semibold">Impact:</span> Faster
-                  thinking, improved performance, clarity under pressure
-                </li>
-              </ul>
-            </div>
-
-            {/* Emotional & Metacognitive */}
-            <div className="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-xl transition-all">
-              <Heart className="h-10 w-10 text-blue-600 mb-5" />
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">
-                Mind, Emotional & Metacognitive Intelligence Labs
-              </h4>
-              <ul className="text-sm text-gray-700 space-y-2">
-                <li>
-                  <span className="font-semibold">Purpose: </span>Emotional
-                  awareness, regulation, resilience, and self-monitoring of
-                  thoughts
-                </li>
-                <li>
-                  <span className="font-semibold">Activities: </span>Emotion
-                  awareness, trigger mapping, stress regulation, perspective
-                  shifting, metacognitive reflection, values-based games
-                </li>
-                <li>
-                  <span className="font-semibold">Brain Systems: </span>Limbic
-                  system, prefrontal emotional integration pathways
-                </li>
-                <li>
-                  <span className="font-semibold">Impact: </span>Emotional
-                  balance, reduced reactivity, improved self-control, stronger
-                  interpersonal intelligence
-                </li>
-              </ul>
-            </div>
-
-            {/* Physical Cognitive */}
-            <div className="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-xl transition-all">
-              <Activity className="h-10 w-10 text-indigo-600 mb-5" />
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">
-                Physical–Cognitive Intelligence Games
-              </h4>
-              <ul className="text-sm text-gray-700 space-y-2">
-                <li>
-                  <span className="font-semibold">Purpose: </span>Link movement
-                  with attention and thinking
-                </li>
-                <li>
-                  <span className="font-semibold">Activities: </span>
-                  Coordination games, reaction-time challenges, balance + focus
-                  drills, rhythm tasks, dual-task exercises
-                </li>
-                <li>
-                  <span className="font-semibold">Impact: </span>Higher
-                  engagement, improved alertness, better learning retention
-                </li>
-              </ul>
-            </div>
-
-            {/* Decision Intelligence */}
-            <div className="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-xl transition-all">
-              <Compass className="h-10 w-10 text-purple-600 mb-5" />
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">
-                Decision & Clarity Intelligence Labs
-              </h4>
-              <ul className="text-sm text-gray-700 space-y-2">
-                <li>
-                  <span className="font-semibold">Purpose: </span>Structured
-                  thinking and wise decision-making
-                </li>
-                <li>
-                  <span className="font-semibold">Activities: </span>Decision
-                  simulations, consequence mapping, bias identification, ethical
-                  dilemmas, clarity frameworks
-                </li>
-                <li>
-                  <span className="font-semibold">Brain Areas: </span>Executive
-                  function and planning networks
-                </li>
-                <li>
-                  <span className="font-semibold">Impact: </span>Better life and
-                  career decisions, reduced mental overload, stronger
-                  self-leadership
-                </li>
-              </ul>
-            </div>
-
-            {/* Social Intelligence */}
-            <div className="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-xl transition-all">
-              <Users className="h-10 w-10 text-green-600 mb-5" />
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">
-                Social, Communication & Emotional Intelligence Activities
-              </h4>
-              <ul className="text-sm text-gray-700 space-y-2">
-                <li>
-                  <span className="font-semibold">Purpose: </span>Collaboration,
-                  empathy, listening, and expression
-                </li>
-                <li>
-                  <span className="font-semibold">Activities: </span>Group
-                  intelligence games, listening accuracy challenges,
-                  role-reversal labs, conflict-recovery simulations, team
-                  problem-solving
-                </li>
-                <li>
-                  <span className="font-semibold">Impact: </span>Leadership
-                  presence, emotional maturity, improved teamwork, social
-                  adaptability
-                </li>
-              </ul>
-            </div>
-
-            {/* Creativity */}
-            <div className="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-xl transition-all">
-              <Sparkles className="h-10 w-10 text-pink-600 mb-5" />
-              <h4 className="text-xl font-semibold text-gray-900 mb-3">
-                Creativity & Adaptive Intelligence Labs
-              </h4>
-              <ul className="text-sm text-gray-700 space-y-2">
-                <li>
-                  <span className="font-semibold">Purpose: </span>Imagination,
-                  innovation, flexible thinking
-                </li>
-                <li>
-                  <span className="font-semibold">Activities: </span>
-                  Object-combination games, creative scenarios, constraint-based
-                  innovation, idea-stretching
-                </li>
-                <li>
-                  <span className="font-semibold">Brain Activation: </span>
-                  Creative networks, cross-hemispheric integration
-                </li>
-                <li>
-                  <span className="font-semibold">Impact: </span>Original
-                  thinking, innovation mindset, entrepreneurial intelligence
-                </li>
-              </ul>
-            </div>
+            {[
+              {
+                icon: Brain,
+                color: "text-cyan-600",
+                ring: "ring-cyan-300",
+                border: "border-cyan-100",
+                cardBg: "bg-cyan-50",
+                title: "Cognitive & Brain Games (Mental Intelligence)",
+                content: (
+                  <ul className="text-sm text-gray-700 space-y-2">
+                    <li>
+                      <span className="font-semibold">Purpose:</span> Focus, memory,
+                      reasoning, problem-solving
+                    </li>
+                    <li>
+                      <span className="font-semibold">Activities:</span> Pattern
+                      recognition, logic puzzles, decoding games, working memory
+                      drills, speed accuracy tasks
+                    </li>
+                    <li>
+                      <span className="font-semibold">Brain Areas:</span> Prefrontal
+                      cortex, hippocampus, parietal lobes
+                    </li>
+                    <li>
+                      <span className="font-semibold">Impact:</span> Faster
+                      thinking, improved performance, clarity under pressure
+                    </li>
+                  </ul>
+                ),
+              },
+              {
+                icon: Heart,
+                color: "text-blue-600",
+                ring: "ring-blue-300",
+                border: "border-blue-100",
+                cardBg: "bg-blue-50",
+                title: "Mind, Emotional & Metacognitive Intelligence Labs",
+                content: (
+                  <ul className="text-sm text-gray-700 space-y-2">
+                    <li>
+                      <span className="font-semibold">Purpose: </span>Emotional
+                      awareness, regulation, resilience, and self-monitoring of
+                      thoughts
+                    </li>
+                    <li>
+                      <span className="font-semibold">Activities: </span>Emotion
+                      awareness, trigger mapping, stress regulation, perspective
+                      shifting, metacognitive reflection, values-based games
+                    </li>
+                    <li>
+                      <span className="font-semibold">Brain Systems: </span>Limbic
+                      system, prefrontal emotional integration pathways
+                    </li>
+                    <li>
+                      <span className="font-semibold">Impact: </span>Emotional
+                      balance, reduced reactivity, improved self-control, stronger
+                      interpersonal intelligence
+                    </li>
+                  </ul>
+                ),
+              },
+              {
+                icon: Activity,
+                color: "text-indigo-600",
+                ring: "ring-indigo-300",
+                border: "border-indigo-100",
+                cardBg: "bg-indigo-50",
+                title: "Physical–Cognitive Intelligence Games",
+                content: (
+                  <ul className="text-sm text-gray-700 space-y-2">
+                    <li>
+                      <span className="font-semibold">Purpose: </span>Link movement
+                      with attention and thinking
+                    </li>
+                    <li>
+                      <span className="font-semibold">Activities: </span>
+                      Coordination games, reaction-time challenges, balance + focus
+                      drills, rhythm tasks, dual-task exercises
+                    </li>
+                    <li>
+                      <span className="font-semibold">Impact: </span>Higher
+                      engagement, improved alertness, better learning retention
+                    </li>
+                  </ul>
+                ),
+              },
+              {
+                icon: Compass,
+                color: "text-purple-600",
+                ring: "ring-purple-300",
+                border: "border-purple-100",
+                cardBg: "bg-purple-50",
+                title: "Decision & Clarity Intelligence Labs",
+                content: (
+                  <ul className="text-sm text-gray-700 space-y-2">
+                    <li>
+                      <span className="font-semibold">Purpose: </span>Structured
+                      thinking and wise decision-making
+                    </li>
+                    <li>
+                      <span className="font-semibold">Activities: </span>Decision
+                      simulations, consequence mapping, bias identification, ethical
+                      dilemmas, clarity frameworks
+                    </li>
+                    <li>
+                      <span className="font-semibold">Brain Areas: </span>Executive
+                      function and planning networks
+                    </li>
+                    <li>
+                      <span className="font-semibold">Impact: </span>Better life and
+                      career decisions, reduced mental overload, stronger
+                      self-leadership
+                    </li>
+                  </ul>
+                ),
+              },
+              {
+                icon: Users,
+                color: "text-green-600",
+                ring: "ring-green-300",
+                border: "border-green-100",
+                cardBg: "bg-green-50",
+                title: "Social, Communication & Emotional Intelligence Activities",
+                content: (
+                  <ul className="text-sm text-gray-700 space-y-2">
+                    <li>
+                      <span className="font-semibold">Purpose: </span>Collaboration,
+                      empathy, listening, and expression
+                    </li>
+                    <li>
+                      <span className="font-semibold">Activities: </span>Group
+                      intelligence games, listening accuracy challenges,
+                      role-reversal labs, conflict-recovery simulations, team
+                      problem-solving
+                    </li>
+                    <li>
+                      <span className="font-semibold">Impact: </span>Leadership
+                      presence, emotional maturity, improved teamwork, social
+                      adaptability
+                    </li>
+                  </ul>
+                ),
+              },
+              {
+                icon: Sparkles,
+                color: "text-pink-600",
+                ring: "ring-pink-300",
+                border: "border-pink-100",
+                cardBg: "bg-pink-50",
+                title: "Creativity & Adaptive Intelligence Labs",
+                content: (
+                  <ul className="text-sm text-gray-700 space-y-2">
+                    <li>
+                      <span className="font-semibold">Purpose: </span>Imagination,
+                      innovation, flexible thinking
+                    </li>
+                    <li>
+                      <span className="font-semibold">Activities: </span>
+                      Object-combination games, creative scenarios, constraint-based
+                      innovation, idea-stretching
+                    </li>
+                    <li>
+                      <span className="font-semibold">Brain Activation: </span>
+                      Creative networks, cross-hemispheric integration
+                    </li>
+                    <li>
+                      <span className="font-semibold">Impact: </span>Original
+                      thinking, innovation mindset, entrepreneurial intelligence
+                    </li>
+                  </ul>
+                ),
+              },
+            ].map((lab, index) => {
+              const Icon = lab.icon;
+              const isActive = selectedLabIndices.includes(index);
+              return (
+                <button
+                  key={index}
+                  onClick={() => toggleLabSelection(index)}
+                  className={`text-left ${lab.cardBg} p-8 rounded-2xl border border-gray-100 transition-all focus:outline-none hover:shadow-xl hover:ring-2 ${lab.ring} ${
+                    isActive ? `ring-4 ${lab.ring} ${lab.border} shadow-xl` : ""
+                  }`}
+                >
+                  <Icon className={`h-10 w-10 mb-5 ${lab.color}`} />
+                  <h4 className="text-xl font-semibold text-gray-900 mb-3">
+                    {lab.title}
+                  </h4>
+                  {lab.content}
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -648,7 +696,7 @@ export default function AaruchudarFranchise() {
                 name: "Vikram R",
                 role: "Offline participant, Bangalore",
                 testimonial:
-                  "The Brain-GPT workshop was really interesting. It helped us a lot. We did some activities that made us think. That was good for our problem-solving skills. The Brain-GPT workshop also helped us make decisions.We learned a lot from the Brain-GPT workshop. It was fun to do the hands-on activities. The Brain-GPT workshop was an experience.",
+                  "The Brain-GPT workshop was really interesting. It helped us a lot. We did some activities that made us think. That was good for our problem-solving skills. The Brain-GPT workshop also helped us make decisions. We learned a lot from the Brain-GPT workshop. It was fun to do the hands-on activities. The Brain-GPT workshop was an experience.",
                 rating: 5,
               },
               {
@@ -670,7 +718,7 @@ export default function AaruchudarFranchise() {
                     </span>
                   ))}
                 </div>
-                <p className="text-gray-700 mb-6 italic">\"{t.testimonial}\"</p>
+                <p className="text-gray-700 mb-6 italic">{t.testimonial}</p>
                 <div className="border-t pt-4">
                   <p className="font-semibold text-gray-900">{t.name}</p>
                   <p className="text-sm text-cyan-600">{t.role}</p>
@@ -710,9 +758,9 @@ export default function AaruchudarFranchise() {
                   </div>
 
                   {[
-                    { label: "Total Investment Range", value: "₹46 – ₹65 Lakhs", note: "" },
+                    { label: "Total Investment Range", value: "Depends on the city or region,", note: "enquire to know more " },
                     { label: "Franchise Fee (one-time)", value: "₹4 – ₹6 Lakhs", note: "Enrollment" },
-                    { label: "Interior & Space Setup", value: "₹12 – ₹18 Lakhs", note: "Fit-out" },
+                    { label: "Interior & Space Setup", value: "₹10 – ₹12 Lakhs", note: "Fit-out" },
                     { label: "Furniture & Physical Infrastructure", value: "₹6 – ₹8 Lakhs", note: "Fixtures" },
                     { label: "Cognitive Tools & other Devices", value: "₹6 – ₹10 Lakhs", note: "Core devices" },
                     { label: "Initial Curriculum & Licensing", value: "Included", note: "IP access" },

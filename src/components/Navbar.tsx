@@ -34,7 +34,7 @@ function Navbar() {
 		{ id: 'quiz', label: 'Quiz', href: '/quiz' },
 		{ id: 'contact', label: 'Contact', href: '/contact' },
 		{ id: 'product', label: 'Product', href: '/productpage' },
-		{ id: 'franchise', label: 'Franchise', href: '/franchise1' },
+		{ id: 'franchise', label: 'Franchise', href: '/franchise' },
 	];
 
 	return (
