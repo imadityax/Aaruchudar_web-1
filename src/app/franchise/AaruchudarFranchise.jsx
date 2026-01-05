@@ -277,6 +277,29 @@ export default function AaruchudarFranchise() {
         </div>
       </div>
 
+      {/* Validation & Scaling Notice - Highlighted */}
+      <section className="px-4 sm:px-6 lg:px-8 mt-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="relative overflow-hidden rounded-2xl border border-cyan-300/40 bg-gradient-to-br from-cyan-50 to-blue-50">
+            <div className="absolute inset-0 opacity-[0.08] pointer-events-none" style={{backgroundImage: "radial-gradient(circle at 20% 20%, #06b6d4 2px, transparent 2px), radial-gradient(circle at 80% 60%, #3b82f6 2px, transparent 2px)", backgroundSize: "24px 24px"}} />
+            <div className="relative p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white shadow-sm border border-cyan-200">
+                <span className="h-2 w-2 rounded-full bg-cyan-500 animate-pulse" />
+                <span className="text-xs font-semibold text-cyan-700">Important Update</span>
+              </div>
+              <div className="text-gray-800">
+                <p className="text-base md:text-lg font-semibold">
+                  We are currently validating our model offline to build a strong, repeatable, and value-driven system. Once fully proven, we will scale responsibly.
+                </p>
+                <p className="text-sm md:text-base text-gray-700 mt-1">
+                  For this reason, we are hiring franchise partners to learn with us at free of cost during the validation phase.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-gradient-to-b from-white to-gray-50 py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
