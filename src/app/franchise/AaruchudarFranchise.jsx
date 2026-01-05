@@ -917,42 +917,7 @@ export default function AaruchudarFranchise() {
       </div>
 
       {/* Compliance */}
-      <div className="bg-white py-20 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Compliance &{" "}
-              <span className="bg-gradient-to-r from-cyan-600 to-blue-700 bg-clip-text text-transparent">
-                Trust
-              </span>
-            </h2>
-            <p className="text-gray-600 text-lg">
-              Certified & backed by scientific research
-            </p>
-          </div>
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              {
-                icon: "🏛️",
-                label: "FSSAI Compliant",
-                desc: "Licensed wellness",
-              },
-              { icon: "🔬", label: "Science-Backed", desc: "Peer-reviewed" },
-              { icon: "📜", label: "ISO Certified", desc: "Quality standards" },
-              { icon: "🛡️", label: "Data Secure", desc: "GDPR protected" },
-            ].map((b, i) => (
-              <div
-                key={i}
-                className="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center hover:shadow-md transition-all"
-              >
-                <div className="text-4xl mb-3">{b.icon}</div>
-                <h4 className="font-semibold text-gray-900 mb-1">{b.label}</h4>
-                <p className="text-sm text-gray-600">{b.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      
 
       {/* CTA Section */}
       <div className="bg-gradient-to-r from-slate-900 to-blue-900 py-20">
