@@ -123,7 +123,7 @@ export default function ContactPage() {
               </p>
               <div className="mt-6 flex flex-wrap gap-3 justify-center md:justify-start">
                 <a href="mailto:hello@aaruchudar.com" className="inline-flex items-center gap-2 rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 shadow-sm">✉️ Email us</a>
-                <a href="tel:+910000000000" className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 hover:bg-gray-50">📞 Call</a>
+                <a href="tel:+918248552678" className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 hover:bg-gray-50">📞 Call</a>
               </div>
             </div>
             <div className="relative">
