@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Check, ArrowRight, Filter, Star, Clock, Layers } from 'lucide-react';
+import { Check, ArrowRight, Filter, Star, Clock, Layers, PlayCircle, Brain, Puzzle, CheckCircle } from 'lucide-react';
 
 const programs = [
   {
@@ -192,78 +192,79 @@ const HICoursesPage = () => {
 
       {/* /////////////////// */}
 
-            <section className="py-20 bg-white">
-  <h2 className="text-center text-3xl font-bold mb-12">
-    Boost Your Abilities
-  </h2>
+      <section className="py-20 bg-transparent">
+        <h2 className="text-center text-3xl font-bold mb-12">
+          <span className="inline-block px-4 py-2 rounded-lg bg-emerald-500/15 ring-1 ring-emerald-400/20 text-white">
+            Boost Your Abilities
+          </span>
+        </h2>
 
-  <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-6">
-    {[
-      {
-        title: "Expert Video Courses",
-        points: ["20+ hours", "Easy lessons", "Track progress"]
-      },
-      {
-        title: "Brain Training Games",
-        points: ["Adaptive difficulty", "Improve logic & focus"]
-      },
-      {
-        title: "Puzzles",
-        points: ["150+ puzzles", "Smart difficulty progression"]
-      }
-    ].map((card, i) => (
-      <div key={i} className="bg-white rounded-2xl p-8 shadow-md">
-        <h4 className="text-xl font-semibold mb-4">{card.title}</h4>
-        <ul className="space-y-2 text-gray-600">
-          {card.points.map(p => <li key={p}>✔ {p}</li>)}
-        </ul>
-      </div>
-    ))}
-  </div>
-</section>
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-6">
+          {[
+            { title: "Expert Video Courses", Icon: PlayCircle, points: ["20+ hours", "Easy lessons", "Track progress"] },
+            { title: "Brain Training Games", Icon: Brain, points: ["Adaptive difficulty", "Improve logic & focus"] },
+            { title: "Puzzles", Icon: Puzzle, points: ["150+ puzzles", "Smart difficulty progression"] }
+          ].map(({ title, Icon, points }, i) => (
+            <div key={i} className="rounded-2xl p-8 shadow-xl bg-gradient-to-b from-white/5 to-white/0 backdrop-blur border border-white/10 hover:border-emerald-400/40 transition transform hover:-translate-y-1">
+              <div className="flex items-center gap-3 mb-4">
+                <Icon className="w-6 h-6 text-emerald-400" aria-hidden />
+                <h4 className="text-xl font-semibold text-white">{title}</h4>
+              </div>
+              <ul className="space-y-2 text-gray-300">
+                {points.map((p: string) => (
+                  <li key={p} className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 mt-0.5 text-emerald-400" aria-hidden />
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
 
+      <section className="bg-transparent py-24 border-t border-white/10">
+        <h2 className="text-center text-3xl font-bold mb-12">
+          <span className="inline-block px-4 py-2 rounded-lg bg-emerald-500/15 ring-1 ring-emerald-400/20 text-white">
+            Explore our plans
+          </span>
+        </h2>
 
-<section className="bg-slate-50 py-24">
-  <h2 className="text-center text-3xl font-bold mb-12">
-    Explore our plans
-  </h2>
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 px-6">
+          <div className="rounded-2xl p-8 shadow-xl bg-gradient-to-b from-white/5 to-white/0 backdrop-blur border border-white/10 hover:border-emerald-400/40 transition transform hover:-translate-y-1">
+            <h4 className="font-semibold mb-4 text-gray-300">BI-WEEKLY</h4>
+            <h2 className="text-3xl font-bold mb-4 text-white">₹1358.99</h2>
+            <ul className="space-y-2 text-gray-300 mb-6">
+              <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" aria-hidden /><span>7-day trial</span></li>
+              <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" aria-hidden /><span>IQ Certificate</span></li>
+              <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" aria-hidden /><span>Full Access</span></li>
+            </ul>
+            <button className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl transition shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0e17]">
+              Get Started
+            </button>
+          </div>
 
-  <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 px-6">
-    
-    <div className="bg-white rounded-2xl p-8 shadow">
-      <h4 className="font-semibold mb-4">BI-WEEKLY</h4>
-      <h2 className="text-3xl font-bold mb-4">₹1358.99</h2>
-      <ul className="space-y-2 text-gray-600 mb-6">
-        <li>✔ 7-day trial</li>
-        <li>✔ IQ Certificate</li>
-        <li>✔ Full Access</li>
-      </ul>
-      <button className="w-full bg-emerald-600 text-white py-3 rounded-xl">
-        Get Started
-      </button>
-    </div>
-
-    <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-emerald-600">
-      <h4 className="font-semibold mb-4">MONTHLY</h4>
-      <h2 className="text-3xl font-bold mb-4">₹2718.99</h2>
-      <ul className="space-y-2 text-gray-600 mb-6">
-        <li>✔ Maximum savings</li>
-        <li>✔ Complete assessment</li>
-        <li>✔ Expert courses</li>
-      </ul>
-      <button className="w-full bg-emerald-600 text-white py-3 rounded-xl">
-        Get Started
-      </button>
-    </div>
-
-  </div>
-</section>
-
+          <div className="relative rounded-2xl p-8 shadow-2xl bg-gradient-to-b from-emerald-600/10 to-white/0 backdrop-blur border-2 border-emerald-600/70 hover:border-emerald-400 transition transform hover:-translate-y-1 ring-1 ring-emerald-500/30">
+            <span className="absolute -top-3 right-4 px-3 py-1 text-xs rounded-full bg-emerald-600 text-white shadow">
+              Most popular
+            </span>
+            <h4 className="font-semibold mb-4 text-gray-300">MONTHLY</h4>
+            <h2 className="text-3xl font-bold mb-4 text-white">₹2718.99</h2>
+            <ul className="space-y-2 text-gray-300 mb-6">
+              <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" aria-hidden /><span>Maximum savings</span></li>
+              <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" aria-hidden /><span>Complete assessment</span></li>
+              <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" aria-hidden /><span>Expert courses</span></li>
+            </ul>
+            <button className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl transition shadow-lg shadow-emerald-600/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0e17]">
+              Get Started
+            </button>
+          </div>
+        </div>
+      </section>
 
 
 
       {/* /////////////////// */}
-
 
       {/* COURSE GRID */}
       <main className="py-12 md:py-14 px-6">

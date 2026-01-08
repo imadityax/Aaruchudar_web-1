@@ -563,6 +563,36 @@ export default function ScollarshipPage() {
   const [skippedMap, setSkippedMap] = useState<number[]>([]);
   const [timeLeft, setTimeLeft] = useState(30);
   const [showCongrats, setShowCongrats] = useState(false);
+  const [redirectIn, setRedirectIn] = useState(5);
+
+  /* CAROUSEL DATA + STATE */
+  const ageData = [
+    { label: "< 18 Years", value: 95 },
+    { label: "18-39 Years", value: 105 },
+    { label: "40-59 Years", value: 98 },
+    { label: "59-79 Years", value: 90 },
+    { label: "+80 Years >", value: 82 }
+  ];
+
+  const countryData = [
+    { flag: "🇺🇸", name: "USA", value: 97 },
+    { flag: "🇬🇧", name: "UK", value: 99 },
+    { flag: "🇦🇷", name: "Argentina", value: 86 },
+    { flag: "🇦🇺", name: "Australia", value: 99 },
+    { flag: "🇨🇦", name: "Canada", value: 99 },
+    { flag: "🇨🇳", name: "China", value: 105 },
+    { flag: "🇪🇪", name: "Estonia", value: 100 },
+    { flag: "🇮🇳", name: "India", value: 76 }
+  ];
+
+  const [slide, setSlide] = useState(0);
+  const totalSlides = 2;
+  useEffect(() => {
+    const t = setInterval(() => setSlide((s) => (s + 1) % totalSlides), 4000);
+    return () => clearInterval(t);
+  }, [totalSlides]);
+  const goPrev = () => setSlide((s) => (s - 1 + totalSlides) % totalSlides);
+  const goNext = () => setSlide((s) => (s + 1) % totalSlides);
 
   const currentSection = sections[sectionIndex];
   const currentQuestion = currentSection.questions[questionIndex];
@@ -637,12 +667,15 @@ export default function ScollarshipPage() {
   /* REDIRECT */
   useEffect(() => {
     if (!showCongrats) return;
-    const t = setTimeout(() => router.push("/"), 3000);
-    return () => clearTimeout(t);
-  }, [showCongrats, router]);
 
-  /* FORM FIRST */
-  if (!started) return <StudentForm onStart={() => setStarted(true)} />;
+    if (redirectIn <= 0) {
+      router.push("/courses");
+      return;
+    }
+
+    const t = setTimeout(() => setRedirectIn((s) => s - 1), 1000);
+    return () => clearTimeout(t);
+  }, [showCongrats, redirectIn, router]);
 
   /* CONGRATS */
   if (showCongrats) {
@@ -650,11 +683,12 @@ export default function ScollarshipPage() {
       <div className="min-h-screen bg-[#ECFDF5] flex items-center justify-center p-4">
         <div className="bg-white rounded-2xl px-8 py-8 text-center max-w-md w-full shadow-lg">
           <h2 className="text-2xl font-semibold mb-2">🎉 Congratulations!</h2>
-          <p className="text-gray-600">
-            You have successfully completed the scholarship assessment.
-          </p>
+          <p className="text-gray-600">You have finished the test.</p>
           <p className="mt-4 text-green-600 font-semibold">
-            Redirecting to courses…
+            Redirecting to courses in {redirectIn}s…
+          </p>
+          <p className="mt-3 text-gray-700 text-sm">
+            This is not a normal course and human intelligence based informations should be there.
           </p>
         </div>
       </div>
@@ -668,26 +702,26 @@ export default function ScollarshipPage() {
                       flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         
         {/* LEFT: LOGO + TEXT */}
-<div className="flex items-start md:items-center gap-3">
-  {/* LOGO */}
-  <div className="w-8 h-8 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center">
-    <img
-      src="/logo2.png"
-      alt="Aaruchudar logo"
-      className="w-full h-full object-contain"
-    />
-  </div>
+        <div className="flex items-start md:items-center gap-3">
+          {/* LOGO */}
+          <div className="w-8 h-8 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center">
+            <img
+              src="/logo2.png"
+              alt="Aaruchudar logo"
+              className="w-full h-full object-contain"
+            />
+          </div>
 
-  {/* TEXT */}
-  <div className="leading-tight">
-    <h2 className="text-base md:text-xl font-semibold">
-      AARUCHUDAR SCHOLARSHIP EXAM SERIES - 1
-    </h2>
-    <p className="text-xs md:text-sm text-gray-500">
-      Discover your mental clarity and decision-making skills
-    </p>
-  </div>
-</div>
+          {/* TEXT */}
+          <div className="leading-tight">
+            <h2 className="text-base md:text-xl font-semibold">
+              AARUCHUDAR SCHOLARSHIP EXAM SERIES - 1
+            </h2>
+            <p className="text-xs md:text-sm text-gray-500">
+              Discover your mental clarity and decision-making skills
+            </p>
+          </div>
+        </div>
 
 
         {/* TIMER */}
@@ -759,6 +793,133 @@ export default function ScollarshipPage() {
           >
             {isLastSection && isLastQuestion ? "Submit" : "Next"}
           </button>
+        </div>
+      </div>
+
+      {/* FACTS CAROUSEL */}
+      <div className="max-w-7xl mx-auto mt-8">
+        <h2 className="text-center text-2xl md:text-3xl font-bold mb-4">Some interesting facts</h2>
+        <div className="relative overflow-hidden bg-white rounded-xl p-5 md:p-8 shadow">
+          <div
+            className="flex transition-transform duration-500"
+            style={{ transform: `translateX(-${slide * 100}%)` }}
+          >
+            {/* Slide 1 */}
+            <div className="min-w-full grid gap-6 md:grid-cols-2">
+              {/* Average IQ by age */}
+              <div>
+                <h4 className="font-semibold mb-3">Average IQ by age</h4>
+                <div className="h-56 bg-gray-50 rounded-lg p-4 flex items-end gap-4">
+                  {ageData.map((d, i) => (
+                    <div key={i} className="flex-1 flex flex-col items-center justify-end">
+                      <div
+                        className="w-full bg-blue-500 rounded-t-md"
+                        style={{ height: `${(d.value / 120) * 100}%` }}
+                        aria-label={`${d.label} ${d.value}`}
+                      />
+                      <p className="mt-2 text-[11px] text-center text-gray-600">{d.label}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex items-center gap-2 mt-3 text-sm text-gray-600">
+                  <span className="w-3 h-3 rounded bg-blue-500" /> Average IQ
+                </div>
+              </div>
+
+              {/* Average IQ by country */}
+              <div>
+                <h4 className="font-semibold mb-3">Average IQ by country</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {countryData.map((c, i) => (
+                    <div
+                      key={i}
+                      className="flex items-center justify-between bg-gray-50 border rounded-xl px-4 py-3"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="text-2xl" aria-hidden>{c.flag}</div>
+                        <span className="text-gray-800">{c.name}</span>
+                      </div>
+                      <span className="font-bold">{c.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Slide 2 */}
+            <div className="min-w-full grid gap-6 md:grid-cols-2">
+              {/* Skills chart */}
+              <div>
+                <h4 className="font-semibold mb-3">Top skills in 2025 (est.)</h4>
+                <div className="space-y-3 bg-gray-50 rounded-lg p-4">
+                  {[
+                    { k: "AI literacy", v: 92 },
+                    { k: "Critical thinking", v: 88 },
+                    { k: "Problem solving", v: 85 },
+                    { k: "Communication", v: 83 },
+                    { k: "Creativity", v: 80 }
+                  ].map((s, i) => (
+                    <div key={i}>
+                      <div className="flex justify-between text-sm mb-1">
+                        <span className="text-gray-700">{s.k}</span>
+                        <span className="font-medium">{s.v}</span>
+                      </div>
+                      <div className="h-3 w-full bg-white border rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-green-500"
+                          style={{ width: `${s.v}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Tip card */}
+              <div className="bg-gradient-to-br from-green-50 to-blue-50 border rounded-xl p-6">
+                <h4 className="font-semibold mb-2">Brain-friendly study tip</h4>
+                <p className="text-gray-700 text-sm">
+                  Short focused sprints (20–30 min) with 5 min breaks boost retention and reduce
+                  mental fatigue. Protect your attention, then practice daily.
+                </p>
+                <ul className="mt-4 text-sm text-gray-700 list-disc list-inside space-y-1">
+                  <li>Silence notifications during practice</li>
+                  <li>Review mistakes—don’t just redo questions</li>
+                  <li>Explain answers aloud to deepen clarity</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Controls */}
+          <button
+            onClick={goPrev}
+            aria-label="Previous"
+            className="absolute left-2 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white border shadow flex items-center justify-center hover:bg-gray-50"
+          >
+            ‹
+          </button>
+          <button
+            onClick={goNext}
+            aria-label="Next"
+            className="absolute right-2 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white border shadow flex items-center justify-center hover:bg-gray-50"
+          >
+            ›
+          </button>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mt-4">
+            {Array.from({ length: totalSlides }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setSlide(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className={`${
+                  slide === i ? "bg-green-600 w-4" : "bg-gray-300 w-2"
+                } h-2 rounded-full transition-all`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

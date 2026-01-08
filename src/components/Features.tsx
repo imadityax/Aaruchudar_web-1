@@ -251,22 +251,31 @@ export default function Features() {
 
         {/* Enhanced callout below programs */}
         <div className="mt-16">
-          <div className="rounded-2xl border border-purple-300 bg-white/80 backdrop-blur-xl p-6 sm:p-8 shadow-lg text-center">
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-sm font-semibold mb-4">
-              <img src="/globe.svg" alt="NeuroTech" className="w-5 h-5" />
-              Real-time NeuroTech Score
-            </div>
-            <p className="text-lg sm:text-xl font-bold text-slate-900">
-              Check your real-time NeuroTech brain performance score
-            </p>
-            <p className="mt-2 text-slate-700">
-              Scale: <span className="font-semibold">1&nbsp;to&nbsp;100</span>
-            </p>
-            <div className="mt-4 flex justify-center">
-              <a href="/quiz" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-purple-600 text-white text-sm font-semibold shadow hover:bg-purple-700 transition-colors">
-                Check My Score
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M13.94 5.94a.75.75 0 0 1 1.06 0l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 1 1-1.06-1.06l3.72-3.72H5.75a.75.75 0 0 1 0-1.5h11.91l-3.72-3.72a.75.75 0 0 1 0-1.06Z"/></svg>
-              </a>
+          {/* IQ Banner */}
+          <div className="relative overflow-hidden rounded-2xl border border-purple-200 bg-gradient-to-r from-white via-indigo-50 to-indigo-100 shadow-lg">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-0 items-center">
+              {/* Left: copy + CTA */}
+              <div className="p-6 sm:p-10">
+                <h3 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+                  See Your Brain in Action —
+                  <span className="block text-indigo-700">Get Your Real-Time NeuroTech Score</span>
+                </h3>
+                <p className="mt-3 text-slate-600 max-w-md">Quick, science-based assessment to estimate your IQ score and get a shareable certificate.</p>
+                <div className="mt-6">
+                  <a href="/quiz" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-emerald-600 text-white text-sm font-semibold shadow hover:bg-emerald-700 transition-colors">
+                    Start Test
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M13.94 5.94a.75.75 0 0 1 1.06 0l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 1 1-1.06-1.06l3.72-3.72H5.75a.75.75 0 0 1 0-1.5h11.91l-3.72-3.72a.75.75 0 0 1 0-1.06Z"/></svg>
+                  </a>
+                </div>
+              </div>
+              {/* Right: certificate image */}
+              <div className="relative p-6 sm:p-10 flex items-center justify-center">
+                <img
+                  src="/images/iq_certificate_mock.png"
+                  alt="IQ Test Certificate"
+                  className="max-h-40 sm:max-h-56 md:max-h-64 w-auto rounded-xl border border-indigo-200 shadow-md"
+                />
+              </div>
             </div>
           </div>
         </div>

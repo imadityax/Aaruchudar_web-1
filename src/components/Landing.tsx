@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSX } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -9,6 +9,46 @@ const stats = [
   { value: "20+", label: "Workshops" },
   { value: "96%", label: "Positive Feedback" },
 ];
+
+// Inline SVG icons for skills
+const SkillIcons: Record<string, JSX.Element> = {
+  Reaction: (
+    <svg viewBox="0 0 24 24" className="h-8 w-8 text-sky-600 mx-auto" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="M13 3v4l3 3-3 3v4" />
+      <path d="M11 3v4l-3 3 3 3v4" />
+      <circle cx="12" cy="12" r="9" className="stroke-sky-600" />
+    </svg>
+  ),
+  Logic: (
+    <svg viewBox="0 0 24 24" className="h-8 w-8 text-indigo-600 mx-auto" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <rect x="3" y="3" width="7" height="7" rx="1.5" />
+      <rect x="14" y="3" width="7" height="7" rx="1.5" />
+      <rect x="3" y="14" width="7" height="7" rx="1.5" />
+      <path d="M10 6h4M6 10v4M17 6v8M14 17h4" />
+    </svg>
+  ),
+  Memory: (
+    <svg viewBox="0 0 24 24" className="h-8 w-8 text-emerald-600 mx-auto" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="M6 7h12a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z" />
+      <path d="M8 3v4M16 3v4M8 19v2M16 19v2" />
+      <path d="M9 11h6v2H9z" />
+    </svg>
+  ),
+  Concentration: (
+    <svg viewBox="0 0 24 24" className="h-8 w-8 text-blue-600 mx-auto" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <circle cx="12" cy="12" r="7" />
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+    </svg>
+  ),
+  Speed: (
+    <svg viewBox="0 0 24 24" className="h-8 w-8 text-rose-600 mx-auto" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
+      <path d="M12 12l5-3" />
+      <path d="M7 16h10" />
+    </svg>
+  ),
+};
 
 // ======================= COMPONENT =======================
 export default function Landing() {
@@ -61,6 +101,8 @@ export default function Landing() {
                 key={skill}
                 className="bg-white rounded-xl p-6 text-center shadow"
               >
+                {/* icon */}
+                <div className="mb-3 flex justify-center">{SkillIcons[skill]}</div>
                 <p className="font-semibold">{skill}</p>
               </div>
             )

@@ -3,6 +3,7 @@
 import React, { JSX, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Testimonials from "@/components/Testimonials";
+import { useRouter } from "next/navigation";
 
 // lightweight click sound
 const ding = typeof window !== "undefined" ? new Audio("data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQgAAAA=") : null;
@@ -121,6 +122,10 @@ function QuizPage(): JSX.Element {
 
   // streak
   const [streak, setStreak] = useState(0);
+
+  // redirect countdown
+  const router = useRouter();
+  const [redirectCountdown, setRedirectCountdown] = useState<number | null>(null);
 
   // restore session
   useEffect(() => {
@@ -335,6 +340,25 @@ function QuizPage(): JSX.Element {
       }
     })();
   }, [stage]);
+
+  // auto-redirect after showing results (3s countdown)
+  useEffect(() => {
+    if (stage === "results") {
+      setRedirectCountdown(3);
+    } else {
+      setRedirectCountdown(null);
+    }
+  }, [stage]);
+
+  useEffect(() => {
+    if (redirectCountdown == null) return;
+    if (redirectCountdown <= 0) {
+      router.push("/course");
+      return;
+    }
+    const id = window.setTimeout(() => setRedirectCountdown((c) => (c != null ? c - 1 : c)), 1000);
+    return () => window.clearTimeout(id);
+  }, [redirectCountdown, router]);
 
   /* ----------------------------- derived values ---------------------------- */
   const totalQuestions = quizData?.quiz?.questions?.length ?? 0;
@@ -642,6 +666,10 @@ function QuizPage(): JSX.Element {
                       />
                     </div>
                   </div>
+
+                  {redirectCountdown != null && (
+                    <div className="text-sm text-slate-500 mb-4">Redirecting to course page in {redirectCountdown}s...</div>
+                  )}
 
                   <div className="flex gap-3 justify-center">
                     <button onClick={() => { restart(); }} className="px-5 py-3 rounded-full bg-green-600 text-white font-bold shadow">Try Again</button>
