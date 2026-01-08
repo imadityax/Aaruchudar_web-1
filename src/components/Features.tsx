@@ -271,7 +271,7 @@ export default function Features() {
               {/* Right: certificate image */}
               <div className="relative p-6 sm:p-10 flex items-center justify-center">
                 <img
-                  src="/images/iq_certificate_mock.png"
+                  src="images/QUIZZZZ (2).png"
                   alt="IQ Test Certificate"
                   className="max-h-40 sm:max-h-56 md:max-h-64 w-auto rounded-xl border border-indigo-200 shadow-md"
                 />
