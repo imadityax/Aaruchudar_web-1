@@ -16,7 +16,7 @@ export default function Landing() {
     <>
       {/* ================= TOP SCHOLARSHIP BANNER ================= */}
       <section className="w-full">
-        <Link href="/scholarship-application" className="block">
+        <Link href="/scholarship" className="block">
           <div className="relative w-full h-[200px] sm:h-[260px] md:h-[320px] lg:h-[380px] bg-black">
             <Image
               src="/images/banner.jpg"
@@ -33,7 +33,7 @@ export default function Landing() {
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="bg-white/90 backdrop-blur px-6 py-3 rounded-xl shadow-lg">
                 <p className="text-lg sm:text-xl font-bold text-slate-900">
-                  🎓 Apply for Scholarship
+                  🎓 Start the Scholoarship Test
                 </p>
               </div>
             </div>
@@ -147,7 +147,7 @@ export default function Landing() {
               </Link>
 
               <Link
-                href="/scholarship-application"
+                href="/scholarship"
                 className="rounded-xl bg-indigo-600 text-white px-7 py-3 shadow-lg hover:bg-indigo-500 transition"
               >
                 🎓 Apply for Scholarship
