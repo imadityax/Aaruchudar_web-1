@@ -554,10 +554,71 @@ export default function ScollarshipPage() {
   /* FORM GATE */
   const [started, setStarted] = useState(false);
 
-  // Show form first; start quiz only after form completion
-  if (!started) {
-    return <StudentForm onStart={() => setStarted(true)} />;
-  }
+  // Anti-copy/screenshot protections
+  useEffect(() => {
+    const preventDefault = (e: Event) => e.preventDefault();
+
+    const onContextMenu = (e: MouseEvent) => e.preventDefault();
+    const onCopy = (e: ClipboardEvent) => e.preventDefault();
+    const onCut = (e: ClipboardEvent) => e.preventDefault();
+    const onPaste = (e: ClipboardEvent) => e.preventDefault();
+    const onDragStart = (e: DragEvent) => e.preventDefault();
+    const onKeyDown = (e: KeyboardEvent) => {
+      const key = (e.key || "").toLowerCase();
+      const meta = e.metaKey || e.ctrlKey;
+      // Block common shortcuts: copy, save, print, view source/devtools
+      if (
+        meta && (
+          key === "c" || // copy
+          key === "s" || // save
+          key === "p" || // print
+          key === "u" || // view source
+          key === "a" || // select all
+          key === "x" || // cut
+          key === "v"    // paste
+        )
+      ) {
+        e.preventDefault();
+      }
+      // Block F12 and Ctrl+Shift+I/J/K (devtools)
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && ["i", "j", "c", "k"].includes(key))
+      ) {
+        e.preventDefault();
+      }
+      // Attempt to block Print Screen (not reliable across browsers)
+      if (e.key === "PrintScreen") {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener("contextmenu", onContextMenu);
+    document.addEventListener("copy", onCopy);
+    document.addEventListener("cut", onCut);
+    document.addEventListener("paste", onPaste);
+    document.addEventListener("dragstart", onDragStart);
+    document.addEventListener("keydown", onKeyDown, { capture: true });
+
+    // Add non-draggable attribute to all images
+    const imgs = document.querySelectorAll("img");
+    imgs.forEach((img) => {
+      img.setAttribute("draggable", "false");
+    });
+
+    // iOS Safari: disable touch callout
+    document.body.style.setProperty("-webkit-touch-callout", "none");
+
+    return () => {
+      document.removeEventListener("contextmenu", onContextMenu);
+      document.removeEventListener("copy", onCopy);
+      document.removeEventListener("cut", onCut);
+      document.removeEventListener("paste", onPaste);
+      document.removeEventListener("dragstart", onDragStart);
+      document.removeEventListener("keydown", onKeyDown, { capture: true } as any);
+      document.body.style.setProperty("-webkit-touch-callout", "");
+    };
+  }, []);
 
   /* QUIZ STATE */
   const [sectionIndex, setSectionIndex] = useState(0);
@@ -701,232 +762,238 @@ export default function ScollarshipPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#ECFDF5] p-4 md:p-6">
-      {/* HEADER */}
-      <div className="bg-white rounded-xl px-4 md:px-8 py-4 md:py-6 mb-6
-                      flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        
-        {/* LEFT: LOGO + TEXT */}
-        <div className="flex items-start md:items-center gap-3">
-          {/* LOGO */}
-          <div className="w-8 h-8 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center">
-            <img
-              src="/logo2.png"
-              alt="Aaruchudar logo"
-              className="w-full h-full object-contain"
-            />
-          </div>
-
-          {/* TEXT */}
-          <div className="leading-tight">
-            <h2 className="text-base md:text-xl font-semibold">
-              AARUCHUDAR SCHOLARSHIP EXAM SERIES - 1
-            </h2>
-            <p className="text-xs md:text-sm text-gray-500">
-              Discover your mental clarity and decision-making skills
-            </p>
-          </div>
-        </div>
-
-
-        {/* TIMER */}
-        <div className="text-green-600 font-semibold self-end md:self-auto">
-          ⏱ {timeLeft}s
-        </div>
-      </div>
-
-      {/* BODY */}
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-6">
-        
-        {/* PROGRESS */}
-        <div className="w-full md:w-[260px] bg-white rounded-xl p-5">
-          <h4 className="font-semibold mb-4">Progress Map</h4>
-          <div className="grid grid-cols-5 md:grid-cols-5 gap-3">
-            {currentSection.questions.map((_, i: number) => (
-              <div
-                key={i}
-                className={`
-                  h-9 md:h-10 rounded-lg flex items-center justify-center text-sm border
-                  ${i === questionIndex ? "border-green-500 bg-green-50" : ""}
-                  ${answeredMap.includes(i)
-                    ? "bg-green-500 text-white border-green-500"
-                    : ""}
-                  ${skippedMap.includes(i)
-                    ? "bg-red-100 border-red-500 text-red-600"
-                    : ""}
-                `}
-              >
-                {i + 1}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* QUESTION */}
-        <div className="flex-1 bg-white rounded-xl p-5 md:p-8">
-          <p className="text-[#059669] text-sm font-semibold mb-2">
-            SECTION {currentSection.sectionId} — {currentSection.sectionName}
-          </p>
-
-          <h3 className="text-base md:text-lg font-semibold mb-4">
-            {currentQuestion.question}
-          </h3>
-
-          {currentQuestion.options.map((opt: string, i: number) => (
-            <button
-              key={i}
-              onClick={() => setSelectedOption(i)}
-              className={`
-                w-full text-left px-4 py-3 mb-3 rounded-lg border
-                ${selectedOption === i
-                  ? "border-green-500 bg-green-50 font-semibold"
-                  : "border-gray-300 bg-white"}
-              `}
-            >
-              {opt}
-            </button>
-          ))}
-
-          <button
-            onClick={handleNext}
-            disabled={selectedOption === null}
-            className="
-              w-full mt-6 py-4 rounded-xl
-              bg-[#10b981] text-white font-semibold
-              disabled:opacity-60 border-[1px] border-[#10b981]
-            "
-          >
-            {isLastSection && isLastQuestion ? "Submit" : "Next"}
-          </button>
-        </div>
-      </div>
-
-      {/* FACTS CAROUSEL */}
-      <div className="max-w-7xl mx-auto mt-8">
-        <h2 className="text-center text-2xl md:text-3xl font-bold mb-4">Some interesting facts</h2>
-        <div className="relative overflow-hidden bg-white rounded-xl p-5 md:p-8 shadow">
-          <div
-            className="flex transition-transform duration-500"
-            style={{ transform: `translateX(-${slide * 100}%)` }}
-          >
-            {/* Slide 1 */}
-            <div className="min-w-full grid gap-6 md:grid-cols-2">
-              {/* Average IQ by age */}
-              <div>
-                <h4 className="font-semibold mb-3">Average IQ by age</h4>
-                <div className="h-56 bg-gray-50 rounded-lg p-4 flex items-end gap-4">
-                  {ageData.map((d, i) => (
-                    <div key={i} className="flex-1 flex flex-col items-center justify-end">
-                      <div
-                        className="w-full bg-blue-500 rounded-t-md"
-                        style={{ height: `${(d.value / 120) * 100}%` }}
-                        aria-label={`${d.label} ${d.value}`}
-                      />
-                      <p className="mt-2 text-[11px] text-center text-gray-600">{d.label}</p>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex items-center gap-2 mt-3 text-sm text-gray-600">
-                  <span className="w-3 h-3 rounded bg-blue-500" /> Average IQ
-                </div>
+    <div className="select-none min-h-screen bg-[#ECFDF5] p-4 md:p-6">
+      {(!started) ? (
+        <StudentForm onStart={() => setStarted(true)} />
+      ) : (
+        <>
+          {/* HEADER */}
+          <div className="bg-white rounded-xl px-4 md:px-8 py-4 md:py-6 mb-6
+                          flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            
+            {/* LEFT: LOGO + TEXT */}
+            <div className="flex items-start md:items-center gap-3">
+              {/* LOGO */}
+              <div className="w-8 h-8 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center">
+                <img
+                  src="/logo2.png"
+                  alt="Aaruchudar logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
 
-              {/* Average IQ by country */}
-              <div>
-                <h4 className="font-semibold mb-3">Average IQ by country</h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {countryData.map((c, i) => (
-                    <div
-                      key={i}
-                      className="flex items-center justify-between bg-gray-50 border rounded-xl px-4 py-3"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="text-2xl" aria-hidden>{c.flag}</div>
-                        <span className="text-gray-800">{c.name}</span>
-                      </div>
-                      <span className="font-bold">{c.value}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Slide 2 */}
-            <div className="min-w-full grid gap-6 md:grid-cols-2">
-              {/* Skills chart */}
-              <div>
-                <h4 className="font-semibold mb-3">Top skills in 2025 (est.)</h4>
-                <div className="space-y-3 bg-gray-50 rounded-lg p-4">
-                  {[
-                    { k: "AI literacy", v: 92 },
-                    { k: "Critical thinking", v: 88 },
-                    { k: "Problem solving", v: 85 },
-                    { k: "Communication", v: 83 },
-                    { k: "Creativity", v: 80 }
-                  ].map((s, i) => (
-                    <div key={i}>
-                      <div className="flex justify-between text-sm mb-1">
-                        <span className="text-gray-700">{s.k}</span>
-                        <span className="font-medium">{s.v}</span>
-                      </div>
-                      <div className="h-3 w-full bg-white border rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-green-500"
-                          style={{ width: `${s.v}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Tip card */}
-              <div className="bg-gradient-to-br from-green-50 to-blue-50 border rounded-xl p-6">
-                <h4 className="font-semibold mb-2">Brain-friendly study tip</h4>
-                <p className="text-gray-700 text-sm">
-                  Short focused sprints (20–30 min) with 5 min breaks boost retention and reduce
-                  mental fatigue. Protect your attention, then practice daily.
+              {/* TEXT */}
+              <div className="leading-tight">
+                <h2 className="text-base md:text-xl font-semibold">
+                  AARUCHUDAR SCHOLARSHIP EXAM SERIES - 1
+                </h2>
+                <p className="text-xs md:text-sm text-gray-500">
+                  Discover your mental clarity and decision-making skills
                 </p>
-                <ul className="mt-4 text-sm text-gray-700 list-disc list-inside space-y-1">
-                  <li>Silence notifications during practice</li>
-                  <li>Review mistakes—don’t just redo questions</li>
-                  <li>Explain answers aloud to deepen clarity</li>
-                </ul>
               </div>
+            </div>
+
+
+            {/* TIMER */}
+            <div className="text-green-600 font-semibold self-end md:self-auto">
+              ⏱ {timeLeft}s
             </div>
           </div>
 
-          {/* Controls */}
-          <button
-            onClick={goPrev}
-            aria-label="Previous"
-            className="absolute left-2 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white border shadow flex items-center justify-center hover:bg-gray-50"
-          >
-            ‹
-          </button>
-          <button
-            onClick={goNext}
-            aria-label="Next"
-            className="absolute right-2 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white border shadow flex items-center justify-center hover:bg-gray-50"
-          >
-            ›
-          </button>
+          {/* BODY */}
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-6">
+            
+            {/* PROGRESS */}
+            <div className="w-full md:w-[260px] bg-white rounded-xl p-5">
+              <h4 className="font-semibold mb-4">Progress Map</h4>
+              <div className="grid grid-cols-5 md:grid-cols-5 gap-3">
+                {currentSection.questions.map((_, i: number) => (
+                  <div
+                    key={i}
+                    className={`
+                      h-9 md:h-10 rounded-lg flex items-center justify-center text-sm border
+                      ${i === questionIndex ? "border-green-500 bg-green-50" : ""}
+                      ${answeredMap.includes(i)
+                        ? "bg-green-500 text-white border-green-500"
+                        : ""}
+                      ${skippedMap.includes(i)
+                        ? "bg-red-100 border-red-500 text-red-600"
+                        : ""}
+                    `}
+                  >
+                    {i + 1}
+                  </div>
+                ))}
+              </div>
+            </div>
 
-          {/* Dots */}
-          <div className="flex justify-center gap-2 mt-4">
-            {Array.from({ length: totalSlides }).map((_, i) => (
+            {/* QUESTION */}
+            <div className="flex-1 bg-white rounded-xl p-5 md:p-8">
+              <p className="text-[#059669] text-sm font-semibold mb-2">
+                SECTION {currentSection.sectionId} — {currentSection.sectionName}
+              </p>
+
+              <h3 className="text-base md:text-lg font-semibold mb-4">
+                {currentQuestion.question}
+              </h3>
+
+              {currentQuestion.options.map((opt: string, i: number) => (
+                <button
+                  key={i}
+                  onClick={() => setSelectedOption(i)}
+                  className={`
+                    w-full text-left px-4 py-3 mb-3 rounded-lg border
+                    ${selectedOption === i
+                      ? "border-green-500 bg-green-50 font-semibold"
+                      : "border-gray-300 bg-white"}
+                  `}
+                >
+                  {opt}
+                </button>
+              ))}
+
               <button
-                key={i}
-                onClick={() => setSlide(i)}
-                aria-label={`Go to slide ${i + 1}`}
-                className={`${
-                  slide === i ? "bg-green-600 w-4" : "bg-gray-300 w-2"
-                } h-2 rounded-full transition-all`}
-              />
-            ))}
+                onClick={handleNext}
+                disabled={selectedOption === null}
+                className="
+                  w-full mt-6 py-4 rounded-xl
+                  bg-[#10b981] text-white font-semibold
+                  disabled:opacity-60 border-[1px] border-[#10b981]
+                "
+              >
+                {isLastSection && isLastQuestion ? "Submit" : "Next"}
+              </button>
+            </div>
           </div>
-        </div>
-      </div>
+
+          {/* FACTS CAROUSEL */}
+          <div className="max-w-7xl mx-auto mt-8">
+            <h2 className="text-center text-2xl md:text-3xl font-bold mb-4">Some interesting facts</h2>
+            <div className="relative overflow-hidden bg-white rounded-xl p-5 md:p-8 shadow">
+              <div
+                className="flex transition-transform duration-500"
+                style={{ transform: `translateX(-${slide * 100}%)` }}
+              >
+                {/* Slide 1 */}
+                <div className="min-w-full grid gap-6 md:grid-cols-2">
+                  {/* Average IQ by age */}
+                  <div>
+                    <h4 className="font-semibold mb-3">Average IQ by age</h4>
+                    <div className="h-56 bg-gray-50 rounded-lg p-4 flex items-end gap-4">
+                      {ageData.map((d, i) => (
+                        <div key={i} className="flex-1 flex flex-col items-center justify-end">
+                          <div
+                            className="w-full bg-blue-500 rounded-t-md"
+                            style={{ height: `${(d.value / 120) * 100}%` }}
+                            aria-label={`${d.label} ${d.value}`}
+                          />
+                          <p className="mt-2 text-[11px] text-center text-gray-600">{d.label}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex items-center gap-2 mt-3 text-sm text-gray-600">
+                      <span className="w-3 h-3 rounded bg-blue-500" /> Average IQ
+                    </div>
+                  </div>
+
+                  {/* Average IQ by country */}
+                  <div>
+                    <h4 className="font-semibold mb-3">Average IQ by country</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {countryData.map((c, i) => (
+                        <div
+                          key={i}
+                          className="flex items-center justify-between bg-gray-50 border rounded-xl px-4 py-3"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="text-2xl" aria-hidden>{c.flag}</div>
+                            <span className="text-gray-800">{c.name}</span>
+                          </div>
+                          <span className="font-bold">{c.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Slide 2 */}
+                <div className="min-w-full grid gap-6 md:grid-cols-2">
+                  {/* Skills chart */}
+                  <div>
+                    <h4 className="font-semibold mb-3">Top skills in 2025 (est.)</h4>
+                    <div className="space-y-3 bg-gray-50 rounded-lg p-4">
+                      {[
+                        { k: "AI literacy", v: 92 },
+                        { k: "Critical thinking", v: 88 },
+                        { k: "Problem solving", v: 85 },
+                        { k: "Communication", v: 83 },
+                        { k: "Creativity", v: 80 }
+                      ].map((s, i) => (
+                        <div key={i}>
+                          <div className="flex justify-between text-sm mb-1">
+                            <span className="text-gray-700">{s.k}</span>
+                            <span className="font-medium">{s.v}</span>
+                          </div>
+                          <div className="h-3 w-full bg-white border rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-green-500"
+                              style={{ width: `${s.v}%` }}
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Tip card */}
+                  <div className="bg-gradient-to-br from-green-50 to-blue-50 border rounded-xl p-6">
+                    <h4 className="font-semibold mb-2">Brain-friendly study tip</h4>
+                    <p className="text-gray-700 text-sm">
+                      Short focused sprints (20–30 min) with 5 min breaks boost retention and reduce
+                      mental fatigue. Protect your attention, then practice daily.
+                    </p>
+                    <ul className="mt-4 text-sm text-gray-700 list-disc list-inside space-y-1">
+                      <li>Silence notifications during practice</li>
+                      <li>Review mistakes—don’t just redo questions</li>
+                      <li>Explain answers aloud to deepen clarity</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Controls */}
+              <button
+                onClick={goPrev}
+                aria-label="Previous"
+                className="absolute left-2 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white border shadow flex items-center justify-center hover:bg-gray-50"
+              >
+                ‹
+              </button>
+              <button
+                onClick={goNext}
+                aria-label="Next"
+                className="absolute right-2 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white border shadow flex items-center justify-center hover:bg-gray-50"
+              >
+                ›
+              </button>
+
+              {/* Dots */}
+              <div className="flex justify-center gap-2 mt-4">
+                {Array.from({ length: totalSlides }).map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setSlide(i)}
+                    aria-label={`Go to slide ${i + 1}`}
+                    className={`${
+                      slide === i ? "bg-green-600 w-4" : "bg-gray-300 w-2"
+                    } h-2 rounded-full transition-all`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
