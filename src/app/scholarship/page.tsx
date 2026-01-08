@@ -554,6 +554,11 @@ export default function ScollarshipPage() {
   /* FORM GATE */
   const [started, setStarted] = useState(false);
 
+  // Show form first; start quiz only after form completion
+  if (!started) {
+    return <StudentForm onStart={() => setStarted(true)} />;
+  }
+
   /* QUIZ STATE */
   const [sectionIndex, setSectionIndex] = useState(0);
   const [questionIndex, setQuestionIndex] = useState(0);
