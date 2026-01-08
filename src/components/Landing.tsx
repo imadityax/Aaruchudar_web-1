@@ -14,9 +14,72 @@ const stats = [
 export default function Landing() {
   return (
     <>
+
+    {/*      /////////////////////////////////////////////////////////////////                           */}
+
+      <section className="py-20 bg-white">
+        <h2 className="text-center text-3xl font-bold mb-12">
+          What is the process?
+        </h2>
+
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-6">
+          {[
+            {
+              title: "Take a Test",
+              desc: "Get an unbiased view of yourself",
+            },
+            {
+              title: "Get Your Report",
+              desc: "Discover strengths & weaknesses",
+            },
+            {
+              title: "Begin Your Journey",
+              desc: "Improve with expert guidance",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition"
+            >
+              <h4 className="text-xl font-semibold mb-2">{item.title}</h4>
+              <p className="text-gray-600">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-slate-50 py-20">
+        <h2 className="text-center text-3xl font-bold mb-4">
+          The <span className="text-blue-600">5 essential</span> cognitive
+          skills
+        </h2>
+
+        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-6 mt-12 px-6">
+          {["Reaction", "Logic", "Memory", "Concentration", "Speed"].map(
+            (skill) => (
+              <div
+                key={skill}
+                className="bg-white rounded-xl p-6 text-center shadow"
+              >
+                <p className="font-semibold">{skill}</p>
+              </div>
+            )
+          )}
+        </div>
+
+        <div className="text-center mt-10">
+          <button className="bg-emerald-600 text-white px-8 py-3 rounded-xl">
+            Start Training →
+          </button>
+        </div>
+      </section>
+
+      {/*      //////////////////    */}
+
+
       {/* ================= TOP SCHOLARSHIP BANNER ================= */}
       <section className="w-full">
-        <Link href="/scholarship-application" className="block">
+        <Link href="/scholarship" className="block">
           <div className="relative w-full h-[200px] sm:h-[260px] md:h-[320px] lg:h-[380px] bg-black">
             <Image
               src="/images/banner.jpg"
@@ -33,7 +96,7 @@ export default function Landing() {
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="bg-white/90 backdrop-blur px-6 py-3 rounded-xl shadow-lg">
                 <p className="text-lg sm:text-xl font-bold text-slate-900">
-                  🎓 Apply for Scholarship
+                  🎓 Start the Scholoarship Test
                 </p>
               </div>
             </div>
@@ -147,7 +210,7 @@ export default function Landing() {
               </Link>
 
               <Link
-                href="/scholarship-application"
+                href="/scholarship"
                 className="rounded-xl bg-indigo-600 text-white px-7 py-3 shadow-lg hover:bg-indigo-500 transition"
               >
                 🎓 Apply for Scholarship

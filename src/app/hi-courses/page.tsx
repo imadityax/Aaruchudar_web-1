@@ -189,6 +189,82 @@ const HICoursesPage = () => {
         </div>
       </section>
 
+
+      {/* /////////////////// */}
+
+            <section className="py-20 bg-white">
+  <h2 className="text-center text-3xl font-bold mb-12">
+    Boost Your Abilities
+  </h2>
+
+  <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-6">
+    {[
+      {
+        title: "Expert Video Courses",
+        points: ["20+ hours", "Easy lessons", "Track progress"]
+      },
+      {
+        title: "Brain Training Games",
+        points: ["Adaptive difficulty", "Improve logic & focus"]
+      },
+      {
+        title: "Puzzles",
+        points: ["150+ puzzles", "Smart difficulty progression"]
+      }
+    ].map((card, i) => (
+      <div key={i} className="bg-white rounded-2xl p-8 shadow-md">
+        <h4 className="text-xl font-semibold mb-4">{card.title}</h4>
+        <ul className="space-y-2 text-gray-600">
+          {card.points.map(p => <li key={p}>✔ {p}</li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>
+
+
+<section className="bg-slate-50 py-24">
+  <h2 className="text-center text-3xl font-bold mb-12">
+    Explore our plans
+  </h2>
+
+  <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 px-6">
+    
+    <div className="bg-white rounded-2xl p-8 shadow">
+      <h4 className="font-semibold mb-4">BI-WEEKLY</h4>
+      <h2 className="text-3xl font-bold mb-4">₹1358.99</h2>
+      <ul className="space-y-2 text-gray-600 mb-6">
+        <li>✔ 7-day trial</li>
+        <li>✔ IQ Certificate</li>
+        <li>✔ Full Access</li>
+      </ul>
+      <button className="w-full bg-emerald-600 text-white py-3 rounded-xl">
+        Get Started
+      </button>
+    </div>
+
+    <div className="bg-white rounded-2xl p-8 shadow-xl border-2 border-emerald-600">
+      <h4 className="font-semibold mb-4">MONTHLY</h4>
+      <h2 className="text-3xl font-bold mb-4">₹2718.99</h2>
+      <ul className="space-y-2 text-gray-600 mb-6">
+        <li>✔ Maximum savings</li>
+        <li>✔ Complete assessment</li>
+        <li>✔ Expert courses</li>
+      </ul>
+      <button className="w-full bg-emerald-600 text-white py-3 rounded-xl">
+        Get Started
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+      {/* /////////////////// */}
+
+
       {/* COURSE GRID */}
       <main className="py-12 md:py-14 px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 max-w-7xl mx-auto">

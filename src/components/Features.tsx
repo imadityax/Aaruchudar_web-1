@@ -257,7 +257,7 @@ export default function Features() {
               Real-time NeuroTech Score
             </div>
             <p className="text-lg sm:text-xl font-bold text-slate-900">
-              Get your hear real time score for neuro tech
+              Check your real-time NeuroTech brain performance score
             </p>
             <p className="mt-2 text-slate-700">
               Scale: <span className="font-semibold">1&nbsp;to&nbsp;100</span>
