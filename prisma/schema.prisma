@@ -7,12 +7,38 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  CEO
+  EXECUTIVE_DIRECTOR
+  MANAGER
+  TEAM_LEADER
+  EMPLOYEE
+}
+
 model User {
   id        String   @id @default(cuid())
+  name      String
   email     String   @unique
-  password  String
+  password  String?  // nullable for non-login users
+  role      Role
+
+  employee  Employee?
+
   createdAt DateTime @default(now())
 }
+
+model Employee {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  photoUrl  String?
+  isActive  Boolean  @default(true)
+  order     Int      @default(0)
+
+  createdAt DateTime @default(now())
+}
+
 model Feedback {
   id        String   @id @default(cuid())
   name      String
@@ -22,6 +48,7 @@ model Feedback {
   approved  Boolean  @default(false)
   createdAt DateTime @default(now())
 }
+
 model Application {
   id              String   @id @default(cuid())
   name            String
@@ -36,6 +63,7 @@ model Application {
   percentage      Float
   createdAt       DateTime @default(now())
 }
+
 model InternshipRegistration {
   id        String   @id @default(cuid())
   name      String
