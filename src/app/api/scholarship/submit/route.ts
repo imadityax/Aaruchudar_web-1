@@ -23,8 +23,34 @@ export async function POST(req: Request) {
 
     // ❌ required validation
     if (!studentId || !email) {
+      console.error("Invalid data:", { studentId, email });
       return NextResponse.json(
         { error: "Invalid student data" },
+        { status: 400 }
+      );
+    }
+
+    // Validate exam data
+    if (
+      totalQuestions === undefined ||
+      answeredCount === undefined ||
+      skippedCount === undefined ||
+      totalSections === undefined ||
+      score === undefined ||
+      percentage === undefined ||
+      timeTakenSec === undefined
+    ) {
+      console.error("Missing exam data:", {
+        totalQuestions,
+        answeredCount,
+        skippedCount,
+        totalSections,
+        score,
+        percentage,
+        timeTakenSec,
+      });
+      return NextResponse.json(
+        { error: "Missing exam data fields" },
         { status: 400 }
       );
     }
@@ -37,13 +63,13 @@ export async function POST(req: Request) {
         id: studentId,
         name: name || "Unknown",
         email,
-        phone,
-        age,
+        phone: phone || undefined,
+        age: age ? Number(age) : undefined,
       },
     });
 
     // ✅ 2️⃣ create exam attempt
-    await prisma.examAttempt.create({
+    const examAttempt = await prisma.examAttempt.create({
       data: {
         studentId: student.id,
 
@@ -58,11 +84,13 @@ export async function POST(req: Request) {
       },
     });
 
-    return NextResponse.json({ success: true });
+    console.log("Exam attempt created successfully:", examAttempt);
+    return NextResponse.json({ success: true, attemptId: examAttempt.id });
   } catch (error) {
     console.error("Scholarship submit error:", error);
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
     return NextResponse.json(
-      { error: "Server error" },
+      { error: "Server error", details: errorMessage },
       { status: 500 }
     );
   }

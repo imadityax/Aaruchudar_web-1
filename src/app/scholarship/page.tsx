@@ -1421,25 +1421,41 @@ export default function ScollarshipPage() {
             (Date.now() - startTime) / 1000
         );
 
-        await fetch("/api/scholarship/submit", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                studentId,
-                name: localStorage.getItem("studentName"),
-                email: localStorage.getItem("studentEmail"),
-                phone: localStorage.getItem("studentPhone"),
-                age: Number(localStorage.getItem("studentAge")),
+        try {
+            const response = await fetch("/api/scholarship/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    studentId,
+                    name: localStorage.getItem("studentName"),
+                    email: localStorage.getItem("studentEmail"),
+                    phone: localStorage.getItem("studentPhone"),
+                    age: null,
 
-                totalQuestions,
-                answeredCount,
-                skippedCount,
-                totalSections,
-                score: finalScore,        // saved, NOT shown
-                percentage,               // saved, NOT shown
-                timeTakenSec,
-            }),
-        });
+                    totalQuestions,
+                    answeredCount,
+                    skippedCount,
+                    totalSections,
+                    score: finalScore,
+                    percentage,
+                    timeTakenSec,
+                }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error("API error:", errorData);
+                alert(`Error submitting exam: ${errorData.error}`);
+                return;
+            }
+
+            const data = await response.json();
+            console.log("Exam submitted successfully:", data);
+        } catch (error) {
+            console.error("Failed to submit exam:", error);
+            alert("Failed to submit exam. Please try again.");
+            return;
+        }
 
         setShowCongrats(true);
     };
