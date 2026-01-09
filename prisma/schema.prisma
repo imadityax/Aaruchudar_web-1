@@ -22,22 +22,11 @@ model User {
   password  String?  // nullable for non-login users
   role      Role
 
-  employee  Employee?
 
   createdAt DateTime @default(now())
 }
 
-model Employee {
-  id        String   @id @default(cuid())
-  userId    String   @unique
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  photoUrl  String?
-  isActive  Boolean  @default(true)
-  order     Int      @default(0)
-
-  createdAt DateTime @default(now())
-}
 
 model Feedback {
   id        String   @id @default(cuid())
@@ -74,3 +63,32 @@ model InternshipRegistration {
   message   String?
   createdAt DateTime @default(now())
 }
+model Student {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  phone     String?
+  age       Int?
+  createdAt DateTime @default(now())
+
+  attempts  ExamAttempt[] @relation("StudentAttempts")
+}
+
+model ExamAttempt {
+  id             String   @id @default(uuid())
+
+  studentId      String
+  student        Student  @relation("StudentAttempts", fields: [studentId], references: [id])
+
+  totalQuestions Int
+  answeredCount  Int
+  skippedCount   Int
+  totalSections  Int
+
+  score          Int
+  percentage     Int
+  timeTakenSec   Int
+
+  createdAt      DateTime @default(now())
+}
+

@@ -33,6 +33,7 @@ function Navbar() {
 		{ id: 'research', label: 'Research', href: '/research' },
 		{ id: 'quiz', label: 'Quiz', href: '/quiz' },
 		{ id: 'contact', label: 'Contact', href: '/contact' },
+		{ id: 'scholarship', label: 'Scholarship Test', href: '/scholarship' },
 		{ id: 'product', label: 'Product', href: '/productpage' },
 		{ id: 'franchise', label: 'Franchise', href: '/franchise' },
 		{ id: 'internship', label: 'Internship', href: '/internship' },

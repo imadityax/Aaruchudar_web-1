@@ -1,3 +1,6 @@
+
+
+
 "use client";
 
 import { useState } from "react";
@@ -7,6 +10,9 @@ type Props = {
 };
 
 export default function StudentForm({ onStart }: Props) {
+  // 🔹 VIDEO STATE (NEW)
+  const [showVideo, setShowVideo] = useState(true);
+
   const [agreed, setAgreed] = useState(false);
   const [form, setForm] = useState({
     name: "",
@@ -15,6 +21,23 @@ export default function StudentForm({ onStart }: Props) {
     college: "",
   });
 
+  // 🔹 VIDEO SCREEN (NO FORM UI TOUCHED)
+  if (showVideo) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center relative">
+  <video
+    src="/videos/assessment-intro.mp4"
+    autoPlay
+    playsInline
+    className="w-full max-w-4xl h-[420px] rounded-xl object-cover"
+    onEnded={() => setShowVideo(false)}
+  />
+</div>
+
+    );
+  }
+
+  // 🔹 FORM LOGIC (UNCHANGED)
   const handleStart = () => {
     if (!form.name || !form.email || !form.phone || !form.college) {
       alert("Please fill all details");
@@ -29,6 +52,7 @@ export default function StudentForm({ onStart }: Props) {
     onStart();
   };
 
+  // 🔹 YOUR ORIGINAL UI (UNCHANGED)
   return (
     <div className="min-h-screen bg-[#ecfdf5] flex items-center justify-center p-6">
       <div className="bg-white max-w-[560px] w-full rounded-2xl p-10 shadow-[0_12px_30px_rgba(0,0,0,0.08)]">
