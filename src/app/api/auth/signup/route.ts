@@ -26,6 +26,8 @@ export async function POST(req: Request) {
     data: {
       email,
       password: hashedPassword,
+      name: email.split("@")[0],
+      role: "USER",
     },
   });
 
