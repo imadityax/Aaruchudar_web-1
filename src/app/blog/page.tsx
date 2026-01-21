@@ -20,7 +20,8 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function BlogPage() {
+
+export default function Page() {
   return (
     <>
       <h1 className="sr-only">
