@@ -1,11 +1,11 @@
 import { Metadata } from "next";
-import BlogPage from "./BlogPage";
+import BlogPages from "./BlogPage";
 
 export const metadata: Metadata = {
   title:
-    "Human Intelligence & Neuroscience Blog | Brain Performance Insights – Aaruchudar",
+    "Human Intelligence & Neuroscience Blog | Brain Performance Insights",
   description:
-    "Read Aaruchudar’s blog on Human Intelligence, neuroscience, meditation, Neuro Band, Neuro Lens, and cognitive performance improvement.",
+    "Read Aaruchudar’s blog on Human Intelligence, neuroscience, meditation, Neuro Band, Neuro Lens and cognitive performance improvement.",
   keywords: [
     //Primary
     "Human Intelligence Blog",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function Page() {
+export default function BlogPage() {
   return (
     <>
       <h1 className="sr-only">
@@ -37,7 +37,7 @@ export default function Page() {
         </p>
       </section>
 
-      <BlogPage />
+      <BlogPages />
     </>
   );
 }
