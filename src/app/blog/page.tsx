@@ -40,7 +40,7 @@ export default function BlogPage() {
     },
     {
       id: 3,
-      title: "AARUCHUDAR CONSULTANCY",
+      title: "AARUCHUDAR",
       excerpt: "Breaking silos: The power of combining multiple disciplines for breakthrough innovation and creative problem-solving.",
       author: "NIROSHINI",
       role: "Content Creator",
