@@ -20,15 +20,15 @@ export default function ContactPage() {
 
   /* ---------------- MAIL LINKS ---------------- */
   const mailtoHref = `mailto:hello@aaruchudar.com?subject=Contact from ${encodeURIComponent(
-    contactName || "Anonymous"
+    contactName || "Anonymous",
   )}&body=${encodeURIComponent(
-    `Name: ${contactName}\nEmail: ${contactEmail}\n\n${message}`
+    `Name: ${contactName}\nEmail: ${contactEmail}\n\n${message}`,
   )}`;
 
   const feedbackMailtoHref = `mailto:hello@aaruchudar.com?subject=Feedback from ${encodeURIComponent(
-    feedbackName || "Anonymous"
+    feedbackName || "Anonymous",
   )}&body=${encodeURIComponent(
-    `Name: ${feedbackName}\nEmail: ${feedbackEmail}\nRating: ${rating}/5\n\n${feedback}`
+    `Name: ${feedbackName}\nEmail: ${feedbackEmail}\nRating: ${rating}/5\n\n${feedback}`,
   )}`;
 
   /* ---------------- CONTACT SUBMIT ---------------- */
@@ -72,9 +72,7 @@ export default function ContactPage() {
 
     try {
       if (!feedbackName || !feedbackEmail || !rating || !feedback) {
-        setFeedbackStatus(
-          "Please provide name, email, rating, and feedback."
-        );
+        setFeedbackStatus("Please provide name, email, rating, and feedback.");
         return;
       }
 
@@ -103,7 +101,6 @@ export default function ContactPage() {
     }
   };
 
-
   return (
     <section className="min-h-screen bg-white">
       {/* Immersive hero */}
@@ -117,13 +114,26 @@ export default function ContactPage() {
         <div className="mx-auto max-w-6xl px-6 pt-28 md:pt-36">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="text-center md:text-left">
-              <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-gray-900">Let’s build something meaningful</h1>
+              <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-gray-900">
+                Let’s build something meaningful
+              </h1>
               <p className="mt-3 text-gray-600 max-w-xl md:mx-0 mx-auto">
-                Reach out for partnerships, questions, or feedback. We respond within 1–2 business days.
+                Reach out for partnerships, questions, or feedback. We respond
+                within 1–2 business days.
               </p>
               <div className="mt-6 flex flex-wrap gap-3 justify-center md:justify-start">
-                <a href="mailto:hello@aaruchudar.com" className="inline-flex items-center gap-2 rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 shadow-sm">✉️ Email us</a>
-                <a href="tel:+918248552678" className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 hover:bg-gray-50">📞 Call</a>
+                <a
+                  href="mailto:hello@aaruchudar.com"
+                  className="inline-flex items-center gap-2 rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 shadow-sm"
+                >
+                  ✉️ Email us
+                </a>
+                <a
+                  href="tel:+918248552678"
+                  className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 hover:bg-gray-50"
+                >
+                  📞 Call
+                </a>
               </div>
             </div>
             <div className="relative">
@@ -148,13 +158,25 @@ export default function ContactPage() {
                 aria-labelledby="contact-form-title"
               >
                 <div className="mb-2">
-                  <h2 id="contact-form-title" className="text-xl font-medium text-gray-900">Send us a message</h2>
-                  <p className="text-sm text-gray-600">Tell us about your idea or question.</p>
+                  <h2
+                    id="contact-form-title"
+                    className="text-xl font-medium text-gray-900"
+                  >
+                    Send us a message
+                  </h2>
+                  <p className="text-sm text-gray-600">
+                    Tell us about your idea or question.
+                  </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="name">Name</label>
+                    <label
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                      htmlFor="name"
+                    >
+                      Name
+                    </label>
                     <input
                       id="name"
                       type="text"
@@ -164,11 +186,15 @@ export default function ContactPage() {
                       placeholder="Your name"
                       aria-required
                     />
-
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="email">Email</label>
+                    <label
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                      htmlFor="email"
+                    >
+                      Email
+                    </label>
                     <input
                       id="email"
                       type="email"
@@ -178,12 +204,16 @@ export default function ContactPage() {
                       placeholder="you@example.com"
                       aria-required
                     />
-
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="message">Message</label>
+                  <label
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                    htmlFor="message"
+                  >
+                    Message
+                  </label>
                   <textarea
                     id="message"
                     value={message}
@@ -192,14 +222,26 @@ export default function ContactPage() {
                     placeholder="How can we help?"
                     aria-required
                   />
-                  <p className="mt-1 text-xs text-gray-500">By clicking Send, your email client will open with the message.</p>
+                  <p className="mt-1 text-xs text-gray-500">
+                    By clicking Send, your email client will open with the
+                    message.
+                  </p>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <button disabled={submitting} type="submit" className="px-4 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm disabled:opacity-60">
+                  <button
+                    disabled={submitting}
+                    type="submit"
+                    className="px-4 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm disabled:opacity-60"
+                  >
                     {submitting ? "Sending..." : "Send"}
                   </button>
-                  <a href={mailtoHref} className="text-sm text-indigo-600 hover:text-indigo-700 underline">Or email us directly</a>
+                  <a
+                    href={mailtoHref}
+                    className="text-sm text-indigo-600 hover:text-indigo-700 underline"
+                  >
+                    Or email us directly
+                  </a>
                 </div>
                 {contactStatus && (
                   <p className="text-sm text-gray-700">{contactStatus}</p>
@@ -217,8 +259,15 @@ export default function ContactPage() {
                 aria-labelledby="feedback-form-title"
               >
                 <div className="mb-2">
-                  <h2 id="feedback-form-title" className="text-xl font-medium text-gray-900">Feedback</h2>
-                  <p className="text-sm text-gray-600">Rate your experience and leave a comment.</p>
+                  <h2
+                    id="feedback-form-title"
+                    className="text-xl font-medium text-gray-900"
+                  >
+                    Feedback
+                  </h2>
+                  <p className="text-sm text-gray-600">
+                    Rate your experience and leave a comment.
+                  </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -252,8 +301,14 @@ export default function ContactPage() {
 
                 {/* Rating stars */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Rating</label>
-                  <div className="flex items-center gap-1" role="radiogroup" aria-label="Rating">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Rating
+                  </label>
+                  <div
+                    className="flex items-center gap-1"
+                    role="radiogroup"
+                    aria-label="Rating"
+                  >
                     {[1, 2, 3, 4, 5].map((star) => (
                       <button
                         key={star}
@@ -261,21 +316,29 @@ export default function ContactPage() {
                         onClick={() => setRating(star)}
                         aria-pressed={rating === star}
                         aria-label={`${star} star${star > 1 ? "s" : ""}`}
-                        className={`h-9 w-9 flex items-center justify-center rounded-md transition-all ${star <= rating
-                          ? "bg-indigo-600 text-white hover:bg-indigo-700 scale-105"
-                          : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                          }`}
+                        className={`h-9 w-9 flex items-center justify-center rounded-md transition-all ${
+                          star <= rating
+                            ? "bg-indigo-600 text-white hover:bg-indigo-700 scale-105"
+                            : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                        }`}
                       >
                         ★
                       </button>
                     ))}
-                    <span className="ml-3 text-sm text-gray-500">{rating ? `${rating} / 5` : "No rating yet"}</span>
+                    <span className="ml-3 text-sm text-gray-500">
+                      {rating ? `${rating} / 5` : "No rating yet"}
+                    </span>
                   </div>
                 </div>
 
                 {/* Feedback message */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="feedbackMessage">Your feedback</label>
+                  <label
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                    htmlFor="feedbackMessage"
+                  >
+                    Your feedback
+                  </label>
                   <textarea
                     id="feedbackMessage"
                     value={feedback}
@@ -283,14 +346,25 @@ export default function ContactPage() {
                     className="w-full border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 rounded-md px-3 py-2 bg-white text-gray-900 placeholder:text-gray-400 min-h-28"
                     placeholder="Tell us what we did well, or what we could improve"
                   />
-                  <p className="mt-1 text-xs text-gray-500">We may share anonymized feedback to improve our services.</p>
+                  <p className="mt-1 text-xs text-gray-500">
+                    We may share anonymized feedback to improve our services.
+                  </p>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <button disabled={submitting} type="submit" className="px-4 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm disabled:opacity-60">
+                  <button
+                    disabled={submitting}
+                    type="submit"
+                    className="px-4 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm disabled:opacity-60"
+                  >
                     {submitting ? "Submitting..." : "Submit feedback"}
                   </button>
-                  <a href={feedbackMailtoHref} className="text-sm text-indigo-600 hover:text-indigo-700 underline">Open in email</a>
+                  <a
+                    href={feedbackMailtoHref}
+                    className="text-sm text-indigo-600 hover:text-indigo-700 underline"
+                  >
+                    Open in email
+                  </a>
                 </div>
                 {feedbackStatus && (
                   <p className="text-sm text-gray-700">{feedbackStatus}</p>
@@ -302,30 +376,91 @@ export default function ContactPage() {
           {/* Right column: uniform cards */}
           <div className="lg:col-span-1 flex flex-col gap-10">
             <div className="rounded-2xl border border-gray-200 bg-white shadow-sm p-8">
-              <h2 className="text-lg font-medium text-gray-900 mb-4">Connect with us</h2>
+              <h2 className="text-lg font-medium text-gray-900 mb-4">
+                Connect with us
+              </h2>
               <div className="grid grid-cols-2 gap-3">
-                <a href="https://www.instagram.com/aaruchudar" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 hover:bg-gray-50">
-                  <Image src="/globe.svg" width={18} height={18} alt="Instagram" /> <span>Instagram</span>
+                <a
+                  href="https://www.instagram.com/aaruchudar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 hover:bg-gray-50"
+                >
+                  <Image
+                    src="/globe.svg"
+                    width={18}
+                    height={18}
+                    alt="Instagram"
+                  />{" "}
+                  <span>Instagram</span>
                 </a>
-                <a href="https://www.linkedin.com/company/aaruchudar" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 hover:bg-gray-50">
-                  <Image src="/globe.svg" width={18} height={18} alt="LinkedIn" /> <span>LinkedIn</span>
+                <a
+                  href="https://www.linkedin.com/company/aaruchudar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 hover:bg-gray-50"
+                >
+                  <Image
+                    src="/globe.svg"
+                    width={18}
+                    height={18}
+                    alt="LinkedIn"
+                  />{" "}
+                  <span>LinkedIn</span>
                 </a>
-                <a href="https://twitter.com/aaruchudar" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 hover:bg-gray-50">
-                  <Image src="/globe.svg" width={18} height={18} alt="Twitter" /> <span>Twitter/X</span>
+                <a
+                  href="https://twitter.com/aaruchudar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 hover:bg-gray-50"
+                >
+                  <Image
+                    src="/globe.svg"
+                    width={18}
+                    height={18}
+                    alt="Twitter"
+                  />{" "}
+                  <span>Twitter/X</span>
                 </a>
-                <a href="https://www.facebook.com/aaruchudar" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 hover:bg-gray-50">
-                  <Image src="/globe.svg" width={18} height={18} alt="Facebook" /> <span>Facebook</span>
+                <a
+                  href="https://www.facebook.com/share/18Taiee4kW/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 hover:bg-gray-50"
+                >
+                  <Image
+                    src="/globe.svg"
+                    width={18}
+                    height={18}
+                    alt="Facebook"
+                  />{" "}
+                  <span>Facebook</span>
                 </a>
-                <a href="https://www.youtube.com/@aaruchudar" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 hover:bg-gray-50 col-span-2">
-                  <Image src="/globe.svg" width={18} height={18} alt="YouTube" /> <span>YouTube</span>
+                <a
+                  href="https://www.youtube.com/@aaruchudar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 hover:bg-gray-50 col-span-2"
+                >
+                  <Image
+                    src="/globe.svg"
+                    width={18}
+                    height={18}
+                    alt="YouTube"
+                  />{" "}
+                  <span>YouTube</span>
                 </a>
               </div>
             </div>
             <div className="grid grid-cols-1 gap-8">
               <div className="rounded-2xl border border-gray-200 bg-white shadow-sm p-8 min-h-[160px] flex flex-col justify-center">
                 <Image src="/globe.svg" width={24} height={24} alt="Location" />
-                <div className="mt-2 font-medium text-gray-900">Chennai, India</div>
-                <p className="text-sm text-gray-600">Serving clients worldwide</p>
+                <div className="mt-2 font-medium text-gray-900">
+                  Chennai, India
+                </div>
+                <p className="text-sm text-gray-600">
+                  Serving clients worldwide
+                </p>
               </div>
               <div className="rounded-2xl border border-gray-200 bg-white shadow-sm p-8 min-h-[160px] flex flex-col justify-center">
                 <Image src="/file.svg" width={24} height={24} alt="Hours" />
@@ -334,7 +469,9 @@ export default function ContactPage() {
               </div>
             </div>
             <div className="rounded-2xl border border-gray-200 bg-white shadow-sm p-8">
-              <h2 className="text-lg font-medium text-gray-900 mb-3">Our location</h2>
+              <h2 className="text-lg font-medium text-gray-900 mb-3">
+                Our location
+              </h2>
               <div className="aspect-video w-full overflow-hidden rounded-lg border border-gray-200">
                 <iframe
                   title="Google Map"
@@ -343,7 +480,7 @@ export default function ContactPage() {
                   className="h-full w-full"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.879620064667!2d80.270718!3d13.082680!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265e4f0f0f0f0%3A0x0!2sChennai!5e0!3m2!1sen!2sin!4v1700000000000"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3889.476!2d79.5410412!3d12.6712242!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52d739280f5ed5%3A0x26df39b903ba0f9!2sAaruchudar!5e0!3m2!1sen!2sin!4v1737260000000"
                 ></iframe>
               </div>
             </div>

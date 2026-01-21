@@ -12,7 +12,7 @@ const ProgramCard = ({ data }: { data: any }) => (
     {/* Content: tighter paddings & smaller typography */}
     <div className="p-3 flex flex-col flex-1">
       <div className="flex items-center gap-2 mb-2">
-        <img src={data.icon} className="w-6 h-6 opacity-90" />
+        <img src={data.icon} alt={data.title} className="w-6 h-6 opacity-90" />
         <h3 className="text-sm font-semibold text-slate-900 tracking-tight">{data.title}</h3>
       </div>
       <p className="text-[11px] text-slate-600 leading-relaxed mb-2 flex-grow">{data.description}</p>

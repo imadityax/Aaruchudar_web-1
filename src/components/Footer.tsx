@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import styles from "./Footer.module.css";
 
+
 const Footer = () => {
   const [email, setEmail] = useState("");
 
@@ -79,7 +80,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/neuro-tech-suite" className={styles.link}>
+                <Link href="/neuro" className={styles.link}>
                   Neuro Tech Suite
                 </Link>
               </li>
@@ -110,7 +111,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/franchise1" className={styles.link}>
+                <Link href="/franchise" className={styles.link}>
                   Franchise
                 </Link>
               </li>
@@ -145,7 +146,7 @@ const Footer = () => {
             <Link href="/privacy" className={styles.link}>
               Privacy Policy
             </Link>
-            <Link href="/terms" className={styles.link}>
+            <Link href="/contact" className={styles.link}>
               Terms of Service
             </Link>
           </div>
