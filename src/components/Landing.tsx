@@ -120,31 +120,7 @@ export default function Landing() {
 
 
       {/* ================= TOP SCHOLARSHIP BANNER ================= */}
-      <section className="w-full">
-        <Link href="/scholarship" className="block">
-          <div className="relative w-full h-[200px] sm:h-[260px] md:h-[320px] lg:h-[380px] bg-black">
-            <Image
-              src="/images/banner.jpg"
-              alt="Scholarship Application Banner"
-              fill
-              priority
-              className="object-contain"
-            />
-
-            {/* Optional soft overlay */}
-            <div className="absolute inset-0 bg-black/10" />
-
-            {/* CTA Button */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-white/90 backdrop-blur px-6 py-3 rounded-xl shadow-lg">
-                <p className="text-lg sm:text-xl font-bold text-slate-900">
-                  🎓 Start the Scholoarship Test
-                </p>
-              </div>
-            </div>
-          </div>
-        </Link>
-      </section>
+      
 
       {/* ================= HERO SECTION ================= */}
       <header className="relative isolate overflow-hidden bg-gradient-to-br from-slate-50 via-cyan-50 to-blue-50 text-slate-900">
@@ -251,12 +227,6 @@ export default function Landing() {
                 Explore Insights
               </Link>
 
-              <Link
-                href="/scholarship"
-                className="rounded-xl bg-indigo-600 text-white px-7 py-3 shadow-lg hover:bg-indigo-500 transition"
-              >
-                🎓 Apply for Scholarship
-              </Link>
             </div>
           </div>
         </div>

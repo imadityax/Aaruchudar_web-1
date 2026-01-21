@@ -197,7 +197,6 @@ export default function Hero() {
           >
             <Link href="/hi-courses" className="btn-primary-modern" aria-label="Browse courses">Start Training</Link>
             <Link href="/productpage" className="btn-secondary-modern" aria-label="View product details">Explore Platform</Link>
-            <Link href="/scholarship-application" className="btn-tertiary-modern" aria-label="View scholarship details">Scholarship</Link>
           </motion.div>
 
           <div className="trust-indicators"  aria-hidden>

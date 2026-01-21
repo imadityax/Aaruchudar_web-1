@@ -1,35 +1,26 @@
-"use client";
-
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import "../styles/reset.css";
-import Navbar from "../components/Navbar";
-import { usePathname } from "next/navigation";
+import ClientLayout from "./layout.client";
+
+export const metadata: Metadata = {
+  title: {
+    default: "Aaruchudar | Human Intelligence Platform",
+    template: "%s | Aaruchudar",
+  },
+  description:
+    "Aaruchudar is a human intelligence research and training platform focused on cognitive health and mental agility.",
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-  const pathname = usePathname();
-  const isQuizPage = pathname === "/quiz";
-  const isFranchisePage = pathname?.startsWith("/franchise1");
-
+}) {
   return (
-    <html lang="en" suppressHydrationWarning className="dark">
-      <head>
-        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
-        <link rel="icon" href="/logo2.png" type="image/png" />
-      </head>
-      <body
-        className={`antialiased`}
-        suppressHydrationWarning
-      >
-        {!isQuizPage && !isFranchisePage && <Navbar />}
-        <main className={`${!isQuizPage ? '' : ''} min-h-screen safe-bottom pb-16 md:pb-0`} aria-label="Page content">
-          {children}
-        </main>
+    <html lang="en" className="dark">
+      <body className="antialiased">
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

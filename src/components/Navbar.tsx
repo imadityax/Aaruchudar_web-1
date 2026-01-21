@@ -32,7 +32,6 @@ function Navbar() {
 		{ id: 'blog', label: 'Blog', href: '/blog' },
 		{ id: 'research', label: 'Research', href: '/research' },
 		{ id: 'quiz', label: 'Quiz', href: '/quiz' },
-		{ id: 'scholarship', label: 'Scholarship Test', href: '/scholarship' },
 		{ id: 'contact', label: 'Contact', href: '/contact' },
 		{ id: 'product', label: 'Product', href: '/productpage' },
 		{ id: 'franchise', label: 'Franchise', href: '/franchise' },
