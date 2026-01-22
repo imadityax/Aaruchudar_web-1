@@ -1,17 +1,25 @@
 import { Metadata } from "next";
-import BlogPage from "./BlogPage";
+import BlogPages from "./BlogPage";
 
 export const metadata: Metadata = {
-  title: "Human Intelligence & Neuroscience Blog | Aaruchudar",
+  title:
+    "Human Intelligence & Neuroscience Blog | Brain Performance Insights",
   description:
-    "Explore Aaruchudar’s blog on human intelligence, neuroscience, meditation, cognitive performance, Neuro Band, and Neuro Lens technologies.",
-  openGraph: {
-    title: "Human Intelligence & Neuroscience Blog | Aaruchudar",
-    description:
-      "Insights on neuroscience, psychology, meditation, and cognitive performance to enhance human intelligence.",
-    type: "website",
-  },
+    "Read Aaruchudar’s blog on Human Intelligence, neuroscience, meditation, Neuro Band, Neuro Lens and cognitive performance improvement.",
+  keywords: [
+    //Primary
+    "Human Intelligence Blog",
+
+    //Secondary
+    "Neuroscience Blog",
+    "Brain Performance Insights",
+    "Cognitive Science Articles",
+    "Neuro Band Research",
+    "Neuro Lens Technology",
+    "Aaruchudar Blog",
+  ],
 };
+
 
 export default function Page() {
   return (
@@ -29,7 +37,7 @@ export default function Page() {
         clarity using modern science and technology.
       </p>
 
-      <BlogPage/>
+      <BlogPages />
     </>
   );
 }

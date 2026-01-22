@@ -5,9 +5,9 @@ import HomeClient from "./home.client";
 
 export const metadata: Metadata = {
   title:
-    "Aaruchudar Consultancy | Human Intelligence Training with Neuro Band & Neuro Lens",
+    "Aaruchudar | Human Intelligence Training & Cognitive Development",
   description:
-    "Aaruchudar Consultancy delivers Human Intelligence development using Neuro Band and Neuro Lens technologies. Neuroscience-based cognitive training to improve focus, memory, attention, productivity and brain performance.",
+    "Aaruchudar delivers Human Intelligence development using Neuro Band and Neuro Lens technologies. Neuroscience-based cognitive training to improve focus, memory, attention, productivity and brain performance.",
   keywords: [
     //Primary
     "Human Intelligence Training",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "Neuroscience Based Learning",
     "Neuro Band",
     "Neuro Lens",
-    "Aaruchudar Consultancy",
+    "Aaruchudar ",
   ],
 };
 

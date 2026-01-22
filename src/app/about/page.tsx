@@ -3,9 +3,9 @@ import AboutPage from "./AboutPage";
 
 export const metadata: Metadata = {
   title:
-    "About Aaruchudar Consultancy | Human Intelligence Research & Cognitive Training",
+    "About Aaruchudar | Human Intelligence Research & Cognitive Training",
   description:
-    "Aaruchudar Consultancy is a human intelligence research and training organisation focused on cognitive health, mental agility, neuroscience-based learning, and brain performance development.",
+    "Aaruchudar is a human intelligence research and training organisation focused on cognitive health, mental agility, neuroscience-based learning, and brain performance development.",
   keywords: [
     //Primary
     "Human Intelligence Research Organization",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "Neuroscience Based Education",
     "Brain Performance Coaching",
     "Human Intelligence Experts",
-    "Aaruchudar Consultancy",
+    "Aaruchudar Pvt Ltd",
   ],
 };
 
@@ -23,12 +23,12 @@ export default function Page() {
   return (
     <>
       <h1 className="sr-only">
-        About Aaruchudar Consultancy – Human Intelligence & Neuroscience Experts
+        About Aaruchudar – Human Intelligence & Neuroscience Experts
       </h1>
 
       <section className="sr-only">
         <p>
-          Aaruchudar Consultancy is a neuroscience-driven organisation
+          Aaruchudar is a neuroscience-driven organisation
           specialising in Human Intelligence research, cognitive training, and
           brain performance systems. The organisation integrates psychology,
           neuroscience, and technology to build measurable mental agility,
