@@ -24,19 +24,18 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <h1 className="sr-only">
-        Human Intelligence & Neuroscience Blog by Aaruchudar
+      {/* Main SEO Heading */}
+      <h1 className="text-3xl font-semibold mb-4">
+        Human Intelligence & Neuroscience Blog
       </h1>
 
-      <section className="sr-only">
-        <p>
-          Aaruchudar’s blog covers Human Intelligence, neuroscience, meditation,
-          cognitive performance, Neuro Band, and Neuro Lens technologies. These
-          articles explain how the brain learns, adapts, and improves focus,
-          memory, emotional intelligence, and mental clarity through
-          science-backed methods.
-        </p>
-      </section>
+      {/* Visible SEO intro paragraph */}
+      <p className="text-gray-600 max-w-3xl mb-8">
+        Explore research-backed insights on human intelligence, neuroscience,
+        psychology, meditation, and cognitive performance. Aaruchudar’s blog
+        focuses on improving focus, memory, emotional intelligence, and mental
+        clarity using modern science and technology.
+      </p>
 
       <BlogPages />
     </>
