@@ -30,7 +30,7 @@ export default function Page() {
       </h1>
 
       {/* Visible SEO intro paragraph */}
-      <p className="text-gray-600 max-w-3xl mb-8">
+      <p className="text-gray-600 max-w-3xl mb-8 sr-only">
         Explore research-backed insights on human intelligence, neuroscience,
         psychology, meditation, and cognitive performance. Aaruchudar’s blog
         focuses on improving focus, memory, emotional intelligence, and mental
