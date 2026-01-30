@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "../styles/reset.css";
 import ClientLayout from "./layout.client";
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: {
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className="antialiased">
         <ClientLayout>{children}</ClientLayout>
+        <Analytics/>
       </body>
     </html>
   );
