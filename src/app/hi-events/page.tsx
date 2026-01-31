@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   keywords: [
     //Primary
     "Human Intelligence Events",
+    "Human Intelligence Event",
 
     //Secondary
     "Neuroscience Webinars",
@@ -15,6 +16,11 @@ export const metadata: Metadata = {
     "Brain Performance Talks",
     "Psychology Workshops",
     "Aaruchudar Events",
+    "Neuroscience Webinar",
+    "Cognitive Development Event",
+    "Brain Performance Talk",
+    "Psychology Workshop",
+    "Aaruchudar Event",
   ],
 };
 

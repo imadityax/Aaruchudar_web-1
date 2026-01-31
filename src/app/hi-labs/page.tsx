@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   keywords: [
     //Primary
     "Human Intelligence Labs",
+     "Human Intelligence Lab",
 
     //Secondary
     "Cognitive Training Labs",
@@ -16,6 +17,10 @@ export const metadata: Metadata = {
     "Neuroscience Experiments",
     "Mental Agility Training",
     "Aaruchudar Labs",
+    "Cognitive Training Lab",
+    "Brain Skill Development Lab",
+    "Neuroscience Experiment",
+    "Aaruchudar Lab",
   ],
 };
 

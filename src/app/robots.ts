@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/login', '/register'],
+      disallow: ['/login', '/register', '/api'],
     },
     sitemap: 'https://www.aaruchudar.com/sitemap.xml',
   };
