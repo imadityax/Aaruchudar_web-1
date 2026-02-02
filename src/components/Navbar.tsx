@@ -36,6 +36,7 @@ function Navbar() {
 		{ id: 'product', label: 'Product', href: '/productpage' },
 		{ id: 'franchise', label: 'Franchise', href: '/franchise' },
 		{ id: 'internship', label: 'Internship', href: '/internship' },
+		{ id: 'careers', label: 'Careers', href: '/careers' },
 	];
 
 	return (
