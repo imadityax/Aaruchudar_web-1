@@ -31,6 +31,8 @@ export default function ApplicationForm({ roles, locations }: ApplicationFormPro
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [fileInputKey, setFileInputKey] = useState(0);
 
   const roleOptions = useMemo(() => roles, [roles]);
   const locationOptions = useMemo(() => locations, [locations]);
@@ -62,10 +64,44 @@ export default function ApplicationForm({ roles, locations }: ApplicationFormPro
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSuccess(null);
+    setSubmitError(null);
     if (!validate()) return;
     setSubmitting(true);
     try {
-      await new Promise((res) => setTimeout(res, 1200));
+      const formData = new FormData();
+
+      // Append values even if empty string; only skip null/undefined
+      for (const [key, value] of Object.entries(form) as [keyof FormState, FormState[keyof FormState]][]) {
+        if (value !== null && value !== undefined) {
+          if (key === "resume" && value instanceof File) {
+            formData.append("resume", value);
+          } else {
+            formData.append(key as string, String(value));
+          }
+        }
+      }
+
+      const res = await fetch("/api/apply", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const contentType = res.headers.get("content-type") || "";
+        let serverMessage = "";
+        try {
+          if (contentType.includes("application/json")) {
+            const data = await res.json();
+            serverMessage = data?.message ?? JSON.stringify(data);
+          } else {
+            serverMessage = await res.text();
+          }
+        } catch (err) {
+          // ignore parse errors
+        }
+        throw new Error(serverMessage || `Request failed with status ${res.status}`);
+      }
+
       setSuccess("Application submitted successfully. We will contact you soon.");
       setForm((prev) => ({
         ...prev,
@@ -78,6 +114,14 @@ export default function ApplicationForm({ roles, locations }: ApplicationFormPro
         portfolio: "",
         reason: "",
       }));
+
+      // visually reset file input by remounting it
+      setFileInputKey((k) => k + 1);
+    } catch (err: any) {
+      console.error("Application submission error:", err);
+      const message = err?.message || "Failed to submit application. Please try again.";
+      // Friendly message for users
+      setSubmitError(message || "Failed to submit application. Please try again.");
     } finally {
       setSubmitting(false);
     }
@@ -165,6 +209,7 @@ export default function ApplicationForm({ roles, locations }: ApplicationFormPro
         <div className="md:col-span-2">
           <label htmlFor="resume" className="block text-sm font-medium text-slate-800">Resume (PDF only)</label>
           <input
+            key={fileInputKey}
             id="resume"
             name="resume"
             type="file"
@@ -217,6 +262,7 @@ export default function ApplicationForm({ roles, locations }: ApplicationFormPro
           {submitting ? "Submitting..." : "Submit Application"}
         </button>
         {success && <span className="text-sm text-emerald-700">{success}</span>}
+        {submitError && <span className="text-sm text-red-600">{submitError}</span>}
       </div>
     </form>
   );
