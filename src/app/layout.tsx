@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "../styles/reset.css";
-import ClientLayout from "./layout.client";
+import ClientLayout from "./layout.client";uu
 import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
