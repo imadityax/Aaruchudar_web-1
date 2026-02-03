@@ -71,3 +71,22 @@ model ExamAttempt {
   score     Int
   createdAt DateTime @default(now())
 }
+
+model WebinarTrainingRequest {
+  id            String   @id @default(cuid())
+  fullName      String
+  email         String
+  phone         String
+  organization  String
+  role          String?
+  requestType   String
+  topic         String
+  audienceType  String
+  mode          String
+  audienceSize  Int?
+  preferredDate String?
+  location      String?
+  duration      String
+  requirements  String?
+  createdAt     DateTime @default(now())
+}
