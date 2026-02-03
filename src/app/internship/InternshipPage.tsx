@@ -132,7 +132,7 @@ export default function InternshipPage() {
             href="/quiz"
             className="rounded-xl border border-slate-300 bg-white px-8 py-4 font-semibold shadow hover:bg-slate-50 transition"
           >
-            Take Free Assessment
+            Take Free Assesment
           </Link>
         </div>
       </section>
