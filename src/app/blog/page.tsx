@@ -2,8 +2,7 @@ import { Metadata } from "next";
 import BlogPage from "./BlogPage";
 
 export const metadata: Metadata = {
-  title:
-    "Human Intelligence & Neuroscience Blog | Brain Performance Insights",
+  title: "Human Intelligence & Neuroscience Blog | Brain Performance Insights",
   description:
     "Read Aaruchudar’s blog on Human Intelligence, neuroscience, meditation, Neuro Band, Neuro Lens and cognitive performance improvement.",
   keywords: [
@@ -20,12 +19,11 @@ export const metadata: Metadata = {
   ],
 };
 
-
 export default function Page() {
   return (
     <>
       {/* Main SEO Heading */}
-      <h1 className="text-3xl font-semibold mb-4">
+      <h1 className=" sr-only text-3xl font-semibold mb-4">
         Human Intelligence & Neuroscience Blog
       </h1>
 

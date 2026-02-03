@@ -22,20 +22,6 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <h1 className="sr-only">
-        Human Intelligence Workshops for Cognitive & Brain Performance Training
-      </h1>
-
-      <section className="sr-only">
-        <p>
-          Aaruchudar’s Human Intelligence workshops deliver practical, immersive
-          training programs focused on cognitive development, emotional
-          intelligence, decision-making, and innovation. These
-          neuroscience-based workshops help participants strengthen focus,
-          clarity, and mental performance.
-        </p>
-      </section>
-
       <HIWorkshopPage />
     </>
   );

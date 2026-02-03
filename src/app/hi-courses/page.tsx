@@ -6,9 +6,11 @@ export const metadata: Metadata = {
     "Human Intelligence Courses | Cognitive & Neuroscience Training – Aaruchudar",
   description:
     "Explore Aaruchudar’s Human Intelligence courses designed to enhance cognitive skills, focus, memory and problem-solving using neuroscience-based learning programs.",
+    
   keywords: [
     //Primary
     "Human Intelligence Courses",
+    "Human Intelligence Course",
 
     //Secondary
     "Cognitive Training Courses",
@@ -16,6 +18,10 @@ export const metadata: Metadata = {
     "Neuroscience Learning Courses",
     "Focus and Memory Training",
     "Aaruchudar Courses",
+    "Cognitive Training Course",
+    "Brain Development Program",
+    "Neuroscience Learning Course",
+    "Aaruchudar Course",
   ],
 };
 
