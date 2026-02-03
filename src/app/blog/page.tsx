@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import BlogPages from "./BlogPage";
+import BlogPage from "./BlogPage";
 
 export const metadata: Metadata = {
   title: "Human Intelligence & Neuroscience Blog | Brain Performance Insights",
@@ -35,7 +35,7 @@ export default function Page() {
         clarity using modern science and technology.
       </p>
 
-      <BlogPages />
+      <BlogPage />
     </>
   );
 }

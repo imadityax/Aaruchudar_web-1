@@ -43,7 +43,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 w-full border-b border-gray-200 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:border-gray-800 dark:bg-gray-900/80 dark:supports-[backdrop-filter]:bg-gray-900/60">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         {/* LEFT */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <button
             onClick={toggleMenu}
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
@@ -77,6 +77,9 @@ export default function Navbar() {
 
           <Link href="/" className="text-base font-semibold text-gray-900 dark:text-gray-100" onClick={closeMenu}>
             Home
+          </Link>
+          <Link href="/careers" className="hidden md:inline-block text-base font-semibold text-gray-900 hover:text-indigo-700 dark:text-gray-100 dark:hover:text-indigo-300" onClick={closeMenu}>
+            Careers
           </Link>
         </div>
 
@@ -116,6 +119,9 @@ export default function Navbar() {
           </Link>
           <Link href="/contact" className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800" onClick={closeMenu}>
             Contact
+          </Link>
+          <Link href="/careers" className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800" onClick={closeMenu}>
+            Careers
           </Link>
         </div>
       </div>
