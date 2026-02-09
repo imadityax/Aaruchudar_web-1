@@ -953,9 +953,9 @@ export default function AaruchudarFranchise() {
             wellness and human intelligence sector
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-white text-gray-900 font-bold rounded-xl hover:bg-gray-100 transition-all hover:scale-105">
+            <a href="/assets/Franchise.pdf" download className="px-8 py-4 bg-white text-gray-900 font-bold rounded-xl hover:bg-gray-100 transition-all hover:scale-105">
               Download Franchise Brochure
-            </button>
+            </a>
             <button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-xl border border-cyan-400/30 hover:shadow-2xl transition-all hover:scale-105">
               Schedule a Discovery Call
             </button>

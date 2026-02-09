@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Navbar from "../components/Navbar";
+import Navbar from "./components/Navbar";
 
 export default function ClientLayout({
   children,
@@ -14,7 +14,8 @@ export default function ClientLayout({
 
   return (
     <>
-      {!isQuizPage && !isFranchisePage && <Navbar />}
+      {/* Render Navbar globally; skip on specific pages if desired */}
+      {!(isQuizPage || isFranchisePage) && <Navbar />}
       <main
         className="min-h-screen safe-bottom pb-16 md:pb-0"
         aria-label="Page content"

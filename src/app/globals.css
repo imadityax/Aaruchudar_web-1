@@ -1504,3 +1504,112 @@ h1, h2, h3, h4, h5, h6 {
 a, a:visited, a:hover, a:focus, a:active {
   text-decoration: none !important;
 }
+
+/* === Navbar Tab Styles === */
+.nav-tab {
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+  color: #cbd5e1; /* default muted gray */
+}
+
+/* Base underline (hidden initially, animates on hover) */
+.nav-tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 0%;
+  background: #ffffff;
+  transition: width 220ms ease, transform 220ms ease;
+  transform-origin: left;
+}
+
+/* Hover animate underline left-to-right */
+.nav-tab:hover::after,
+.nav-tab:focus-visible::after {
+  width: 100%;
+}
+
+/* Muted text for inactive; explicit class overrides will set color */
+.tab-underline {
+  color: #9ca3af; /* gray-400 */
+}
+
+/* Active: keep underline visible, color white */
+.tab-underline-active {
+  color: #ffffff;
+}
+.tab-underline-active::after {
+  width: 100%;
+}
+
+/* Dropdown Panel */
+.dropdown-panel {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 6px); /* directly below underline */
+  min-width: 220px;
+  padding: 0.25rem;
+  border-radius: 0.75rem; /* 12px */
+  background: rgba(15, 23, 42, 0.9); /* dark */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  z-index: 60;
+  opacity: 0;
+  transform: translateY(4px);
+  animation: dropdownIn 180ms ease forwards;
+}
+
+@keyframes dropdownIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-item {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  color: #e5e7eb;
+  border-radius: 0.5rem;
+}
+.dropdown-item:hover,
+.dropdown-item:focus-visible {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+
+/* CTA buttons on right */
+.cta-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.35);
+  transition: transform 200ms ease, box-shadow 200ms ease, opacity 200ms ease;
+}
+.cta-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(14, 165, 233, 0.45);
+}
+
+.mobile-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  color: #0b1226;
+  background: #ffffff;
+}
+
+/* Reduce header height on scroll handled via classes from component */
