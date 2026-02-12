@@ -74,7 +74,10 @@ export async function POST(req: Request) {
       "duration",
     ];
 
-    const missing = required.filter((k) => !data[k]);
+    const missing = required.filter(
+      (k) => data[k] === undefined || data[k] === null || data[k] === ""
+    );
+
     if (missing.length) {
       return NextResponse.json(
         { ok: false, error: `Missing fields: ${missing.join(", ")}` },
@@ -100,7 +103,11 @@ export async function POST(req: Request) {
       topic: String(data.topic),
       audienceType: String(data.audienceType),
       mode: String(data.mode),
-      audienceSize: data.audienceSize ? Number(data.audienceSize) : null,
+      audienceSize:
+        data.audienceSize !== undefined && data.audienceSize !== ""
+          ? Number(data.audienceSize)
+          : null,
+
       preferredDate: data.preferredDate ?? null,
       location: data.location ?? null,
       duration: String(data.duration),
