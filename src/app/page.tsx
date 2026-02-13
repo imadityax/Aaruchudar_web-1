@@ -5,20 +5,33 @@ import HomeClient from "./home.client";
 
 export const metadata: Metadata = {
   title:
-    "Aaruchudar | Human Intelligence Training & Cognitive Development",
-  description:
-    "Aaruchudar delivers Human Intelligence development using Neuro Band and Neuro Lens technologies. Neuroscience-based cognitive training to improve focus, memory, attention, productivity and brain performance.",
-  keywords: [
-    //Primary
-    "Human Intelligence Training",
+    "Aaruchudar | Human Intelligence, Cognitive Training & Neuroscience Platform",
 
-    //Secondary
+  description:
+    "Aaruchudar is a neuroscience-driven Human Intelligence and cognitive training platform. Using Neuro Band and Neuro Lens technologies, we deliver brain performance training to improve focus, memory, attention, productivity, and real-world intelligence for students and professionals.",
+
+  keywords: [
+    // Core Entity
+    "Human Intelligence",
+    "Human Intelligence Training",
+    "Human Intelligence Development",
+
+    // Cognitive & Brain
+    "Cognitive Training",
     "Cognitive Development",
+    "Brain Performance",
     "Brain Performance Training",
-    "Neuroscience Based Learning",
-    "Neuro Band",
-    "Neuro Lens",
-    "Aaruchudar ",
+    "Brain Systems and Learning",
+
+    // Neuroscience
+    "Neuroscience Based Training",
+    "Applied Neuroscience",
+    "Neuroscience Learning Methods",
+    "Brain Science Training",
+    
+    // Brand
+    "Aaruchudar",
+    "Aaruchudar Pvt. Ltd.",
   ],
 };
 
@@ -27,21 +40,29 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="overflow-hidden">
-      {/* SEO H1 – invisible */}
+      {/* SEO H1 – invisible but indexed */}
       <h1 className="sr-only">
-        Human Intelligence Training & Cognitive Development Platform –
-        Aaruchudar
+        Human Intelligence, Cognitive Training & Neuroscience-Based Brain
+        Performance Platform
       </h1>
 
-      {/* SEO intro */}
+      {/* SEO Intro – Topical Authority Block */}
       <section className="sr-only">
         <p>
-          Aaruchudar is a Human Intelligence training and research platform
-          focused on cognitive development, mental agility, neuroscience-based
-          learning, and brain performance improvement. Using Neuro Band and
-          Neuro Lens technologies, Aaruchudar delivers labs, courses, workshops,
-          and events designed to enhance focus, memory, decision-making, and
-          real-world intelligence.
+          Aaruchudar is a Human Intelligence and cognitive training platform
+          focused on improving how the brain learns, adapts, and performs.
+          Our programs combine cognitive development, applied neuroscience,
+          and brain science principles to strengthen focus, attention, memory,
+          decision-making, and productivity.
+        </p>
+
+        <p>
+          Using Neuro Band and Neuro Lens technologies, Aaruchudar measures
+          and enhances brain performance through structured training systems,
+          neuroscience-based labs, courses, workshops, and real-world learning
+          experiences. These Human Intelligence training programs are designed
+          for students, graduates, professionals, and organisations seeking
+          measurable cognitive and mental performance growth.
         </p>
       </section>
 

@@ -49,18 +49,24 @@ function Navbar() {
             <Image src="/logo2.png" alt="Logo" width={36} height={36} />
             <span className="text-white font-bold">Aaruchudar</span>
           </Link>
+          
+          
+          <nav className="flex items-center gap-5 flex-1">
+            {navItems.map((item) => (
+              <Link
+                key={item.id}
+                href={item.href}
+                onClick={() => setActiveTab(item.id)}
+                className={`text-sm font-medium ${
+                  activeTab === item.id ? "text-white" : "text-white/80"
+                } hover:text-white`}
+              >
+                {item.label}
 
-	const navItems = [
-		{ id: 'home', label: 'Home', href: '/' },
-		{ id: 'blog', label: 'Blog', href: '/blog' },
-		{ id: 'research', label: 'Research', href: '/research' },
-		{ id: 'quiz', label: 'Quiz', href: '/quiz' },
-		{ id: 'contact', label: 'Contact', href: '/contact' },
-		{ id: 'product', label: 'Product', href: '/productpage' },
-		{ id: 'franchise', label: 'Franchise', href: '/franchise' },
-		{ id: 'internship', label: 'Internship', href: '/internship' },
-		{ id: 'careers', label: 'Careers', href: '/careers' },
-	];
+          </Link>
+            ))}
+          </nav>
+
 
           <Link
             href="/login"
