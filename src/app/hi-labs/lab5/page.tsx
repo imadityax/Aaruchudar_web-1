@@ -83,7 +83,18 @@ export default function Lab5Page() {
                 <p>{labData.title}</p>
               </div>
             </div>
-            <Link href="/" className={styles.homeButton}>Home</Link>
+            <div className={styles.headerActions}>
+              <a
+                href="/Lab-documents/Lab-%2005.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.sampleButton}
+                aria-label="Open sample dashboard PDF for Lab 5"
+              >
+                Sample Dashboard
+              </a>
+              <Link href="/" className={styles.homeButton}>Home</Link>
+            </div>
           </div>
         </header>
 

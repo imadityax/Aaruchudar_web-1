@@ -70,6 +70,18 @@ const HILabs = () => {
     router.push(`/hi-labs/lab${labId}`);
   };
 
+  // Map PDFs to lab IDs from public/Lab-documents
+  const samplePdfMap: Record<number, string> = {
+    1: '/Lab-documents/Lab%20(1).pdf',
+    2: '/Lab-documents/LAB-02%20(1).pdf',
+    3: '/Lab-documents/LAB%20-03%20(1).pdf',
+    4: '/Lab-documents/LAB-04.pdf',
+    5: '/Lab-documents/Lab-%2005.pdf',
+    6: '/Lab-documents/LAB-06.pdf',
+    7: '/Lab-documents/demo.pdf',
+    8: '/Lab-documents/LAB-08.pdf',
+  };
+
   return (
     <div className={styles.hiLabsContainer}>
       <div className={styles.labsHeader}>
@@ -107,9 +119,20 @@ const HILabs = () => {
                 </div>
               </div>
 
-              <button className={styles.exploreButton}>
-                Explore Lab {lab.id}
-              </button>
+              <div className={styles.cardActions}>
+                <button className={styles.exploreButton} onClick={(e)=>{e.stopPropagation(); handleLabClick(lab.id);}}>
+                  Explore Lab {lab.id}
+                </button>
+                <a
+                  href={samplePdfMap[lab.id] ?? '/Lab-documents/demo.pdf'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${styles.exploreButton} ${styles.sampleButton}`}
+                  onClick={(e)=>e.stopPropagation()}
+                >
+                  Sample Dashboard ⬇️
+                </a>
+              </div>
             </div>
           </div>
         ))}

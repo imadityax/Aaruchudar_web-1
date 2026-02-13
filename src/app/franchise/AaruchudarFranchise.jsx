@@ -72,15 +72,15 @@ export default function AaruchudarFranchise() {
       id: "own-a-lab",
       icon: Brain,
       iconColor: "text-cyan-600",
-      title: "OWN A LAB",
-      subtitle: "Launch a Cognitive Training center",
+      title: "OWN A COGNITIVE TRAINING LAB",
+      subtitle: "Launch a Cognitive Training Center with full support",
       description:
-        "Build your own centre using our structured neuroscience-based lab systems and full operational support.",
+        "A comprehensive franchise opportunity to establish and run a successful cognitive training center with complete systems and support.",
       options: [
-        "Training & Certification",
-        "Brand & Marketing Support",
-        "Operational Playbooks",
-        "Ongoing Framework Updates",
+        "₹85L - ₹1.8Cr Avg Annual Revenue",
+        "35-45% Operating Margin",
+        "6-8 weeks Training Duration",
+        "9.8/10 Support Score",
       ],
       color: "from-cyan-500 to-blue-600",
       gradientBg: "bg-gradient-to-br from-cyan-50 to-blue-50",
@@ -91,14 +91,14 @@ export default function AaruchudarFranchise() {
       icon: Users,
       iconColor: "text-blue-600",
       title: "BECOME AN INVESTOR",
-      subtitle: "Integrate Aaruchudar Into Your Ecosystem",
+      subtitle: "Integrate Aaruchudar through a revenue-sharing partnership",
       description:
-        "Embed our cognitive frameworks into your platform through a revenue-sharing partnership.",
+        "Integrate neuroscience-based human intelligence labs into your ecosystem with comprehensive support.",
       options: [
-        "Partner Training",
-        "Co-Branded Assets",
-        "Integration Guidelines",
-        "Continuous Updates",
+        "4-6 weeks Integration Time",
+        "30-50% Revenue Share",
+        "24/7 Platform Support",
+        "94% Client Satisfaction",
       ],
       color: "from-blue-500 to-indigo-600",
       gradientBg: "bg-gradient-to-br from-blue-50 to-indigo-50",
@@ -109,14 +109,14 @@ export default function AaruchudarFranchise() {
       icon: Globe,
       iconColor: "text-indigo-600",
       title: "GLOBAL EXPANSION",
-      subtitle: "Master Licensing for New Territories",
+      subtitle: "Lead new territories with exclusive master licensing",
       description:
-        "Lead expansion into new regions with exclusive territorial rights.",
+        "Establish and scale our neuroscience-based human intelligence labs in new regions through a master licensing partnership.",
       options: [
-        "Advanced Certification",
-        "Territory Launch Support",
-        "Scalable Operating Systems",
-        "Priority IP Access",
+        "5-10 years Market Exclusivity",
+        "Dedicated Team Territory Support",
+        "3-6 months Launch Timeline",
+        "91% Success Rate",
       ],
       color: "from-indigo-500 to-purple-600",
       gradientBg: "bg-gradient-to-br from-indigo-50 to-purple-50",
@@ -140,7 +140,8 @@ export default function AaruchudarFranchise() {
               </div>
               <div>
                 <span className="text-xl font-bold bg-gradient-to-r from-cyan-700 to-blue-800 bg-clip-text text-transparent">
-                  AARUCHUDAR
+                  AARUCHUDAR PRIVATE LIMITED
+
                 </span>
                 <span className="text-xs text-gray-500 block">
                   Franchise Network
@@ -212,16 +213,14 @@ export default function AaruchudarFranchise() {
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-              <span className="block">Build a Legacy </span>
+              <span className="block">Build a Legacy</span>
               <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                 That Thinks Ahead
               </span>
             </h1>
 
             <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-              Partner with India’s leading cognitive wellness franchise. Create
-              measurable human impact while scaling a high-return, purpose-led
-              business powered by applied neuroscience..
+              Partner with India’s leading cognitive wellness franchise. Create measurable human impact while scaling a high-return, purpose-led business powered by applied neuroscience.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -319,15 +318,10 @@ export default function AaruchudarFranchise() {
               What We Mean by Human Intelligence
             </h3>
             <p className="text-gray-700 leading-relaxed text-lg">
-              Human Intelligence is the integrated capacity to think clearly,
-              feel consciously, understand one’s own thinking (metacognition),
-              decide wisely, and act purposefully.
+              Human Intelligence is the ability to think clearly, regulate emotions, understand one’s own thinking (metacognition), make wise decisions, and act with purpose.
               <br />
               <br />
-              Unlike traditional IQ-only models, Aaruchudar’s framework develops
-              cognitive, emotional, social, and metacognitive intelligence —
-              enabling individuals to perform better in learning, leadership,
-              relationships, and life decisions.
+              Aaruchudar develops cognitive, emotional, social, and metacognitive intelligence beyond traditional IQ models.
             </p>
           </div>
 
@@ -341,20 +335,16 @@ export default function AaruchudarFranchise() {
             </h4>
 
             <p className="text-gray-700 leading-relaxed text-lg">
-              Each Aaruchudar center delivers structured, neuroscience-backed
-              labs using a balanced mix of mental, emotional, physical,
-              reflective, and interactive activities.
+              Through structured, neuroscience-aligned labs and games combining mental, emotional, physical, and reflective activities.
               <br />
               <br />
-              These labs are designed to develop cognitive intelligence,
-              emotional intelligence, and metacognitive awareness the ability to
-              observe, regulate, and improve one’s own thinking and behavior.
+              These labs develop cognitive intelligence, emotional intelligence, and metacognitive awareness
             </p>
           </div>
 
           {/* Labs Grid */}
           <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            Human Intelligence Labs & Games
+            Core Human Intelligence Labs
           </h3>
           <br></br>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -365,25 +355,11 @@ export default function AaruchudarFranchise() {
                 ring: "ring-cyan-300",
                 border: "border-cyan-100",
                 cardBg: "bg-cyan-50",
-                title: "Cognitive & Brain Games (Mental Intelligence)",
+                title: "Cognitive & Brain Games – Focus, memory, reasoning",
                 content: (
                   <ul className="text-sm text-gray-700 space-y-2">
                     <li>
-                      <span className="font-semibold">Purpose:</span> Focus, memory,
-                      reasoning, problem-solving
-                    </li>
-                    <li>
-                      <span className="font-semibold">Activities:</span> Pattern
-                      recognition, logic puzzles, decoding games, working memory
-                      drills, speed accuracy tasks
-                    </li>
-                    <li>
-                      <span className="font-semibold">Brain Areas:</span> Prefrontal
-                      cortex, hippocampus, parietal lobes
-                    </li>
-                    <li>
-                      <span className="font-semibold">Impact:</span> Faster
-                      thinking, improved performance, clarity under pressure
+                      Focus, memory, reasoning, problem-solving
                     </li>
                   </ul>
                 ),
@@ -394,27 +370,11 @@ export default function AaruchudarFranchise() {
                 ring: "ring-blue-300",
                 border: "border-blue-100",
                 cardBg: "bg-blue-50",
-                title: "Mind, Emotional & Metacognitive Intelligence Labs",
+                title: "Emotional & Metacognitive Labs – Emotional regulation, self-awareness",
                 content: (
                   <ul className="text-sm text-gray-700 space-y-2">
                     <li>
-                      <span className="font-semibold">Purpose: </span>Emotional
-                      awareness, regulation, resilience, and self-monitoring of
-                      thoughts
-                    </li>
-                    <li>
-                      <span className="font-semibold">Activities: </span>Emotion
-                      awareness, trigger mapping, stress regulation, perspective
-                      shifting, metacognitive reflection, values-based games
-                    </li>
-                    <li>
-                      <span className="font-semibold">Brain Systems: </span>Limbic
-                      system, prefrontal emotional integration pathways
-                    </li>
-                    <li>
-                      <span className="font-semibold">Impact: </span>Emotional
-                      balance, reduced reactivity, improved self-control, stronger
-                      interpersonal intelligence
+                      Emotional regulation, resilience, self-monitoring of thoughts
                     </li>
                   </ul>
                 ),
@@ -425,21 +385,11 @@ export default function AaruchudarFranchise() {
                 ring: "ring-indigo-300",
                 border: "border-indigo-100",
                 cardBg: "bg-indigo-50",
-                title: "Physical–Cognitive Intelligence Games",
+                title: "Physical–Cognitive Games – Attention through movement",
                 content: (
                   <ul className="text-sm text-gray-700 space-y-2">
                     <li>
-                      <span className="font-semibold">Purpose: </span>Link movement
-                      with attention and thinking
-                    </li>
-                    <li>
-                      <span className="font-semibold">Activities: </span>
-                      Coordination games, reaction-time challenges, balance + focus
-                      drills, rhythm tasks, dual-task exercises
-                    </li>
-                    <li>
-                      <span className="font-semibold">Impact: </span>Higher
-                      engagement, improved alertness, better learning retention
+                      Link movement with attention and thinking
                     </li>
                   </ul>
                 ),
@@ -450,26 +400,11 @@ export default function AaruchudarFranchise() {
                 ring: "ring-purple-300",
                 border: "border-purple-100",
                 cardBg: "bg-purple-50",
-                title: "Decision & Clarity Intelligence Labs",
+                title: "Decision & Clarity Labs – Structured thinking, wise decisions",
                 content: (
                   <ul className="text-sm text-gray-700 space-y-2">
                     <li>
-                      <span className="font-semibold">Purpose: </span>Structured
-                      thinking and wise decision-making
-                    </li>
-                    <li>
-                      <span className="font-semibold">Activities: </span>Decision
-                      simulations, consequence mapping, bias identification, ethical
-                      dilemmas, clarity frameworks
-                    </li>
-                    <li>
-                      <span className="font-semibold">Brain Areas: </span>Executive
-                      function and planning networks
-                    </li>
-                    <li>
-                      <span className="font-semibold">Impact: </span>Better life and
-                      career decisions, reduced mental overload, stronger
-                      self-leadership
+                      Decision simulations, clarity frameworks, bias identification
                     </li>
                   </ul>
                 ),
@@ -480,23 +415,11 @@ export default function AaruchudarFranchise() {
                 ring: "ring-green-300",
                 border: "border-green-100",
                 cardBg: "bg-green-50",
-                title: "Social, Communication & Emotional Intelligence Activities",
+                title: "Social & Communication Labs – Teamwork, empathy, leadership",
                 content: (
                   <ul className="text-sm text-gray-700 space-y-2">
                     <li>
-                      <span className="font-semibold">Purpose: </span>Collaboration,
-                      empathy, listening, and expression
-                    </li>
-                    <li>
-                      <span className="font-semibold">Activities: </span>Group
-                      intelligence games, listening accuracy challenges,
-                      role-reversal labs, conflict-recovery simulations, team
-                      problem-solving
-                    </li>
-                    <li>
-                      <span className="font-semibold">Impact: </span>Leadership
-                      presence, emotional maturity, improved teamwork, social
-                      adaptability
+                      Group intelligence games, listening challenges, teamwork
                     </li>
                   </ul>
                 ),
@@ -507,25 +430,11 @@ export default function AaruchudarFranchise() {
                 ring: "ring-pink-300",
                 border: "border-pink-100",
                 cardBg: "bg-pink-50",
-                title: "Creativity & Adaptive Intelligence Labs",
+                title: "Creativity & Adaptive Labs – Innovation and flexible thinking",
                 content: (
                   <ul className="text-sm text-gray-700 space-y-2">
                     <li>
-                      <span className="font-semibold">Purpose: </span>Imagination,
-                      innovation, flexible thinking
-                    </li>
-                    <li>
-                      <span className="font-semibold">Activities: </span>
-                      Object-combination games, creative scenarios, constraint-based
-                      innovation, idea-stretching
-                    </li>
-                    <li>
-                      <span className="font-semibold">Brain Activation: </span>
-                      Creative networks, cross-hemispheric integration
-                    </li>
-                    <li>
-                      <span className="font-semibold">Impact: </span>Original
-                      thinking, innovation mindset, entrepreneurial intelligence
+                      Creative scenarios, constraint-based innovation, idea-stretching
                     </li>
                   </ul>
                 ),
@@ -566,9 +475,7 @@ export default function AaruchudarFranchise() {
             </span>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            This partnership model should be something that matches your vision
-            and the things you want to achieve with your investments. Choose a
-            partnership model that's right, for you and your investment goals.
+            Choose a partnership model aligned with your vision and investment goals.
           </p>
         </div>
 
@@ -953,9 +860,9 @@ export default function AaruchudarFranchise() {
             wellness and human intelligence sector
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-white text-gray-900 font-bold rounded-xl hover:bg-gray-100 transition-all hover:scale-105">
+            <a href="/assets/Franchise.pdf" download className="px-8 py-4 bg-white text-gray-900 font-bold rounded-xl hover:bg-gray-100 transition-all hover:scale-105">
               Download Franchise Brochure
-            </button>
+            </a>
             <button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-xl border border-cyan-400/30 hover:shadow-2xl transition-all hover:scale-105">
               Schedule a Discovery Call
             </button>

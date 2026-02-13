@@ -177,6 +177,34 @@ const JOBS = [
     ],
     benefits: ["Leadership role", "Travel support", "Growth opportunities"],
   },
+  // New Founder’s Office Role
+  {
+    title: "Personal Assistant & Founder’s Office Intern (Founder’s Office Role)",
+    type: "Full-time | In-office",
+    locations: ["Cheyyar", "Arcot", "Kanchipuram", "Vellore"],
+    package: "Open to discussion based on experience and prior exposure",
+    hours: "8 hours/day | 6 days/week",
+    roleSummary:
+      "Work closely with the Founder’s Office on strategy, operations, coordination, and execution, with direct exposure to leadership decision-making. Open positions: 3.",
+    responsibilities: [
+      "Assist the Founder with daily operations and planning",
+      "Coordinate meetings, follow-ups, and execution tracking",
+      "Support business and growth initiatives",
+      "Work cross-functionally with internal teams",
+    ],
+    mustHave: [
+      "MBA candidates / graduates preferred",
+      "Strong communication, organization, and execution skills",
+    ],
+    goodToHave: [
+      "Prior experience in unicorn or soon-to-be unicorn startups",
+    ],
+    benefits: [
+      "Direct exposure to leadership & decision-making",
+      "High-impact role with real ownership",
+      "Fast-paced learning environment",
+    ],
+  },
 ] as const;
 
 export default function CareersClient() {
@@ -237,7 +265,8 @@ export default function CareersClient() {
             <div className="relative z-10">
               <div className="flex items-center gap-3">
                 <img src="/logo2.png" alt="Aaruchudar Logo" className="h-9 w-9 rounded-md shadow-sm" />
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-white">Careers at Aaruchudar</h1>
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-white">Careers at AARUCHUDAR PRIVATE LIMITED
+                </h1>
               </div>
               <p className="mt-3 md:mt-4 text-base md:text-lg text-white">
                 At Aaruchudar, we build human intelligence through awareness, neuroscience, and real-life learning experiences.
@@ -389,7 +418,10 @@ export default function CareersClient() {
             <p className="mt-2 text-slate-800">Submit your application and we’ll get back to you.</p>
           </header>
           <ApplicationForm
-            roles={JOBS.map((j) => j.title)}
+            roles={[
+              "Personal Assistant & Founder’s Office Intern (Founder’s Office Role)",
+              ...JOBS.filter((j) => j.title !== "Personal Assistant & Founder’s Office Intern (Founder’s Office Role)").map((j) => j.title),
+            ]}
             locations={["Cheyyar", "Arcot", "Kanchipuram", "Vellore"]}
           />
         </div>

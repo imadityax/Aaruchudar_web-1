@@ -44,7 +44,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Column 1: Brand and Contact */}
           <div className="md:col-span-1">
-            <h3 className={styles.brand}>Aaruchudar</h3>
+            <h3 className={styles.brand}>AARUCHUDAR PRIVATE LIMITED
+            </h3>
             <p className="text-muted-foreground mb-4">
               Unlock your cognitive potential.
             </p>
@@ -140,7 +141,8 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
           <p>
-            &copy; {new Date().getFullYear()} Aaruchudar. All rights reserved.
+            &copy; {new Date().getFullYear()} AARUCHUDAR PRIVATE LIMITED
+            . All rights reserved.
           </p>
           <div className="flex gap-4 mt-4 md:mt-0">
             <Link href="/privacy" className={styles.link}>

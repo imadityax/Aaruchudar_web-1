@@ -50,7 +50,7 @@ export default function AboutPage() {
           >
             About{' '}
             <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
-              Aaruchudar
+            AARUCHUDAR PRIVATE LIMITED
             </span>
           </motion.h1>
 
@@ -61,7 +61,7 @@ export default function AboutPage() {
             transition={{ duration: 0.5, delay: 0.15 }}
             style={{ y: subtitleY }}
           >
-            Aaruchudar is a human intelligence research and training organization
+           AARUCHUDAR PRIVATE LIMITED is a human intelligence research and training organization
             focused on cognitive health, mental agility, and improving brain
             function through practical learning experiences.
           </motion.p>

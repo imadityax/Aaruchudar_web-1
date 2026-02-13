@@ -319,6 +319,13 @@ const ExploreDetailsModal = ({ activeModal, setActiveModal, setFormData }) => {
     }
   };
 
+  // Map modal IDs to their respective document paths in public/documents
+  const pdfMap = {
+    'own-a-lab': '/documents/Own a Cognitive Training Lab-.pdf',
+    'strategic-investor': '/documents/Strategic Integration Partnership.pdf',
+    'global-expansion': '/documents/Master Licensing for Global Markets.pdf',
+  };
+
   const renderModal = () => {
     if (!activeModal) return null;
     const content = modalContents[activeModal];
@@ -445,13 +452,14 @@ const ExploreDetailsModal = ({ activeModal, setActiveModal, setFormData }) => {
                   <Calendar className="h-5 w-5" />
                   Schedule Consultation
                 </button>
-                <button
-                  onClick={() => window.open('/franchise-brochure.pdf', '_blank')}
+                <a
+                  href={pdfMap[activeModal] || '/assets/Franchise.pdf'}
+                  download
                   className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-xl border border-cyan-400/30 hover:shadow-2xl transition-all hover:scale-105 flex items-center justify-center gap-3"
                 >
                   <Download className="h-5 w-5" />
                   Download Detailed PDF
-                </button>
+                </a>
               </div>
             </div>
           </div>

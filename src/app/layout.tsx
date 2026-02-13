@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s | Aaruchudar",
   },
   description:
-    "Aaruchudar is a human intelligence research and training platform focused on cognitive health and mental agility.",
+    "AARUCHUDAR PRIVATE LIMITED is a human intelligence research and training platform focused on cognitive health and mental agility.",
 };
 
 export default function RootLayout({
