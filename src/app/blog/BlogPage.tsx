@@ -5,10 +5,14 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Search } from "lucide-react";
 import "./BlogPage.css";
 import React from "react";
+import Link from "next/link";
 
 export default function BlogClient() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+
+  // Helper to safely get initial from author name
+  const getInitial = (name?: string) => (name && name.length > 0 ? name[0] : "?");
 
   const categories = [
     "All",
@@ -25,10 +29,6 @@ export default function BlogClient() {
       title: "INITIATIVE WITH PATRONAGE'S INTUITION",
       excerpt:
         "Exploring the intersection of psychology and technology in enhancing human potential and cognitive abilities.",
-      author: "BEAUTY SABAT",
-      role: "Content Creator",
-      date: "March 15, 2024",
-      readTime: "8 min read",
       category: "Innovation",
       image:
         "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop",
@@ -64,6 +64,28 @@ export default function BlogClient() {
         "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
       tags: ["Innovation", "Interdisciplinary", "Creative Thinking"],
       featured: false,
+    },
+    {
+      id: 4,
+      title: "The Silent Crisis: An Untrained Human Mind in an AI World",
+      excerpt:
+        "AI is advancing faster than human adaptation. Neuroscience shows intelligence is trainable through neuroplasticity, executive function, and deliberate practice. Aaruchudar's Human Intelligence Labs focus on clarity, decision architecture, conflict intelligence, and adaptive cognition.",
+      author: "Aaruchudar Team",
+      role: "Editorial",
+      date: "February 13, 2026",
+      readTime: "9 min read",
+      category: "Intellectual Growth",
+      image:
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
+      tags: [
+        "Neuroplasticity",
+        "Executive Function",
+        "Deliberate Practice",
+        "Dual Coding",
+        "Active Recall",
+        "Adaptive Intelligence",
+      ],
+      featured: true,
     },
   ];
 
@@ -185,24 +207,30 @@ export default function BlogClient() {
                 <div className="flex items-center gap-3 mb-4">
                   <span className="badge">{featuredPost.category}</span>
                   <span className="text-white/60 text-sm">
-                    {featuredPost.readTime}
+                    {featuredPost.readTime ?? ""}
                   </span>
                 </div>
                 <h3 className="featured-title">{featuredPost.title}</h3>
                 <p className="featured-excerpt">{featuredPost.excerpt}</p>
                 <div className="featured-footer">
-                  <div className="author">
-                    <div className="avatar">
-                      {featuredPost.author[0]}
+                  {featuredPost.author ? (
+                    <div className="author">
+                      <div className="avatar">{getInitial(featuredPost.author)}</div>
+                      <div>
+                        <p className="author-name">{featuredPost.author}</p>
+                        {featuredPost.role && (
+                          <p className="author-role">{featuredPost.role}</p>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <p className="author-name">{featuredPost.author}</p>
-                      <p className="author-role">{featuredPost.role}</p>
-                    </div>
-                  </div>
+                  ) : (
+                    null
+                  )}
                   <button className="btn-primary">
-                    Read More{" "}
-                    <ArrowRight className="w-5 h-5 text-yellow-400" />
+                    <Link href="/blog/silent-crisis" className="inline-flex items-center gap-2">
+                      Read More {" "}
+                      <ArrowRight className="w-5 h-5 text-yellow-400" />
+                    </Link>
                   </button>
                 </div>
               </div>
@@ -231,9 +259,9 @@ export default function BlogClient() {
                 </div>
                 <div className="post-content">
                   <div className="post-meta">
-                    <span>{post.date}</span>
+                    <span>{post.date ?? ""}</span>
                     <span>•</span>
-                    <span>{post.readTime}</span>
+                    <span>{post.readTime ?? ""}</span>
                   </div>
                   <h3 className="post-title">{post.title}</h3>
                   <p className="post-excerpt">{post.excerpt}</p>
@@ -245,12 +273,14 @@ export default function BlogClient() {
                     ))}
                   </div>
                   <div className="post-footer">
-                    <div className="author-small">
-                      <div className="avatar-small">
-                        {post.author[0]}
+                    {post.author ? (
+                      <div className="author-small">
+                        <div className="avatar-small">{getInitial(post.author)}</div>
+                        <span>{post.author}</span>
                       </div>
-                      <span>{post.author}</span>
-                    </div>
+                    ) : (
+                      null
+                    )}
                     <ArrowRight className="w-5 h-5 text-yellow-400" />
                   </div>
                 </div>

@@ -265,7 +265,8 @@ export default function CareersClient() {
             <div className="relative z-10">
               <div className="flex items-center gap-3">
                 <img src="/logo2.png" alt="Aaruchudar Logo" className="h-9 w-9 rounded-md shadow-sm" />
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-white">Careers at Aaruchudar</h1>
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-white">Careers at AARUCHUDAR PRIVATE LIMITED
+                </h1>
               </div>
               <p className="mt-3 md:mt-4 text-base md:text-lg text-white">
                 At Aaruchudar, we build human intelligence through awareness, neuroscience, and real-life learning experiences.

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title:
     "Aaruchudar | Human Intelligence Training & Cognitive Development",
   description:
-    "Aaruchudar delivers Human Intelligence development using Neuro Band and Neuro Lens technologies. Neuroscience-based cognitive training to improve focus, memory, attention, productivity and brain performance.",
+    "AARUCHUDAR PRIVATE LIMITED delivers Human Intelligence development using Neuro Band and Neuro Lens technologies. Neuroscience-based cognitive training to improve focus, memory, attention, productivity and brain performance.",
   keywords: [
     //Primary
     "Human Intelligence Training",
@@ -36,7 +36,7 @@ export default function Home() {
       {/* SEO intro */}
       <section className="sr-only">
         <p>
-          Aaruchudar is a Human Intelligence training and research platform
+        AARUCHUDAR PRIVATE LIMITED is a Human Intelligence training and research platform
           focused on cognitive development, mental agility, neuroscience-based
           learning, and brain performance improvement. Using Neuro Band and
           Neuro Lens technologies, Aaruchudar delivers labs, courses, workshops,

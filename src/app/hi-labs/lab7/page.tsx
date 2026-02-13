@@ -66,7 +66,18 @@ export default function Lab7Page() {
               <button onClick={back} className={styles.backButton}>← Back to Labs</button>
               <div className={styles.labTitle}><h1>HI LAB {labData.id}</h1><p>{labData.title}</p></div>
             </div>
-            <Link href="/" className={styles.homeButton}>Home</Link>
+            <div className={styles.headerActions}>
+              <a
+                href="/Lab-documents/demo.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.sampleButton}
+                aria-label="Open sample dashboard PDF for Lab 7"
+              >
+                Sample Dashboard
+              </a>
+              <Link href="/" className={styles.homeButton}>Home</Link>
+            </div>
           </div>
         </header>
 
