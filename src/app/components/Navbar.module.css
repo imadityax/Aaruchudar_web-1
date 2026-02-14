@@ -1,0 +1,22 @@
+/* Fix visibility when white background scrolls under navbar */
+header {
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Add subtle shadow to logo text */
+header span {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Improve nav tab visibility */
+.nav-tab {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Active tab stronger visibility */
+.tab-underline-active {
+  color: #ffffff !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
