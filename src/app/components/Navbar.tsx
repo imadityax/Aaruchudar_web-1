@@ -3,6 +3,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
+import { ArrowRight, ArrowLeft } from "lucide-react";
+import styles from "./Navbar.module.css";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -87,7 +90,8 @@ export default function Navbar() {
         {/* Use pure flex for three-zone layout */}
         <div className="flex items-center justify-between w-full">
           {/* LEFT: Logo + Mobile Hamburger */}
-          <div className="flex items-center gap-3 flex-none">
+          <div className="flex items-center gap-3 flex-shrink min-w-0">
+
             <button
               onClick={toggleMenu}
               aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -171,7 +175,8 @@ export default function Navbar() {
           </div>
 
           {/* RIGHT: actions */}
-          <div className="flex items-center justify-end gap-3 flex-none">
+          <div className="hidden md:flex items-center justify-end gap-3 flex-none">
+
             <Link href="/login" className="text-sm font-medium text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/30">
               Login
             </Link>

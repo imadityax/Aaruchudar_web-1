@@ -51,17 +51,7 @@ function Navbar() {
             <span className="text-white font-bold">Aaruchudar</span>
           </Link>
 
-	const navItems = [
-		{ id: 'home', label: 'Home', href: '/' },
-		{ id: 'blog', label: 'Blog', href: '/blog' },
-		{ id: 'research', label: 'Research', href: '/research' },
-		{ id: 'quiz', label: 'Quiz', href: '/quiz' },
-		{ id: 'contact', label: 'Contact', href: '/contact' },
-		{ id: 'product', label: 'Product', href: '/productpage' },
-		{ id: 'franchise', label: 'Franchise', href: '/franchise' },
-		{ id: 'internship', label: 'Internship', href: '/internship' },
-		{ id: 'careers', label: 'Careers', href: '/careers' },
-	];
+
 
           <Link
             href="/login"
