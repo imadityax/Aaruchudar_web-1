@@ -78,9 +78,21 @@ export default function Lab1Page() {
                 <p>{labData.title}</p>
               </div>
             </div>
-            <Link href="/" className={styles.homeButton}>
-              Home
-            </Link>
+            {/* Sample dashboard and home buttons */}
+            <div className={styles.headerActions}>
+              <a
+                href="/Lab-documents/Lab%20(1).pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.sampleButton}
+                aria-label="Open sample dashboard PDF for Lab 1"
+              >
+                Sample Dashboard
+              </a>
+              <Link href="/" className={styles.homeButton}>
+                Home
+              </Link>
+            </div>
           </div>
         </header>
 

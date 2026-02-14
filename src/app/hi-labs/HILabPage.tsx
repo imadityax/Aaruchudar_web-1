@@ -279,6 +279,18 @@ export default function HILabs() {
           const labNumber = Object.keys(LAB_BRAIN_MAP).indexOf(key) + 1;
           const stats = labStats[key];
           const active = selectedLab === key;
+          // Map sample PDF per lab
+          const samplePdfMap: Record<number, string> = {
+            1: '/Lab-documents/Lab%20(1).pdf',
+            2: '/Lab-documents/LAB-02%20(1).pdf',
+            3: '/Lab-documents/LAB%20-03%20(1).pdf',
+            4: '/Lab-documents/LAB-04.pdf',
+            5: '/Lab-documents/Lab-%2005.pdf',
+            6: '/Lab-documents/LAB-06.pdf',
+            7: '/Lab-documents/demo.pdf',
+            8: '/Lab-documents/LAB-08.pdf',
+          };
+          const sampleHref = samplePdfMap[labNumber] ?? '/Lab-documents/demo.pdf';
 
           return (
             <div
@@ -324,6 +336,16 @@ export default function HILabs() {
                   >
                     Open Lab {labNumber} <ArrowRight size={18} />
                   </button>
+                  <a
+                    href={sampleHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${styles.exploreButton} ${styles.sampleButton}`}
+                    aria-label={`Open sample dashboard for Lab ${labNumber}`}
+                    onClick={(e)=>e.stopPropagation()}
+                  >
+                    Sample Dashboard ⬇️
+                  </a>
                 </div>
               </div>
             </div>
@@ -336,7 +358,7 @@ export default function HILabs() {
         <div className={`${styles.promoContent} max-w-5xl mx-auto`}>
           <h2>Download Research Dashboard</h2>
           <p>Access comprehensive analytics and visualization tools for brain pattern analysis</p>
-          <button className={styles.downloadButton} aria-label="Get sample report">Get Sample Report ⬇️</button>
+          <a href="/Lab-documents/demo.pdf" download className={styles.downloadButton} aria-label="Get sample report">Get Sample Report ⬇️</a>
         </div>
       </div>
     </div>
