@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 function Navbar() {
   const [show, setShow] = useState(true);
@@ -24,6 +25,16 @@ function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (!pathname) return;
+    const match = navItems.find((n) => pathname.startsWith(n.href));
+    if (pathname === "/login") setActiveTab("login");
+    else if (match) setActiveTab(match.id);
+    else setActiveTab("home");
+  }, [pathname]);
 
   const navItems = [
     { id: "home", label: "Home", href: "/" },
@@ -62,6 +73,22 @@ function Navbar() {
 		{ id: 'internship', label: 'Internship', href: '/internship' },
 		{ id: 'careers', label: 'Careers', href: '/careers' },
 	];
+          <nav className="flex items-center gap-4 ml-6">
+            {navItems.map((item) => (
+              <Link
+                key={item.id}
+                href={item.href}
+                onClick={() => setActiveTab(item.id)}
+                className={`text-sm font-medium ${
+                  activeTab === item.id
+                    ? "text-orange-400"
+                    : "text-white/80 hover:text-white"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
 
           <Link
             href="/login"

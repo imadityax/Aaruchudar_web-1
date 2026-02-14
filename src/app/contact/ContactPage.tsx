@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ContactPage() {
   const [contactName, setContactName] = useState("");
@@ -19,13 +20,13 @@ export default function ContactPage() {
   const [feedbackStatus, setFeedbackStatus] = useState<string | null>(null);
 
   /* ---------------- MAIL LINKS ---------------- */
-  const mailtoHref = `mailto:hello@aaruchudar.com?subject=Contact from ${encodeURIComponent(
+  const mailtoHref = `mailto:hi@aaruchudar.com?subject=Contact from ${encodeURIComponent(
     contactName || "Anonymous",
   )}&body=${encodeURIComponent(
     `Name: ${contactName}\nEmail: ${contactEmail}\n\n${message}`,
   )}`;
 
-  const feedbackMailtoHref = `mailto:hello@aaruchudar.com?subject=Feedback from ${encodeURIComponent(
+  const feedbackMailtoHref = `mailto:hi@aaruchudar.com?subject=Feedback from ${encodeURIComponent(
     feedbackName || "Anonymous",
   )}&body=${encodeURIComponent(
     `Name: ${feedbackName}\nEmail: ${feedbackEmail}\nRating: ${rating}/5\n\n${feedback}`,
@@ -123,7 +124,7 @@ export default function ContactPage() {
               </p>
               <div className="mt-6 flex flex-wrap gap-3 justify-center md:justify-start">
                 <a
-                  href="mailto:hello@aaruchudar.com"
+                  href="mailto:hi@aaruchudar.com"
                   className="inline-flex items-center gap-2 rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 shadow-sm"
                 >
                   ✉️ Email us
@@ -134,6 +135,13 @@ export default function ContactPage() {
                 >
                   📞 Call
                 </a>
+                {/* New CTA to request webinar/training */}
+                <Link
+                  href="/webinar-training"
+                  className="inline-flex items-center gap-2 rounded-md bg-gradient-to-r from-cyan-400 to-blue-600 px-4 py-2 text-white shadow-sm hover:opacity-90"
+                >
+                  Request Training/Workshop
+                </Link>
               </div>
             </div>
             <div className="relative">

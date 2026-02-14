@@ -6,12 +6,12 @@ export const metadata: Metadata = {
   description:
     'Take Aaruchudar’s Human Intelligence quiz to assess your cognitive skills, focus, memory and brain performance using neuroscience-based evaluation.',
   keywords: [
-  "Human Intelligence Quiz",
-  "Cognitive Skills Assessment",
-  "Brain Performance Test",
-  "Intelligence Self Assessment",
-  "Mental Agility Test",
-]
+    "Human Intelligence Quiz",
+    "Cognitive Skills Assessment",
+    "Brain Performance Test",
+    "Intelligence Self Assessment",
+    "Mental Agility Test",
+  ]
 
 };
 
