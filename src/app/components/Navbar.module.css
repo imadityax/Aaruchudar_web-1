@@ -1,22 +1,41 @@
-/* Fix visibility when white background scrolls under navbar */
-header {
+/* Scope styles to local header class to satisfy CSS Modules purity */
+.header {
   background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
-/* Add subtle shadow to logo text */
-header span {
+.header span {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Ensure header links inherit gold via local class */
+.header a {
+  color: #D4AF37 !important;
 }
 
 /* Improve nav tab visibility */
 .nav-tab {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  color: #D4AF37 !important;
+}
+
+.tab-underline {
+  color: #D4AF37 !important;
 }
 
 /* Active tab stronger visibility */
 .tab-underline-active {
-  color: #ffffff !important;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+  color: #D4AF37 !important;
+  text-shadow: none;
+}
+
+/* Dropdown items gold */
+.dropdown-item {
+  color: #D4AF37 !important;
+}
+
+.dropdown-item:hover, .dropdown-item:focus-visible {
+  background: rgba(255,255,255,0.06);
+  color: #D4AF37 !important;
 }

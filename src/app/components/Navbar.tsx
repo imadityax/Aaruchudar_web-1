@@ -83,10 +83,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 inset-x-0 z-[9999] w-full transition-[height,padding,background] duration-300 ${compact ? "h-14" : "h-16"} bg-transparent backdrop-blur-md border-b border-transparent`}
+      className={`sticky top-0 inset-x-0 z-[9999] w-full bg-transparent backdrop-blur-md border-b border-transparent ${styles.header}`}
       role="banner"
     >
-      <nav className={`mx-auto max-w-7xl px-4 ${compact ? "py-2" : "py-3"}`} aria-label="Main Navigation">
+      <nav className="mx-auto max-w-7xl px-4 py-3" aria-label="Main Navigation">
         {/* Use pure flex for three-zone layout */}
         <div className="flex items-center justify-between w-full">
           {/* LEFT: Logo + Mobile Hamburger */}
@@ -111,7 +111,7 @@ export default function Navbar() {
             </button>
             <Link href="/" className="flex items-center gap-2">
               <img src="/logo2.png" alt="Aaruchudar" className="h-8 w-8" />
-              <span className="text-white font-semibold">AARUCHUDAR PRIVATE LIMITED</span>
+              <span className="font-semibold text-[#D4AF37]">AARUCHUDAR PRIVATE LIMITED</span>
             </Link>
           </div>
 
@@ -120,8 +120,6 @@ export default function Navbar() {
             <ul role="menubar" className="flex items-center gap-6">
               {navItems.map((item) => {
                 const active = isActive(item.href);
-                const color = active ? "text-white" : "text-gray-400";
-                const underlineClass = active ? "tab-underline-active" : "tab-underline";
                 const hasDropdown = !!item.dropdown;
 
                 return (
@@ -133,9 +131,9 @@ export default function Navbar() {
                     onMouseLeave={handleDropdownLeave}
                   >
                     <Link
-                      href={hasDropdown ? item.href : item.href}
+                      href={item.href}
                       role="menuitem"
-                      className={`nav-tab ${color} ${underlineClass} flex items-center gap-1`}
+                      className={`${styles.navTab} text-[#D4AF37] ${active ? styles.tabUnderlineActive : styles.tabUnderline} flex items-center gap-1`}
                       onClick={(e) => hasDropdown && handleParentClick(e, item.key as any, hasDropdown)}
                       aria-haspopup={hasDropdown ? "menu" : undefined}
                       aria-expanded={hasDropdown ? (openDropdown === item.key ? true : false) : undefined}
@@ -155,12 +153,12 @@ export default function Navbar() {
                         }}
                         role="menu"
                         aria-label={`${item.label} submenu`}
-                        className="dropdown-panel"
+                        className={styles.dropdownPanel}
                       >
                         <ul className="py-2" role="none">
                           {item.dropdown!.map((dd) => (
                             <li key={dd.label} role="none">
-                              <Link href={dd.href} role="menuitem" className="dropdown-item" onClick={closeMenu}>
+                              <Link href={dd.href} role="menuitem" className={`${styles.dropdownItem} text-[#D4AF37]`} onClick={closeMenu}>
                                 {dd.label}
                               </Link>
                             </li>
@@ -177,7 +175,7 @@ export default function Navbar() {
           {/* RIGHT: actions */}
           <div className="hidden md:flex items-center justify-end gap-3 flex-none">
 
-            <Link href="/login" className="text-sm font-medium text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/30">
+            <Link href="/login" className="text-sm font-medium text-[#D4AF37] focus:outline-none focus:ring-2 focus:ring-white/30">
               Login
             </Link>
             <Link href="/webinar-training" className="cta-primary">Training Request</Link>
@@ -205,7 +203,7 @@ export default function Navbar() {
                 return (
                   <li key={item.key} className="">
                     <div
-                      className={`flex items-center justify-between px-3 py-2 text-base ${active ? "text-white border-l-2 border-white" : "text-gray-200"}`}
+                      className={`flex items-center justify-between px-3 py-2 text-base ${active ? "text-[#D4AF37] border-l-2 border-[#D4AF37]" : "text-[#D4AF37]"}`}
                     >
                       <Link
                         href={hasDropdown ? item.href : item.href}
@@ -226,7 +224,7 @@ export default function Navbar() {
                       {hasDropdown && (
                         <button
                           aria-label={isOpen ? `Collapse ${item.label}` : `Expand ${item.label}`}
-                          className="text-xs text-gray-300"
+                          className="text-xs text-[#D4AF37]"
                           onClick={(e) => {
                             e.preventDefault();
                             setOpenDropdown((prev) => (prev === item.key ? null : (item.key as any)));
@@ -240,7 +238,7 @@ export default function Navbar() {
                       <ul className="pl-6 pr-3 pb-2 space-y-1" role="menu">
                         {item.dropdown!.map((dd) => (
                           <li key={dd.label}>
-                            <Link href={dd.href} className="block py-1 text-gray-200" role="menuitem" onClick={closeMenu}>
+                            <Link href={dd.href} className="block py-1 text-[#D4AF37]" role="menuitem" onClick={closeMenu}>
                               {dd.label}
                             </Link>
                           </li>
@@ -251,7 +249,7 @@ export default function Navbar() {
                 );
               })}
               <li>
-                <Link href="/login" className="flex items-center px-3 py-2 text-base text-gray-200" onClick={closeMenu}>
+                <Link href="/login" className="flex items-center px-3 py-2 text-base text-[#D4AF37]" onClick={closeMenu}>
                   Login
                 </Link>
               </li>

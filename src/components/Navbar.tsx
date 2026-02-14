@@ -59,20 +59,8 @@ function Navbar() {
         <div className="px-6 py-2 flex items-center gap-6 rounded-full backdrop-blur-lg bg-amber-900/40">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/logo2.png" alt="Logo" width={36} height={36} />
-            <span className="text-white font-bold">Aaruchudar</span>
+            <span className="font-bold text-[#D4AF37]">AARUCHUDAR PRIVATE LIMITED</span>
           </Link>
-
-	const navItems = [
-		{ id: 'home', label: 'Home', href: '/' },
-		{ id: 'blog', label: 'Blog', href: '/blog' },
-		{ id: 'research', label: 'Research', href: '/research' },
-		{ id: 'quiz', label: 'Quiz', href: '/quiz' },
-		{ id: 'contact', label: 'Contact', href: '/contact' },
-		{ id: 'product', label: 'Product', href: '/productpage' },
-		{ id: 'franchise', label: 'Franchise', href: '/franchise' },
-		{ id: 'internship', label: 'Internship', href: '/internship' },
-		{ id: 'careers', label: 'Careers', href: '/careers' },
-	];
 
           <Link
             href="/login"
@@ -93,7 +81,7 @@ function Navbar() {
         <div className="flex items-center justify-between px-5 py-3 backdrop-blur-lg bg-amber-900/40">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/logo2.png" alt="Logo" width={30} height={30} />
-            <span className="text-white font-semibold">Aaruchudar</span>
+            <span className="font-semibold text-[#D4AF37]">AARUCHUDAR PRIVATE LIMITED</span>
           </Link>
 
           <button
@@ -117,11 +105,11 @@ function Navbar() {
 
         {/* MOBILE DROPDOWN */}
         <div
-          className={`overflow-hidden transition-all duration-300 backdrop-blur-lg bg-amber-900/40 ${
-            mobileOpen ? "max-h-[420px] py-4" : "max-h-0 py-0"
-          }`}
+          className={`overflow-hidden transition-all duration-300 backdrop-blur-lg bg-black/70 ${
+            mobileOpen ? "max-h-[480px] py-3" : "max-h-0 py-0"
+          } border-t border-white/10`}
         >
-          <nav className="flex flex-col gap-3 px-5">
+          <nav className="flex flex-col px-5">
             {navItems.map((item) => (
               <Link
                 key={item.id}
@@ -130,11 +118,7 @@ function Navbar() {
                   setActiveTab(item.id);
                   setMobileOpen(false);
                 }}
-                className={`text-sm font-medium ${
-                  activeTab === item.id
-                    ? "text-orange-400"
-                    : "text-white/80 hover:text-white"
-                }`}
+                className={`text-base font-semibold py-2 border-b border-white/10 last:border-b-0 text-[#D4AF37]`}
               >
                 {item.label}
               </Link>
@@ -143,7 +127,7 @@ function Navbar() {
             <Link
               href="/login"
               onClick={() => setMobileOpen(false)}
-              className="mt-2 text-sm font-medium text-white/90"
+              className="mt-2 text-base font-semibold py-2 text-[#D4AF37]"
             >
               Login
             </Link>

@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 
 export const metadata = {
   title: "The Silent Crisis: An Untrained Human Mind in an AI World | Aaruchudar Blog",
@@ -21,24 +20,12 @@ export default function Page() {
         </ol>
       </nav>
 
-      {/* Hero */}
-      <header className="relative overflow-hidden rounded-2xl mb-10">
-        <div className="relative w-full h-64 md:h-96">
-          <Image
-            src="/images/hi-labs-banner.jpg"
-            alt="Human Intelligence Labs banner"
-            fill
-            priority
-            className="object-cover"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-        <div className="absolute bottom-0 left-0 p-6 md:p-8 text-white">
-          <h1 className="text-2xl md:text-4xl font-bold">
-            The Silent Crisis: An Untrained Human Mind in an AI World
-          </h1>
-          <p className="mt-2 text-white/80">By Aaruchudar Team • February 13, 2026 • 9 min read</p>
-        </div>
+      {/* Hero (text-only) */}
+      <header className="rounded-2xl mb-10">
+        <h1 className="text-2xl md:text-4xl font-bold">
+          The Silent Crisis: An Untrained Human Mind in an AI World
+        </h1>
+        <p className="mt-2 text-gray-600">By Aaruchudar Team • February 13, 2026 • 9 min read</p>
       </header>
 
       {/* Article */}
@@ -48,38 +35,12 @@ export default function Page() {
           We live in a time where artificial intelligence is accelerating faster than human adaptation. While machines are being trained daily, most human brains are left untrained after school. That is the real crisis.
         </p>
 
-        {/* Image: Neuro Tech Suite */}
-        <figure className="my-8">
-          <Image
-            src="/images/neuro_tech_suite.jpg"
-            alt="Neuroscience and technology suite"
-            width={1600}
-            height={900}
-            className="w-full h-auto rounded-xl shadow-md"
-          />
-          <figcaption className="text-sm text-gray-600 mt-2">
-            Bridging neuroscience and structured training to build adaptive intelligence.
-          </figcaption>
-        </figure>
+        {/* Removed visual figures for a book-like reading experience */}
 
         <h2>Notorious Truth 1: Intelligence Is Not Fixed</h2>
         <p>
           For decades, people believed intelligence was static. Modern neuroscience disproved this. Dr. Michael Merzenich's work on neuroplasticity proves that the brain rewires itself based on stimulation and repetition. The London Taxi Driver Study (Maguire et al., 2000, University College London) showed measurable hippocampal growth due to spatial training. The brain changes when trained.
         </p>
-
-        {/* Image: Brain Areas Illustration */}
-        <figure className="my-8">
-          <Image
-            src="/models/brain_areas.svg"
-            alt="Brain areas related to memory and executive function"
-            width={1200}
-            height={800}
-            className="w-full h-auto rounded-xl bg-gray-50 p-4"
-          />
-          <figcaption className="text-sm text-gray-600 mt-2">
-            Hippocampal and prefrontal regions respond to training and structured cognitive load.
-          </figcaption>
-        </figure>
 
         <h2>Notorious Truth 2: Executive Function Predicts Life Outcomes More Than IQ</h2>
         <p>
@@ -101,20 +62,6 @@ export default function Page() {
         </ol>
         <p>These are not motivational ideas. They are measurable brain mechanisms.</p>
 
-        {/* Image: Dual Coding Visual */}
-        <figure className="my-8">
-          <Image
-            src="/images/hi-courses-banner.jpg"
-            alt="Visual and verbal integration"
-            width={1600}
-            height={900}
-            className="w-full h-auto rounded-xl shadow-md"
-          />
-          <figcaption className="text-sm text-gray-600 mt-2">
-            Dual coding: pairing visuals with language to enhance retention and transfer.
-          </figcaption>
-        </figure>
-
         <h2>Key Factors to Activate Brain Systems for Deeper Understanding</h2>
         <ol>
           <li>Attention System — Remove distraction. Deep focus increases prefrontal cortex activation.</li>
@@ -135,18 +82,6 @@ export default function Page() {
         </p>
         <p>We do not train information. We train the brain behind the information.</p>
 
-        {/* Image: Labs */}
-        <figure className="my-8">
-          <video
-            src="/VIDEO-2026-01-02-18-47-13.mp4"
-            controls
-            className="w-full rounded-xl shadow-md"
-          />
-          <figcaption className="text-sm text-gray-600 mt-2">
-            Inside Human Intelligence Labs: clarity systems, decision architecture, and conflict intelligence.
-          </figcaption>
-        </figure>
-
         <h2>What Happens If You Build a Long-Term Connection With Us?</h2>
         <p>Short term: You gain awareness and structured thinking.</p>
         <p>Mid term: You develop cognitive resilience, sharper decision-making, and emotional stability.</p>
@@ -157,34 +92,25 @@ export default function Page() {
           In 5–10 years, degrees will not differentiate people. Cognitive clarity will. AI will replace tasks. It will not replace trained human intelligence.
         </p>
 
-        {/* CTA Card */}
-        <div className="mt-12 rounded-2xl border border-gray-200 bg-gray-50 p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
-          <Image
-            src="/images/neurolens_and_band.jpg"
-            alt="Training tools"
-            width={300}
-            height={300}
-            className="w-40 h-40 object-cover rounded-xl"
-          />
-          <div className="flex-1">
-            <h3 className="text-xl font-semibold mb-2">Begin Your Cognitive Training Journey</h3>
-            <p className="text-gray-700 mb-4">
-              Join Aaruchudar’s Human Intelligence Labs and build executive function, clarity, and adaptive cognition.
-            </p>
-            <div className="flex gap-3">
-              <a
-                href="/contact"
-                className="inline-flex items-center px-4 py-2 rounded-md bg-black text-white hover:bg-gray-900"
-              >
-                Contact Us
-              </a>
-              <a
-                href="/hi-labs"
-                className="inline-flex items-center px-4 py-2 rounded-md border border-gray-300 hover:bg-white"
-              >
-                Explore Labs
-              </a>
-            </div>
+        {/* CTA (text-only) */}
+        <div className="mt-12 rounded-2xl border border-gray-200 bg-gray-50 p-6 md:p-8">
+          <h3 className="text-xl font-semibold mb-2">Begin Your Cognitive Training Journey</h3>
+          <p className="text-gray-700 mb-4">
+            Join Aaruchudar’s Human Intelligence Labs and build executive function, clarity, and adaptive cognition.
+          </p>
+          <div className="flex gap-3">
+            <a
+              href="/contact"
+              className="inline-flex items-center px-4 py-2 rounded-md bg-black text-white hover:bg-gray-900"
+            >
+              Contact Us
+            </a>
+            <a
+              href="/hi-labs"
+              className="inline-flex items-center px-4 py-2 rounded-md border border-gray-300 hover:bg-white"
+            >
+              Explore Labs
+            </a>
           </div>
         </div>
 
