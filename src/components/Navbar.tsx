@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 function Navbar() {
   const [show, setShow] = useState(true);
@@ -24,6 +25,16 @@ function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (!pathname) return;
+    const match = navItems.find((n) => pathname.startsWith(n.href));
+    if (pathname === "/login") setActiveTab("login");
+    else if (match) setActiveTab(match.id);
+    else setActiveTab("home");
+  }, [pathname]);
 
   const navItems = [
     { id: "home", label: "Home", href: "/" },
@@ -51,7 +62,17 @@ function Navbar() {
             <span className="text-white font-bold">Aaruchudar</span>
           </Link>
 
-
+	const navItems = [
+		{ id: 'home', label: 'Home', href: '/' },
+		{ id: 'blog', label: 'Blog', href: '/blog' },
+		{ id: 'research', label: 'Research', href: '/research' },
+		{ id: 'quiz', label: 'Quiz', href: '/quiz' },
+		{ id: 'contact', label: 'Contact', href: '/contact' },
+		{ id: 'product', label: 'Product', href: '/productpage' },
+		{ id: 'franchise', label: 'Franchise', href: '/franchise' },
+		{ id: 'internship', label: 'Internship', href: '/internship' },
+		{ id: 'careers', label: 'Careers', href: '/careers' },
+	];
 
           <Link
             href="/login"
