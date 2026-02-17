@@ -205,14 +205,14 @@ export default function Features() {
             <button
               aria-label="Previous"
               onClick={() => scrollByViewport(-1)}
-              className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-purple-300 bg-white text-purple-700 shadow hover:bg-purple-50"
+              className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gray-300 bg-white text-black shadow hover:bg-gray-50"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M10.06 18.06a.75.75 0 0 1-1.06 0l-5-5a.75.75 0 0 1 0-1.06l5-5a.75.75 0 0 1 1.06 1.06L6.31 11.25h11.94a.75.75 0 0 1 0 1.5H6.31l3.75 3.75a.75.75 0 0 1 0 1.56Z"/></svg>
             </button>
             <button
               aria-label="Next"
               onClick={() => scrollByViewport(1)}
-              className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-purple-300 bg-white text-purple-700 shadow hover:bg-purple-50"
+              className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-gray-300 bg-white text-black shadow hover:bg-gray-50"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M13.94 5.94a.75.75 0 0 1 1.06 0l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 1 1-1.06-1.06l3.72-3.72H2.75a.75.75 0 0 1 0-1.5h12.91l-3.72-3.72a.75.75 0 0 1 0-1.06Z"/></svg>
             </button>

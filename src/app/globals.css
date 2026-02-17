@@ -314,6 +314,21 @@ h1, h2, h3, h4, h5, h6 {
   display: none; /* Chrome, Safari */
 }
 
+/* === Global button text color override === */
+button,
+.button,
+.btn,
+button[type],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+[role="button"],
+button a,
+.btn a,
+.button a {
+  color: #ffffff !important;
+}
+
 /* ==================== HERO SECTION ==================== */
 .hero-section-centered {
   position: relative;

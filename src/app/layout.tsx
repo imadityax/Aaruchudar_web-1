@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className="antialiased">
         <ClientLayout>{children}</ClientLayout>
-        <Analytics/>
+        <Analytics />
       </body>
     </html>
   );

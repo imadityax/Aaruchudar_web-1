@@ -5,19 +5,19 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Clock, Layers, Star } from 'lucide-react';
 import styles from '../styles.module.css';
 
-export default function PsychologicalWorkshop() {
-  const title = 'Mind Architecture';
+export default function IntellectualWorkshop() {
+  const title = 'Cognitive Networks';
   const details = {
-    duration: '2 days',
-    level: 'Intermediate',
-    rating: 4.8,
+    duration: '1 day',
+    level: 'Beginner',
+    rating: 4.7,
     modules: [
-      'Neural Detox Protocol – Clears mental stress and emotional interference',
-      'Emotional Intelligence Engine – Builds emotional awareness and control',
-      'Decision Matrix Optimization – Strengthens logical and confident decision-making'
+      'Critical Thinking Accelerator – Builds reasoning and problem-solving skills',
+      'Deep Listening Protocols – Improves attention and understanding',
+      'Conflict Resolution Engine – Develops balanced and solution-oriented responses'
     ],
     description:
-      'Mind Architecture is a neuroscience-based psychological pathway that helps individuals restructure their thinking, regulate emotions, and improve decision-making. The workshop equips participants with practical frameworks to build mental clarity, emotional stability, and cognitive discipline for personal and professional growth.'
+      'A foundational intellectual pathway designed to strengthen thinking, listening, and conflict-handling skills for clear communication, logical reasoning, and effective collaboration.'
   };
 
   return (
@@ -35,7 +35,7 @@ export default function PsychologicalWorkshop() {
             {title}
           </motion.h1>
           <motion.p style={{ color: 'var(--text-secondary)' }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
-            Psychological Pathway
+            Intellectual Pathway
           </motion.p>
         </div>
       </header>
@@ -43,7 +43,7 @@ export default function PsychologicalWorkshop() {
       {/* Content */}
       <main className={`${styles.scrollSection} ${styles.workshopsSection}`}>
         <div className={styles.container}>
-          <div className={`${styles.workshopCard} ${styles.psychological}`}>
+          <div className={`${styles.workshopCard} ${styles.intellectual}`}>
             <div className="flex flex-wrap gap-2 mb-4">
               <span className={styles.badge}><Clock size={14} /> {details.duration}</span>
               <span className={styles.badge}><Layers size={14} /> {details.level}</span>
@@ -52,23 +52,7 @@ export default function PsychologicalWorkshop() {
 
             <p style={{ color: 'var(--text-muted)', marginBottom: '1rem' }}>{details.description}</p>
 
-            <h3 className="heading-3" style={{ marginTop: '0.75rem' }}>Who This Pathway Is For</h3>
-            <ul className={styles.workshopList}>
-              <li>Students and young professionals</li>
-              <li>Leaders and managers</li>
-              <li>Entrepreneurs and decision-makers</li>
-              <li>Individuals seeking mental clarity and emotional balance</li>
-            </ul>
-
-            <h3 className="heading-3" style={{ marginTop: '1rem' }}>What You Will Learn</h3>
-            <ul className={styles.workshopList}>
-              <li>Emotional regulation and stress management</li>
-              <li>Structured decision-making</li>
-              <li>Focus and cognitive discipline</li>
-              <li>Psychological resilience</li>
-            </ul>
-
-            <h3 className="heading-3" style={{ marginTop: '1rem' }}>Core Modules</h3>
+            <h3 className="heading-3" style={{ marginTop: '0.75rem' }}>Core Modules</h3>
             <ul className={styles.workshopList} aria-label="Modules">
               {details.modules.map((m) => (
                 <li key={m}>{m}</li>
@@ -77,31 +61,30 @@ export default function PsychologicalWorkshop() {
 
             <h3 className="heading-3" style={{ marginTop: '1rem' }}>Methodology</h3>
             <ul className={styles.workshopList}>
-              <li>Brain-based learning</li>
-              <li>Reflection exercises</li>
-              <li>Simulations</li>
-              <li>Guided group activities</li>
+              <li>Interactive exercises</li>
+              <li>Scenario learning</li>
+              <li>Group discussions</li>
+              <li>Reflection tasks</li>
             </ul>
 
             <h3 className="heading-3" style={{ marginTop: '1rem' }}>Workshop Structure</h3>
-            <ul className={styles.workshopList}>
-              <li>Day 1: Neural Detox Protocol & Emotional Intelligence Engine</li>
-              <li>Day 2: Decision Matrix Optimization & clarity blueprint</li>
-            </ul>
+            <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+              Single Day Program: Critical Thinking Accelerator, Deep Listening Protocols, Conflict Resolution Engine, Integration session
+            </p>
 
             <h3 className="heading-3" style={{ marginTop: '1rem' }}>Key Benefits</h3>
             <ul className={styles.workshopList}>
-              <li>Mental clarity</li>
-              <li>Emotional discipline</li>
-              <li>Decision confidence</li>
-              <li>Practical life tools</li>
+              <li>Clear thinking</li>
+              <li>Strong communication</li>
+              <li>Conflict-handling skills</li>
+              <li>Increased confidence</li>
             </ul>
 
             <h3 className="heading-3" style={{ marginTop: '1rem' }}>Certification & Outcome</h3>
             <ul className={styles.workshopList}>
-              <li>Mind Architecture Completion Certificate</li>
-              <li>Personal Cognitive Blueprint</li>
-              <li>Human Intelligence Toolkit</li>
+              <li>Cognitive Networks Completion Certificate</li>
+              <li>Core Human Intelligence Toolkit</li>
+              <li>Personal Thinking Framework</li>
             </ul>
 
             <div className="flex items-center justify-between mt-4">

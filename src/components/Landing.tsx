@@ -160,7 +160,7 @@ export default function Landing() {
                 href="/internship"
                 className="rounded-xl bg-indigo-600 text-white px-6 py-3 shadow-lg hover:bg-indigo-500 active:scale-[0.98] transition-all flex items-center gap-2"
               >
-                💼 Internships
+                <span className="text-white">💼 Internships</span>
               </Link>
             </div>
 

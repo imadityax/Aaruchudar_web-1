@@ -51,6 +51,7 @@ export default function Navbar() {
     { key: "quiz", label: "Quiz", href: "/quiz" },
     { key: "company", label: "Company", href: "/about", dropdown: [
       { label: "About Us", href: "/about" },
+      { label: "Product", href: "/productpage" },
       { label: "Blog", href: "/blog" },
       { label: "Careers", href: "/careers" },
       { label: "Contact", href: "/contact" },
@@ -117,7 +118,7 @@ export default function Navbar() {
 
           {/* CENTER: Tabs (desktop only) */}
           <div className="hidden lg:flex flex-1 items-center justify-center">
-            <ul role="menubar" className="flex items-center gap-6">
+            <ul role="menubar" className="flex items-center gap-6 list-none">
               {navItems.map((item) => {
                 const active = isActive(item.href);
                 const hasDropdown = !!item.dropdown;
@@ -153,12 +154,17 @@ export default function Navbar() {
                         }}
                         role="menu"
                         aria-label={`${item.label} submenu`}
-                        className={styles.dropdownPanel}
+                        className={`${styles.dropdownPanel} absolute left-0 top-full mt-2 z-50 min-w-48 whitespace-nowrap bg-black/85 backdrop-blur-md border border-white/10 rounded-md shadow-lg`}
                       >
-                        <ul className="py-2" role="none">
+                        <ul className="p-2 space-y-1" role="none">
                           {item.dropdown!.map((dd) => (
                             <li key={dd.label} role="none">
-                              <Link href={dd.href} role="menuitem" className={`${styles.dropdownItem} text-[#D4AF37]`} onClick={closeMenu}>
+                              <Link
+                                href={dd.href}
+                                role="menuitem"
+                                className={`${styles.dropdownItem} block px-3 py-2 text-sm text-[#D4AF37] rounded hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30`}
+                                onClick={closeMenu}
+                              >
                                 {dd.label}
                               </Link>
                             </li>
@@ -195,7 +201,7 @@ export default function Navbar() {
             Start Training
           </Link>
           <nav aria-label="Mobile Navigation">
-            <ul className="mt-2 space-y-1">
+            <ul className="mt-2 space-y-1 list-none">
               {navItems.map((item) => {
                 const active = isActive(item.href);
                 const hasDropdown = !!item.dropdown;
@@ -235,7 +241,7 @@ export default function Navbar() {
                       )}
                     </div>
                     {hasDropdown && isOpen && (
-                      <ul className="pl-6 pr-3 pb-2 space-y-1" role="menu">
+                      <ul className="pl-6 pr-3 pb-2 space-y-1 list-none" role="menu">
                         {item.dropdown!.map((dd) => (
                           <li key={dd.label}>
                             <Link href={dd.href} className="block py-1 text-[#D4AF37]" role="menuitem" onClick={closeMenu}>

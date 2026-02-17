@@ -339,6 +339,15 @@
   box-shadow: 0 0 0 3px rgba(163, 179, 255, 0.6), 0 8px 16px rgba(83, 231, 255, 0.25);
 }
 
+/* Ensure Start Training button is straight (no tilt) */
+.btn-primary-modern {
+  transform: none !important;
+}
+.btn-primary-modern:hover,
+.btn-primary-modern:focus {
+  transform: none !important;
+}
+
 /* Secondary: dark surface with neon border */
 .btn-secondary-modern {
   color: #eaf2ff;

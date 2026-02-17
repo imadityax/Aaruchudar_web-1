@@ -196,14 +196,23 @@ export default function Hero() {
             style={{ y: ctaY }}
           >
             <Link href="/hi-courses" className="btn-primary-modern" aria-label="Browse courses">Start Training</Link>
-            <Link href="/productpage" className="btn-secondary-modern" aria-label="View product details">Explore Platform</Link>
+            <Link
+              href="/productpage"
+              className="btn-secondary-modern"
+              aria-label="View product details"
+              style={{
+                color: '#ffffff',
+                backgroundColor: 'inherit',
+                borderColor: 'inherit',
+                transform: 'none',
+                transition: 'none',
+                textDecoration: 'none',
+              }}
+            >
+              Explore Platform
+            </Link>
           </motion.div>
 
-          <div className="trust-indicators"  aria-hidden>
-            <div>● Daily Cognitive Workouts</div>
-            <div>● Mentor-Led Learning Paths</div>
-            <div>● Free Intelligence Benchmark Test</div>
-          </div>
         </div>
 
         <motion.div className="hero-brain" style={{ y: brainY }}>

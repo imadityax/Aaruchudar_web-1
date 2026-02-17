@@ -320,7 +320,7 @@ const HICoursesPage = () => {
                 <div className="flex gap-3">
                   <Link
                     href={{ pathname: '/hi-labs' }}
-                    className="px-4 py-3 rounded-md border border-white/10 text-gray-200 hover:bg-white/10 transition"
+                    className="px-4 py-3 rounded-md border border-white/10 text-white hover:bg-white/10 transition"
                     aria-label="Explore labs"
                   >
                     Explore Labs
