@@ -1620,6 +1620,15 @@ header a, .nav-tab, .dropdown-item {
   background: #ffffff;
 }
 
+/* Update arrow styles to black */
+.nav {
+  color: black !important;
+}
+
+.nav:hover {
+  color: black !important;
+}
+
 /* Reduce header height on scroll handled via classes from component */
 
 

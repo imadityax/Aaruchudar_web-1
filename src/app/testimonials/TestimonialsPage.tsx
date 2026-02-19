@@ -102,8 +102,14 @@ export default function TestimonialsPage() {
           <div className="testimonials-container">
             <h2 className="cta-title" style={{ color: '#ffffff' }}>Ready to Start Your Journey?</h2>
             <p className="cta-text" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>Join hundreds of others who have transformed their thinking</p>
-            <Link href="/" className="cta-button" aria-label="Explore programs">
-              Explore Our Programs
+            <Link href="/neuro/tech-suite" className="cta-button" aria-label="Explore programs">
+              Explore Neuro-Tech Suite
+            </Link>
+            <Link href="/neuro/lens" className="cta-button" aria-label="Explore Neuro Lens">
+              Explore Neuro Lens
+            </Link>
+            <Link href="/neuro/band" className="cta-button" aria-label="Explore Neuro Band">
+              Explore Neuro Band
             </Link>
           </div>
         </section>

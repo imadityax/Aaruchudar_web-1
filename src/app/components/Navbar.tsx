@@ -42,10 +42,9 @@ export default function Navbar() {
       { label: "Human Intelligence Events", href: "/hi-events" },
     ] },
     { key: "neuro", label: "Neuro Tech", href: "/neuro", dropdown: [
-      { label: "Neuro Tech Suite", href: "/neuro" },
-      { label: "Brain Gym", href: "/productpage" },
-      { label: "Cognitive Assessments", href: "/assessment" },
-      { label: "AI Intelligence Benchmark", href: "/benchmark" },
+      { label: "Neuro Tech Suite System", href: "/neuro/tech-suite" },
+      { label: "Neuro Lens", href: "/neuro/lens" },
+      { label: "Neuro Band", href: "/neuro/band" },
     ] },
     { key: "research", label: "Research", href: "/research" },
     { key: "quiz", label: "Quiz", href: "/quiz" },

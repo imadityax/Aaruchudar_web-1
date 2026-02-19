@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useMemo } from 'react';
@@ -228,7 +227,7 @@ export default function HIWorkshopsPage() {
               <div className="mt-auto">
                 <Link
                   href={`/hi-workshops/${w.type}`}
-                  className="px-4 py-3 rounded-md border border-white/10 text-gray-200 hover:bg-white/10 transition"
+                  className="px-4 py-3 rounded-md border border-white/10 text-black bg-white hover:bg-gray-200 transition"
                 >
                   Explore Path
                 </Link>
