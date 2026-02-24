@@ -22,41 +22,6 @@ export default function BlogClient() {
 
   const blogPosts = [
     {
-      id: 1,
-      title: "INITIATIVE WITH PATRONAGE'S INTUITION",
-      excerpt:
-        "Exploring the intersection of psychology and technology in enhancing human potential and cognitive abilities.",
-      category: "Innovation",
-      image:
-        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop",
-      tags: ["Psychology", "Innovation", "Human Intelligence"],
-      content: "Full content of the first blog post goes here...",
-    },
-    {
-      id: 2,
-      title: "The Evolving Role of Human Intelligence in the Age of AI",
-      excerpt:
-        "How cognitive psychology principles are being applied in modern learning systems and educational technologies.",
-      author: "SHELSIA SHARON",
-      category: "Psychology",
-      image:
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop",
-      tags: ["Cognitive Psychology", "Learning", "Education"],
-      content: "Full content of the second blog post goes here...",
-    },
-    {
-      id: 3,
-      title: "AARUCHUDAR CONSULTANCY",
-      excerpt:
-        "Breaking silos: The power of combining multiple disciplines for breakthrough innovation and creative problem-solving.",
-      author: "NIROSHINI",
-      category: "Intellectual Growth",
-      image:
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
-      tags: ["Innovation", "Interdisciplinary", "Creative Thinking"],
-      content: "Full content of the third blog post goes here...",
-    },
-    {
       id: 4,
       title: "The Cognitive Cost of Constant Screen Exposure",
       excerpt:
@@ -237,6 +202,169 @@ We need a way of learning that helps people:
 This is where neuroscience and neuroplasticity become important. They help us understand how human intelligence can be trained, not just filled with information.
 
 Learning in the future is not only about knowledge. It is about developing the brain and the way we think.`
+    },
+    {
+      id: 6,
+      title: "Do You Really Know Yourself?",
+      excerpt:
+        "Exploring the importance of self-awareness in a fast-paced world and how it can transform our lives.",
+      category: "Psychology",
+      image:
+        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop",
+      tags: ["Self-Awareness", "Personal Growth", "Mindfulness"],
+      content: `We live in a world where we know many things.
+We know what is happening outside us – news, trends, social media, other people’s lives.
+
+But how much do we know about what is happening inside us?
+
+Think about your day so far.
+
+Did you notice how you reacted to people?
+Did you notice what made you irritated, happy, or tired?
+
+Most of us move from one moment to another without really noticing ourselves. We are busy, rushed, and distracted. In that rush, self-awareness slowly disappears.
+
+Maybe that is why self-awareness is becoming one of the rarest skills today.
+
+Pause for a second.
+When was the last time you truly observed yourself?
+
+Why We Keep Repeating the Same Patterns
+
+Have you ever said this to yourself:
+
+Why do I always do this?
+Why does this keep happening again?
+
+We repeat the same mistakes not because we want to, but because we do not see our patterns clearly.
+
+We react the same way.
+We think the same way.
+We choose the same way.
+
+Without self-awareness, life becomes a loop. Different situations, but the same responses.
+
+If we do not understand how we think, how can we change it?
+If we do not see our habits, how can we grow beyond them?
+
+The first step is not changing.
+The first step is noticing.
+
+Living on Auto-Pilot Without Noticing It
+
+Most of our day runs on auto-pilot.
+
+We wake up.
+Check our phone.
+Rush to work or study.
+React to people.
+Sleep.
+Repeat.
+
+We think we are making choices, but often we are just following routines and emotions without awareness.
+
+Auto-pilot feels safe. But it also keeps us unconscious.
+
+Ask yourself honestly:
+
+Did I choose my reactions today, or did they just happen?
+Did I really listen to people, or was I already thinking of my reply?
+Did I understand why I felt stressed, or did I just escape it?
+
+Self-awareness begins when auto-pilot stops.
+
+The Difference Between Knowing and Observing Yourself
+
+Many people say, “I know myself.”
+But knowing and observing are not the same.
+
+Knowing is saying:
+
+I am angry.
+I am stressed.
+I am like this.
+
+Observing is asking:
+
+Why am I angry right now?
+What triggered this stress?
+What thought created this feeling?
+
+Observation creates space.
+Instead of being inside emotions, we start watching them.
+
+This is where real self-awareness begins  not with judgment, but with curiosity.
+
+What am I thinking right now?
+Why did I react this way?
+What does this say about me?
+
+These questions slowly wake us up.
+
+What Your Daily Reactions Say About You
+
+Your reactions are like mirrors.
+
+How you respond to pressure.
+How you speak when tired.
+How you behave when things don’t go your way.
+
+These moments show your inner patterns.
+
+You don’t need a big life crisis to understand yourself. Your everyday life already shows you who you are.
+
+Next time something upsets you, pause and ask:
+
+What is really happening inside me right now?
+
+Not to blame yourself.
+But to understand yourself.
+
+Awareness grows in small moments, not in big speeches.
+
+When Self-Awareness Begins, Change Begins
+
+Change does not start with motivation.
+It starts with clarity.
+
+When you see your thinking clearly, you automatically begin to act differently.
+Not because someone forced you.
+But because you understood yourself.
+
+Self-awareness gives you a choice:
+
+You can react or you can respond.
+You can repeat or you can rethink.
+
+This is a silent change.
+Deep change.
+Sustainable change.
+
+The more you understand your inner world, the less controlled you are by it.
+
+Learning to Pause and Understand Yourself
+
+Self-awareness is not about becoming perfect. It is about becoming honest with yourself.
+
+It begins with a pause.
+
+A pause before reacting.
+A pause before judging.
+A pause before escaping feelings.
+
+In that pause, understanding grows.
+
+Try this today: At the end of the day, ask yourself:
+
+What did I feel today?
+What did I learn about myself?
+What pattern did I notice?
+
+This simple reflection can slowly transform the way you live and think.
+
+In a world that is rushing forward, self-awareness brings you back to yourself.
+
+And maybe that is what we need the most today – not more information, but more understanding of who we are.`
     }
   ];
 
@@ -256,7 +384,18 @@ Learning in the future is not only about knowledge. It is about developing the b
     <div className="blog-container pt-16 md:pt-24 pb-20">
       {selectedBlog ? (
         <div className="full-blog">
-          <button onClick={() => setSelectedBlog(null)} className="back-button">
+          <button
+            onClick={() => setSelectedBlog(null)}
+            className="back-button"
+            style={{
+              backgroundColor: "blue",
+              color: "white",
+              padding: "10px 20px",
+              borderRadius: "5px",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
             Back to Blogs
           </button>
           <h1 className="blog-title">{selectedBlog.title}</h1>
@@ -264,8 +403,13 @@ Learning in the future is not only about knowledge. It is about developing the b
             src={selectedBlog.image}
             alt={selectedBlog.title}
             className="blog-image"
+            style={{ maxWidth: "50%", margin: "20px auto", display: "block" }}
           />
-          <p className="blog-content">{selectedBlog.content}</p>
+          {selectedBlog.content.split("\n\n").map((paragraph, index) => (
+            <p key={index} className="blog-content" style={{ marginBottom: "20px" }}>
+              {paragraph}
+            </p>
+          ))}
         </div>
       ) : (
         <>
