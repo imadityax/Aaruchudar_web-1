@@ -36,31 +36,57 @@ const Navbar = () => (
   </header>
 );
 
-const Hero = () => (
-  <section className={styles.heroSection}>
-    <div className={styles.heroBg} />
-    <div className={styles.heroContentWrapper}>
-      <h1 className={styles.heroTitleDark}>
-        Human Intelligence Labs Ecosystem
-      </h1>
-      <p className={styles.heroSubtitleDark}>
-        Clarity, Confidence and Focus for the Next Generation
-      </p>
-      <div className="flex flex-wrap gap-4 mb-10 justify-center">
-        <button className={styles.btnPrimaryDark}>View Labs</button>
-        <button className={styles.btnOutlineDark}>Book a Demo</button>
-        <button className={styles.btnPrimaryDark}>Download Program Deck</button>
-      </div>
-      <div className="flex flex-col sm:flex-row gap-6 mb-2 justify-center px-4">
-        <StatCard value="+68%" label="Decision Confidence" />
-        <StatCard value="+54%" label="Attention Resilience" />
-        <StatCard value="1200+" label="Participants" />
-      </div>
-    </div>
-  </section>
-);
+const Hero = () => {
+  const router = useRouter();
 
-const StatCard = ({ value, label }) => (
+  const handleViewLabs = () => {
+    const el = document.getElementById("labs");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const handleBookDemo = () => {
+    router.push("/contact");
+  };
+
+  const handleDownloadProgramDeck = () => {
+    router.push("/contact");
+  };
+
+  return (
+    <section className={styles.heroSection}>
+      <div className={styles.heroBg} />
+      <div className={styles.heroContentWrapper}>
+        <h1 className={styles.heroTitleDark}>
+          Human Intelligence Labs Ecosystem
+        </h1>
+        <p className={styles.heroSubtitleDark}>
+          Clarity, Confidence and Focus for the Next Generation
+        </p>
+        <div className="flex flex-wrap gap-4 mb-10 justify-center">
+          <button className={styles.btnPrimaryDark} onClick={handleViewLabs}>
+            View Labs
+          </button>
+          <button className={styles.btnOutlineDark} onClick={handleBookDemo}>
+            Book a Demo
+          </button>
+          <button
+            className={styles.btnPrimaryDark}
+            onClick={handleDownloadProgramDeck}
+          >
+            Download Program Deck
+          </button>
+        </div>
+        <div className="flex flex-col sm:flex-row gap-6 mb-2 justify-center px-4">
+          <StatCard value="+68%" label="Decision Confidence" />
+          <StatCard value="+54%" label="Attention Resilience" />
+          <StatCard value="1200+" label="Participants" />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const StatCard = ({ value, label }: { value: string; label: string }) => (
   <div className={styles.statCard}>
     <span className={styles.statNumber}>{value}</span>
     <span className={styles.statLabel}>{label}</span>
@@ -72,6 +98,14 @@ const SolutionsSection = () => {
 
   const handleViewDevices = () => {
     router.push("/neuro");
+  };
+
+  const handleExploreSuite = () => {
+    router.push("/neuro");
+  };
+
+  const handleExploreLabs = () => {
+    router.push("/hi-labs");
   };
 
   return (
@@ -106,7 +140,12 @@ const SolutionsSection = () => {
             <p className={styles.solutionLine}>every day.</p>
           </div>
           <div className={styles.solutionCTA}>
-            <button className={styles.solutionBtnPrimary}>Explore Suite</button>
+            <button
+              className={styles.solutionBtnPrimary}
+              onClick={handleExploreSuite}
+            >
+              Explore Suite
+            </button>
           </div>
         </div>
 
@@ -177,7 +216,12 @@ const SolutionsSection = () => {
             <p className={styles.solutionLine}>and original thinking.</p>
           </div>
           <div className={styles.solutionCTA}>
-            <button className={styles.solutionBtnPrimary}>Explore Labs</button>
+            <button
+              className={styles.solutionBtnPrimary}
+              onClick={handleExploreLabs}
+            >
+              Explore Labs
+            </button>
           </div>
         </div>
       </div>
@@ -374,7 +418,12 @@ const WhoIsThisFor = () => {
             </p>
           </div>
           <div className={styles.audienceCTA}>
-            <button className={styles.audienceBtnPrimary } onClick={handleAudienceGetProposal}>Get Syllabus</button>
+            <button
+              className={styles.audienceBtnPrimary}
+              onClick={handleAudienceGetProposal}
+            >
+              Get Syllabus
+            </button>
           </div>
         </div>
 
@@ -415,7 +464,12 @@ const WhoIsThisFor = () => {
             </p>
           </div>
           <div className={styles.audienceCTA}>
-            <button className={styles.audienceBtnPrimary} onClick={handleAudienceGetProposal}>Start Track</button>
+            <button
+              className={styles.audienceBtnPrimary}
+              onClick={handleAudienceGetProposal}
+            >
+              Start Track
+            </button>
             <button className={styles.audienceBtnGhost}>Details</button>
           </div>
         </div>
@@ -435,7 +489,12 @@ const WhoIsThisFor = () => {
             </p>
           </div>
           <div className={styles.audienceCTA}>
-            <button className={styles.audienceBtnPrimary} onClick={handleAudienceGetProposal}>Join Cohort</button>
+            <button
+              className={styles.audienceBtnPrimary}
+              onClick={handleAudienceGetProposal}
+            >
+              Join Cohort
+            </button>
             <button className={styles.audienceBtnGhost}>Programs</button>
           </div>
         </div>

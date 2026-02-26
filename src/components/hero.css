@@ -392,6 +392,36 @@
   box-shadow: 0 0 0 4px rgba(225, 177, 44, 0.22);
 }
 
+/* Ensure CTA arrow is visible (mobile + dark background)
+   Adds a crisp arrow after the button text.
+*/
+.hero-buttons-modern > a::after {
+  content: '→';
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0.95;
+  transform: translateY(0.5px);
+}
+
+/* Contrast tuning per button */
+.hero-buttons-modern > a.btn-primary-modern::after {
+  color: #0b1020; /* dark text on light gradient */
+}
+
+.hero-buttons-modern > a.btn-secondary-modern::after,
+.hero-buttons-modern > a.btn-tertiary-modern::after {
+  color: currentColor;
+}
+
+/* Subtle motion on hover */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-buttons-modern > a:hover::after {
+    transform: translate(2px, 0.5px);
+  }
+}
+
 /* High-contrast mode adjustments */
 @media (prefers-contrast: more) {
   .btn-primary-modern,

@@ -25,9 +25,22 @@ const ProgramCard = ({ data }: { data: any }) => (
         ))}
       </ul>
       <div className="mt-auto flex gap-2 pt-2 border-t border-white/50">
-        <Link href={data.href} className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-purple-600 text-white text-[11px] font-semibold shadow-sm hover:bg-purple-700">
+        <Link
+          href={data.href}
+          className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-purple-600 text-white text-[11px] font-semibold shadow-sm hover:bg-purple-700"
+        >
           Explore
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3"><path d="M13.94 5.94a.75.75 0 0 1 1.06 0l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 1 1-1.06-1.06l3.72-3.72H5.75a.75.75 0 0 1 0-1.5h11.91l-3.72-3.72a.75.75 0 0 1 0-1.06Z"/></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="w-3 h-3"
+            style={{ display: 'inline-block', flexShrink: 0, color: 'currentColor' }}
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M13.94 5.94a.75.75 0 0 1 1.06 0l5 5a.75.75 0 0 1 0 1.06l-5 5a.75.75 0 1 1-1.06-1.06l3.72-3.72H5.75a.75.75 0 0 1 0-1.5h11.91l-3.72-3.72a.75.75 0 0 1 0-1.06Z" />
+          </svg>
         </Link>
       </div>
     </div>
@@ -240,16 +253,22 @@ export default function Features() {
           <button
             aria-label="Previous"
             onClick={() => scrollByViewport(-1)}
-            className="inline-flex items-center justify-center px-4 py-2 rounded-full border border-purple-300 bg-white text-purple-700 shadow hover:bg-purple-50 text-sm"
+            className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full border border-purple-300 bg-white text-purple-700 shadow hover:bg-purple-50 text-sm"
           >
-            Prev
+            <span aria-hidden="true" style={{ color: '#000', fontWeight: 900, lineHeight: 1 }}>
+              ←
+            </span>
+            <span>Prev</span>
           </button>
           <button
             aria-label="Next"
             onClick={() => scrollByViewport(1)}
-            className="inline-flex items-center justify-center px-4 py-2 rounded-full border border-purple-300 bg-white text-purple-700 shadow hover:bg-purple-50 text-sm"
+            className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full border border-purple-300 bg-white text-purple-700 shadow hover:bg-purple-50 text-sm"
           >
-            Next
+            <span>Next</span>
+            <span aria-hidden="true" style={{ color: '#000', fontWeight: 900, lineHeight: 1 }}>
+              →
+            </span>
           </button>
         </div>
 

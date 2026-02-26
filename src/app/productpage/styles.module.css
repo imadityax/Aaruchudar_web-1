@@ -24,6 +24,12 @@
   --color-dark: #282828;
   --shadow-soft: 0 8px 25px rgba(0,0,0,0.06);
   --rounded-2xl: 1.25rem;
+  --lavender-1: #6366f1;
+  --lavender-2: #8b5cf6;
+  --lavender-grad: linear-gradient(135deg, var(--lavender-1), var(--lavender-2));
+  --lavender-ring: rgba(99, 102, 241, 0.25);
+  --lavender-shadow: 0 6px 18px rgba(99, 102, 241, 0.25);
+  --lavender-shadow-hover: 0 8px 30px rgba(99, 102, 241, 0.5);
 }
 
 :global(section), :global(header), :global(footer), :global(main) {
@@ -220,6 +226,7 @@
 }
 
 /* CTA Buttons */
+/* Keep legacy orange buttons unchanged (btnPrimary/btnOutline) */
 .btnPrimary {
   background: var(--color-primary);
   color: #fff;
@@ -260,12 +267,21 @@
   transform: scale(1.04);
 }
 
-.btnPrimaryDark {
+/* Lavender button base (reused across the page) */
+.btnLavender,
+.btnPrimaryDark,
+.btnOutlineDark,
+.solutionBtnPrimary,
+.programBtnPrimary,
+.audienceBtnPrimary,
+.contactBtnPrimary,
+.pricingBtnPrimary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  background: var(--lavender-grad);
   border: none;
   border-radius: 9999px;
   color: #fff;
@@ -273,30 +289,84 @@
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.25);
+  box-shadow: var(--lavender-shadow);
 }
-.btnPrimaryDark:hover {
-  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
+
+.btnLavender:hover,
+.btnPrimaryDark:hover,
+.btnOutlineDark:hover,
+.solutionBtnPrimary:hover,
+.programBtnPrimary:hover,
+.audienceBtnPrimary:hover,
+.contactBtnPrimary:hover,
+.pricingBtnPrimary:hover {
+  box-shadow: var(--lavender-shadow-hover);
   transform: translateY(-2px);
 }
-.btnOutlineDark {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 2rem;
-  background: rgba(99, 102, 241, 0.06);
-  border: 2px solid rgba(99, 102, 241, 0.25);
-  border-radius: 9999px;
-  color: #374151;
+
+.btnLavender:active,
+.btnPrimaryDark:active,
+.btnOutlineDark:active,
+.solutionBtnPrimary:active,
+.programBtnPrimary:active,
+.audienceBtnPrimary:active,
+.contactBtnPrimary:active,
+.pricingBtnPrimary:active {
+  transform: translateY(0px);
+}
+
+.btnLavender:focus-visible,
+.btnPrimaryDark:focus-visible,
+.btnOutlineDark:focus-visible,
+.solutionBtnPrimary:focus-visible,
+.programBtnPrimary:focus-visible,
+.audienceBtnPrimary:focus-visible,
+.contactBtnPrimary:focus-visible,
+.pricingBtnPrimary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--lavender-ring), var(--lavender-shadow-hover);
+}
+
+/* Secondary/ghost buttons - align to lavender theme (visible) */
+.solutionBtnGhost,
+.programBtnGhost,
+.audienceBtnGhost,
+.contactBtnGhost,
+.pricingBtnGhost {
+  /* Make ghost buttons filled lavender as requested */
+  background: var(--lavender-grad);
+  border: none;
+  color: #fff;
   font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  box-shadow: var(--lavender-shadow);
 }
-.btnOutlineDark:hover {
-  border-color: rgba(99, 102, 241, 0.4);
-  color: #111827;
+
+.solutionBtnGhost:hover,
+.programBtnGhost:hover,
+.audienceBtnGhost:hover,
+.contactBtnGhost:hover,
+.pricingBtnGhost:hover {
+  box-shadow: var(--lavender-shadow-hover);
   transform: translateY(-2px);
+  background: var(--lavender-grad);
+  color: #fff;
+}
+
+.solutionBtnGhost:focus-visible,
+.programBtnGhost:focus-visible,
+.audienceBtnGhost:focus-visible,
+.contactBtnGhost:focus-visible,
+.pricingBtnGhost:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--lavender-ring), var(--lavender-shadow-hover);
+}
+
+.solutionBtnGhost:active,
+.programBtnGhost:active,
+.audienceBtnGhost:active,
+.contactBtnGhost:active,
+.pricingBtnGhost:active {
+  transform: translateY(0px);
 }
 
 /* Stat Cards */
@@ -476,40 +546,6 @@
   display: flex;
   gap: 0.75rem;
 }
-.pricingBtnPrimary { 
-  display: inline-flex; 
-  align-items: center; 
-  gap: 0.5rem; 
-  padding: 1rem 2rem; 
-  background: linear-gradient(135deg, #6366f1, #8b5cf6); 
-  border: none; 
-  border-radius: 9999px; 
-  color: #fff; 
-  font-weight: 700; 
-  font-size: 1rem; 
-  cursor: pointer; 
-  transition: all 0.3s ease; 
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3); 
-}
-.pricingBtnPrimary:hover { 
-  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5); 
-  transform: translateY(-2px); 
-}
-.pricingBtnGhost {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.9rem 1.5rem;
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
-  border-radius: 9999px;
-  color: #111827;
-  font-weight: 700;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.pricingBtnGhost:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.35); }
 
 /* Popular highlight */
 .pricingPopular { border-color: rgba(99,102,241,0.45); box-shadow: 0 30px 90px rgba(99,102,241,0.25); }
@@ -536,27 +572,6 @@
 .programFeature { display: flex; align-items: center; gap: 0.5rem; color: #374151; }
 .programDot { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: linear-gradient(135deg,#22d3ee,#a78bfa); }
 .programCTA { display: flex; gap: 0.75rem; padding: 0 1.25rem 1.25rem; }
-.programBtnPrimary { 
-  display: inline-flex; 
-  align-items: center; 
-  gap: 0.5rem; 
-  padding: 1rem 2rem; 
-  background: linear-gradient(135deg, #6366f1, #8b5cf6); 
-  border: none; 
-  border-radius: 9999px; 
-  color: #fff; 
-  font-weight: 700; 
-  font-size: 1rem; 
-  cursor: pointer; 
-  transition: all 0.3s ease; 
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3); 
-}
-.programBtnPrimary:hover { 
-  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5); 
-  transform: translateY(-2px); 
-}
-.programBtnGhost { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.5rem; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 9999px; color: #111827; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; }
-.programBtnGhost:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.35); }
 
 /* Audience - polished cards */
 .audienceGrid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
@@ -577,27 +592,6 @@
 .audienceBody { padding: 0.75rem 1.25rem 1.25rem; color: #374151; }
 .audienceLine { line-height: 1.5; font-size: 0.95rem; }
 .audienceCTA { display: flex; gap: 0.75rem; padding: 0 1.25rem 1.25rem; }
-.audienceBtnPrimary { 
-  display: inline-flex; 
-  align-items: center; 
-  gap: 0.5rem; 
-  padding: 1rem 2rem; 
-  background: linear-gradient(135deg, #6366f1, #8b5cf6); 
-  border: none; 
-  border-radius: 9999px; 
-  color: #fff; 
-  font-weight: 700; 
-  font-size: 1rem; 
-  cursor: pointer; 
-  transition: all 0.3s ease; 
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3); 
-}
-.audienceBtnPrimary:hover { 
-  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5); 
-  transform: translateY(-2px); 
-}
-.audienceBtnGhost { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.5rem; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 9999px; color: #111827; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; }
-.audienceBtnGhost:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.35); }
 
 /* Contact Section */
 .contactBox {
@@ -635,27 +629,6 @@
 .contactRow { display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.75rem; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 0.75rem; }
 .contactDot { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: linear-gradient(135deg,#22d3ee,#a78bfa); box-shadow: 0 6px 18px rgba(99,102,241,0.3); }
 .contactCTA { display: flex; justify-content: center; gap: 0.75rem; margin-top: 1.25rem; }
-.contactBtnPrimary { 
-  display: inline-flex; 
-  align-items: center; 
-  gap: 0.5rem; 
-  padding: 1rem 2rem; 
-  background: linear-gradient(135deg, #6366f1, #8b5cf6); 
-  border: none; 
-  border-radius: 9999px; 
-  color: #fff; 
-  font-weight: 700; 
-  font-size: 1rem; 
-  cursor: pointer; 
-  transition: all 0.3s ease; 
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3); 
-}
-.contactBtnPrimary:hover { 
-  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5); 
-  transform: translateY(-2px); 
-}
-.contactBtnGhost { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.5rem; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 9999px; color: #111827; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; }
-.contactBtnGhost:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.35); }
 
 /* Footer Minimal */
 .footer {
@@ -696,27 +669,6 @@
 .solutionBody { padding: 1rem 1.25rem 1.25rem 1.25rem; color: #374151; }
 .solutionLine { line-height: 1.5; font-size: 0.95rem; }
 .solutionCTA { display: flex; gap: 0.75rem; padding: 0 1.25rem 1.25rem; }
-.solutionBtnPrimary { 
-  display: inline-flex; 
-  align-items: center; 
-  gap: 0.5rem; 
-  padding: 1rem 2rem; 
-  background: linear-gradient(135deg, #6366f1, #8b5cf6); 
-  border: none; 
-  border-radius: 9999px; 
-  color: #fff; 
-  font-weight: 700; 
-  font-size: 1rem; 
-  cursor: pointer; 
-  transition: all 0.3s ease; 
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3); 
-}
-.solutionBtnPrimary:hover { 
-  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5); 
-  transform: translateY(-2px); 
-}
-.solutionBtnGhost { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.5rem; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 9999px; color: #111827; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease; }
-.solutionBtnGhost:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.35); }
 
 /* HI Labs - enhanced */
 .labsGrid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
@@ -792,9 +744,15 @@
     padding: 0.7rem 1.2rem;
     font-size: 1rem;
   }
-  .btnPrimaryDark, .btnOutlineDark {
-    padding: 0.85rem 1.5rem;
-    font-size: 0.95rem;
+  .btnPrimaryDark,
+  .btnOutlineDark,
+  .solutionBtnPrimary,
+  .programBtnPrimary,
+  .audienceBtnPrimary,
+  .contactBtnPrimary,
+  .pricingBtnPrimary {
+    padding: 0.9rem 1.6rem;
+    font-size: 1rem;
   }
   .pricingCard, .statCard, .labCard {
     min-width: 120px;
