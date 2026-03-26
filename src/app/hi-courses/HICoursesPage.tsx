@@ -239,9 +239,15 @@ const HICoursesPage = () => {
               <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" aria-hidden /><span>IQ Certificate</span></li>
               <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" aria-hidden /><span>Full Access</span></li>
             </ul>
-            <button className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl transition shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0e17]">
-              Get Started
-            </button>
+            <Link
+  href="/hi-courses/billing-form"
+  aria-label="Open billing form for monthly plan"
+  className="block"
+>
+  <button className="w-full bg-emerald-600 ...">
+    Get Started
+  </button>
+</Link>
           </div>
 
           <div className="relative rounded-2xl p-8 shadow-2xl bg-gradient-to-b from-emerald-600/10 to-white/0 backdrop-blur border-2 border-emerald-600/70 hover:border-emerald-400 transition transform hover:-translate-y-1 ring-1 ring-emerald-500/30">
@@ -255,9 +261,15 @@ const HICoursesPage = () => {
               <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" aria-hidden /><span>Complete assessment</span></li>
               <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-400" aria-hidden /><span>Expert courses</span></li>
             </ul>
-            <button className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl transition shadow-lg shadow-emerald-600/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0e17]">
-              Get Started
-            </button>
+            <Link
+  href="/hi-courses/billing-form"
+  aria-label="Open billing form for bi-weekly plan"
+  className="block"
+>
+  <button className="w-full bg-emerald-600 ...">
+    Get Started
+  </button>
+</Link>
           </div>
         </div>
       </section>
