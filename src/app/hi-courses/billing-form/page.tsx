@@ -28,7 +28,7 @@ const BillingForm = () => {
     formDataToSend.append('proofOfTransaction', formData.proofOfTransaction);
 
     try {
-      const response = await fetch('/api/application', {
+      const response = await fetch('/api/billing', {
         method: 'POST',
         body: formDataToSend,
       });
