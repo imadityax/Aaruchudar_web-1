@@ -119,16 +119,16 @@ export default function AboutPage() {
               performance.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Link href="/hi-labs" className="px-4 py-2 rounded-md border border-white/10 text-gray-200 hover:bg-white/10 transition">
+              <Link href="/hi-labs" className="px-4 py-2 rounded-md border border-white/10 !text-white visited:!text-white hover:!text-white hover:bg-white/10 transition">
                 Explore Human Intelligence Labs
               </Link>
-              <Link href="/hi-courses" className="px-4 py-2 rounded-md border border-white/10 text-gray-200 hover:bg-white/10 transition">
+              <Link href="/hi-courses" className="px-4 py-2 rounded-md border border-white/10 !text-white visited:!text-white hover:!text-white hover:bg-white/10 transition">
                 Explore Human Intelligence Courses
               </Link>
-              <Link href="/hi-workshops" className="px-4 py-2 rounded-md border border-white/10 text-gray-200 hover:bg-white/10 transition">
+              <Link href="/hi-workshops" className="px-4 py-2 rounded-md border border-white/10 !text-white visited:!text-white hover:!text-white hover:bg-white/10 transition">
                 Explore Human Intelligence Workshops
               </Link>
-              <Link href="/hi-events" className="px-4 py-2 rounded-md border border-white/10 text-gray-200 hover:bg-white/10 transition">
+              <Link href="/hi-events" className="px-4 py-2 rounded-md border border-white/10 !text-white visited:!text-white hover:!text-white hover:bg-white/10 transition">
                 Explore Human Intelligence Events
               </Link>
             </div>

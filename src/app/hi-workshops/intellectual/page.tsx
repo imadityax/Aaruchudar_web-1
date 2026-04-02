@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Clock, Layers, Star } from 'lucide-react';
-import styles from '../styles.module.css';
 
 export default function IntellectualWorkshop() {
   const title = 'Cognitive Networks';
@@ -20,86 +19,159 @@ export default function IntellectualWorkshop() {
       'A foundational intellectual pathway designed to strengthen thinking, listening, and conflict-handling skills for clear communication, logical reasoning, and effective collaboration.'
   };
 
+  const methodology = [
+    'Interactive exercises',
+    'Scenario learning',
+    'Group discussions',
+    'Reflection tasks'
+  ];
+
+  const structure = [
+    'Single Day Program: Critical Thinking Accelerator',
+    'Deep Listening Protocols',
+    'Conflict Resolution Engine',
+    'Integration session'
+  ];
+
+  const benefits = [
+    'Clear thinking',
+    'Strong communication',
+    'Conflict-handling skills',
+    'Increased confidence'
+  ];
+
+  const outcomes = [
+    'Cognitive Networks Completion Certificate',
+    'Core Human Intelligence Toolkit',
+    'Personal Thinking Framework'
+  ];
+
+  const cardBase =
+    'rounded-2xl border border-[#1f3566] bg-[#0f1e3d]/90 p-6 md:p-7 shadow-[0_10px_30px_rgba(2,8,24,0.35)]';
+  const sectionTitle = 'text-xl md:text-2xl font-semibold text-[#eaf2ff]';
+  const listClass = 'space-y-2 text-[#d9e6ff] leading-relaxed';
+
   return (
-    <div className={styles.hiWorkshops}>
-      {/* Back */}
-      <Link href="/hi-workshops" className={styles.backLink} aria-label="Back to workshops">
-        <ArrowLeft size={16} /> Back
-      </Link>
+    <div className="min-h-screen bg-[radial-gradient(circle_at_10%_10%,#1f4ea6_0%,#10244a_35%,#08142c_70%,#040a17_100%)] text-white">
+      <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 md:px-8 md:pt-10">
+        <Link
+          href="/hi-workshops"
+          className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#5a84d6] bg-[#112955]/70 px-4 py-2 text-sm font-medium text-[#eaf2ff] transition hover:bg-[#1a3d7a]"
+          aria-label="Back to workshops"
+        >
+          <ArrowLeft size={16} /> Back
+        </Link>
 
-      {/* Hero */}
-      <header className={styles.hero}>
-        <div className={styles.heroBanner} aria-hidden style={{ backgroundImage: "url('/images/hi-workshops-banner.jpg')" }} />
-        <div className={styles.heroContent}>
-          <motion.h1 className="heading-1" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            {title}
-          </motion.h1>
-          <motion.p style={{ color: 'var(--text-secondary)' }} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
-            Intellectual Pathway
-          </motion.p>
-        </div>
-      </header>
-
-      {/* Content */}
-      <main className={`${styles.scrollSection} ${styles.workshopsSection}`}>
-        <div className={styles.container}>
-          <div className={`${styles.workshopCard} ${styles.intellectual}`}>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <span className={styles.badge}><Clock size={14} /> {details.duration}</span>
-              <span className={styles.badge}><Layers size={14} /> {details.level}</span>
-              <span className={styles.badge}><Star size={14} /> {details.rating}</span>
-            </div>
-
-            <p style={{ color: 'var(--text-muted)', marginBottom: '1rem' }}>{details.description}</p>
-
-            <h3 className="heading-3" style={{ marginTop: '0.75rem' }}>Core Modules</h3>
-            <ul className={styles.workshopList} aria-label="Modules">
-              {details.modules.map((m) => (
-                <li key={m}>{m}</li>
-              ))}
-            </ul>
-
-            <h3 className="heading-3" style={{ marginTop: '1rem' }}>Methodology</h3>
-            <ul className={styles.workshopList}>
-              <li>Interactive exercises</li>
-              <li>Scenario learning</li>
-              <li>Group discussions</li>
-              <li>Reflection tasks</li>
-            </ul>
-
-            <h3 className="heading-3" style={{ marginTop: '1rem' }}>Workshop Structure</h3>
-            <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-              Single Day Program: Critical Thinking Accelerator, Deep Listening Protocols, Conflict Resolution Engine, Integration session
-            </p>
-
-            <h3 className="heading-3" style={{ marginTop: '1rem' }}>Key Benefits</h3>
-            <ul className={styles.workshopList}>
-              <li>Clear thinking</li>
-              <li>Strong communication</li>
-              <li>Conflict-handling skills</li>
-              <li>Increased confidence</li>
-            </ul>
-
-            <h3 className="heading-3" style={{ marginTop: '1rem' }}>Certification & Outcome</h3>
-            <ul className={styles.workshopList}>
-              <li>Cognitive Networks Completion Certificate</li>
-              <li>Core Human Intelligence Toolkit</li>
-              <li>Personal Thinking Framework</li>
-            </ul>
-
-            <div className="flex items-center justify-between mt-4">
-              <div className={styles.cardActions}>
-                <Link href={{ pathname: '/productpage', query: { workshop: title } }} className={styles.ctaSecondary} aria-label="Learn more">
-                  Learn More
-                </Link>
-                <Link href="/hi-workshops" className={styles.ctaPrimary} aria-label="All workshops">
-                  Browse More
-                </Link>
-              </div>
+        <header className="overflow-hidden rounded-3xl border border-[#2c4f8f] bg-[#0c1a38]/85 shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
+          <div className="relative">
+            <div
+              className="h-44 w-full bg-cover bg-center md:h-56"
+              style={{ backgroundImage: "linear-gradient(180deg, rgba(3,9,24,0.15), rgba(3,9,24,0.8)), url('/images/hi-workshops-banner.jpg')" }}
+              aria-hidden
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#123e85]/75 via-[#1b3678]/45 to-transparent" aria-hidden />
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+              <motion.h1
+                className="text-4xl font-bold tracking-tight text-white md:text-5xl"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45 }}
+              >
+                {title}
+              </motion.h1>
+              <motion.p
+                className="mt-2 text-base font-medium text-[#d8e7ff] md:text-lg"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.08 }}
+              >
+                Intellectual Pathway
+              </motion.p>
             </div>
           </div>
+        </header>
+
+        <div className="mt-6 flex flex-wrap gap-3">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#4c72b9] bg-[#102a55] px-4 py-2 text-sm text-[#d9e6ff]">
+            <Clock size={14} /> {details.duration}
+          </span>
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#4c72b9] bg-[#102a55] px-4 py-2 text-sm text-[#d9e6ff]">
+            <Layers size={14} /> {details.level}
+          </span>
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#4c72b9] bg-[#102a55] px-4 py-2 text-sm text-[#d9e6ff]">
+            <Star size={14} /> {details.rating}
+          </span>
         </div>
-      </main>
+
+        <main className="mt-8 grid gap-6 md:grid-cols-2">
+          <section className={`${cardBase} md:col-span-2`}>
+            <h2 className={sectionTitle}>Program Overview</h2>
+            <p className="mt-3 text-base leading-8 text-[#d9e6ff] md:text-lg">{details.description}</p>
+          </section>
+
+          <section className={`${cardBase} md:col-span-2`}>
+            <h3 className={sectionTitle}>Core Modules</h3>
+            <ul className={`${listClass} mt-4`} aria-label="Modules">
+              {details.modules.map((m) => (
+                <li key={m}>- {m}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section className={cardBase}>
+            <h3 className={sectionTitle}>Methodology</h3>
+            <ul className={`${listClass} mt-4`}>
+              {methodology.map((item) => (
+                <li key={item}>- {item}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section className={cardBase}>
+            <h3 className={sectionTitle}>Workshop Structure</h3>
+            <ul className={`${listClass} mt-4`}>
+              {structure.map((item) => (
+                <li key={item}>- {item}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section className={cardBase}>
+            <h3 className={sectionTitle}>Key Benefits</h3>
+            <ul className={`${listClass} mt-4`}>
+              {benefits.map((item) => (
+                <li key={item}>- {item}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section className={cardBase}>
+            <h3 className={sectionTitle}>Certification and Outcome</h3>
+            <ul className={`${listClass} mt-4`}>
+              {outcomes.map((item) => (
+                <li key={item}>- {item}</li>
+              ))}
+            </ul>
+          </section>
+        </main>
+
+        <div className="mt-8 flex flex-wrap items-center gap-3">
+          <Link
+            href={{ pathname: '/productpage', query: { workshop: title } }}
+            className="inline-flex rounded-lg border border-[#85a8e6] bg-[#e9f1ff] px-5 py-2.5 font-semibold text-[#0b1d40] transition hover:bg-white"
+            aria-label="Learn more"
+          >
+            Learn More
+          </Link>
+          <Link
+            href="/hi-workshops"
+            className="inline-flex rounded-lg border border-[#5b80c9] bg-[#122d5d] px-5 py-2.5 font-semibold text-[#eaf2ff] transition hover:bg-[#173975]"
+            aria-label="All workshops"
+          >
+            Browse More
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

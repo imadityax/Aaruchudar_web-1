@@ -126,7 +126,7 @@ const HIEventsPage = () => {
 
   if (isLoading) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
+      <div className="fixed inset-0 flex items-center justify-center bg-[radial-gradient(circle_at_10%_10%,#1f4ea6_0%,#10244a_35%,#08142c_70%,#040a17_100%)]">
         <div className="flex flex-col items-center">
           <div className={styles['loading-spinner'] + " w-20 h-20 border-4 border-white/30 border-t-white rounded-full"} />
           <h2 className="text-3xl font-bold text-white mt-6 animate-fade-in">
@@ -141,12 +141,12 @@ const HIEventsPage = () => {
   }
 
   return (
-    <div ref={containerRef} className={`${styles.eventContainer} min-h-screen pt-16 md:pt-24 pb-20`}>
+    <div ref={containerRef} className="min-h-screen pt-16 md:pt-24 pb-20 bg-[radial-gradient(circle_at_10%_10%,#1f4ea6_0%,#10244a_35%,#08142c_70%,#040a17_100%)] text-white">
       {/* Back Button (match courses style) */}
       <div className="max-w-7xl mx-auto px-6">
         <Link
           href="/"
-          className="absolute top-6 left-6 z-20 border border-purple-500/40 text-purple-300 flex items-center gap-2 px-4 py-2 rounded-md bg-transparent hover:bg-purple-600 hover:text-white transition"
+          className="absolute top-6 left-6 z-20 border border-[#6f97de] text-[#eaf2ff] flex items-center gap-2 px-4 py-2 rounded-md bg-[#112955]/80 hover:bg-[#1a3d7a] transition"
           aria-label="Go back to home"
         >
           <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
@@ -157,27 +157,28 @@ const HIEventsPage = () => {
       </div>
 
       {/* HERO SECTION (match courses header) */}
-      <header className="relative flex items-center justify-center overflow-hidden py-24 md:py-28 px-6 min-h-[54vh]">
-        <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/images/hi-events-banner.jpg')" }} aria-hidden />
+      <header className="relative mx-auto max-w-7xl rounded-3xl border border-[#2c4f8f] bg-[#0c1a38]/85 shadow-[0_20px_50px_rgba(0,0,0,0.35)] flex items-center justify-center overflow-hidden py-24 md:py-28 px-6 min-h-[54vh]">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "linear-gradient(180deg, rgba(3,9,24,0.25), rgba(3,9,24,0.85)), url('/images/hi-events-banner.jpg')" }} aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#123e85]/75 via-[#1b3678]/45 to-transparent" aria-hidden />
         <div className="relative z-10 max-w-5xl mx-auto text-center">
           <motion.h1 className="text-5xl md:text-6xl font-extrabold mb-4 text-white" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             Human intelligence Events
           </motion.h1>
-          <motion.p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.15 }}>
+          <motion.p className="text-[#d8e7ff] text-lg md:text-xl max-w-3xl mx-auto leading-relaxed" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.15 }}>
             Learn, grow, and evolve through live webinars and campus sessions on psychology, innovation, and human potential.
           </motion.p>
           <motion.div className="mt-8 flex flex-wrap justify-center gap-3" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
-            <span className="px-3 py-1 rounded-full text-xs md:text-sm border border-white/10 bg-white/5 text-gray-200">Expert speakers</span>
-            <span className="px-3 py-1 rounded-full text-xs md:text-sm border border-white/10 bg-white/5 text-gray-200">Interactive Q&A</span>
-            <span className="px-3 py-1 rounded-full text-xs md:text-sm border border-white/10 bg-white/5 text-gray-200">Recordings available</span>
+            <span className="px-3 py-1 rounded-full text-xs md:text-sm border border-[#557dc6] bg-[#102a55] text-[#d9e6ff]">Expert speakers</span>
+            <span className="px-3 py-1 rounded-full text-xs md:text-sm border border-[#557dc6] bg-[#102a55] text-[#d9e6ff]">Interactive Q&A</span>
+            <span className="px-3 py-1 rounded-full text-xs md:text-sm border border-[#557dc6] bg-[#102a55] text-[#d9e6ff]">Recordings available</span>
           </motion.div>
         </div>
       </header>
 
       {/* FILTERS BAR (match courses style) */}
       <section className="px-6">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-gray-300">
+        <div className="max-w-7xl mx-auto mt-8 flex items-center justify-between gap-4">
+          <div className="flex items-center gap-2 text-[#d9e6ff]">
             <span className="text-sm">Filter by type</span>
           </div>
           <div className="flex flex-wrap gap-2" role="tablist" aria-label="Event tabs">
@@ -189,8 +190,8 @@ const HIEventsPage = () => {
                 onClick={() => setActiveTab(tab)}
                 className={`px-3 py-2 rounded-md text-sm border transition ${
                   activeTab === tab
-                    ? 'border-purple-500 text-white bg-purple-600'
-                    : 'border-white/10 text-gray-300 bg-white/5 hover:border-purple-400/40 hover:text-white'
+                    ? 'border-[#87a9e6] text-[#0b1d40] bg-[#e9f1ff]'
+                    : 'border-[#4c72b9] text-[#d9e6ff] bg-[#102a55] hover:border-[#87a9e6] hover:bg-[#153469]'
                 }`}
               >
                 {tab === 'upcoming' ? 'Upcoming' : 'Past'}
@@ -205,13 +206,13 @@ const HIEventsPage = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search events, speakers, platforms..."
-            className="flex-1 min-w-[240px] px-3 py-2 rounded-md border border-white/10 bg-white/5 text-gray-200 placeholder:text-gray-400"
+            className="flex-1 min-w-[240px] px-3 py-2 rounded-md border border-[#4c72b9] bg-[#102a55] text-[#eaf2ff] placeholder:text-[#9bb9eb]"
             aria-label="Search events"
           />
           <select
             value={typeFilter}
             onChange={(e) => setTypeFilter(e.target.value as any)}
-            className="px-3 py-2 rounded-md border border-white/10 bg-white/5 text-gray-200"
+            className="px-3 py-2 rounded-md border border-[#4c72b9] bg-[#102a55] text-[#eaf2ff]"
             aria-label="Filter by event type"
           >
             <option value="all">All</option>
@@ -227,7 +228,7 @@ const HIEventsPage = () => {
           {filteredEvents.map((event: any, index: number) => (
             <motion.article
               key={event.id}
-              className="rounded-2xl p-7 flex flex-col backdrop-blur-md shadow-xl bg-white/5 border border-white/10 hover:border-purple-400/40 transition hover:-translate-y-2"
+              className="rounded-2xl p-7 flex flex-col border border-[#1f3566] bg-[#0f1e3d]/90 shadow-[0_10px_30px_rgba(2,8,24,0.35)] hover:border-[#87a9e6] transition hover:-translate-y-2"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
@@ -236,25 +237,25 @@ const HIEventsPage = () => {
               <div className="flex items-start justify-between gap-3 mb-2">
                 <h3 className="text-xl font-semibold text-white">{event.title}</h3>
                 {event.isFeatured && (
-                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-yellow-500/20 text-yellow-300 border border-yellow-500/30">Featured</span>
+                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-[#7d5d1f]/30 text-[#ffe09a] border border-[#ffcf6f]/40">Featured</span>
                 )}
               </div>
 
-              <p className="text-gray-300 text-sm mb-4 leading-relaxed">{event.description}</p>
+              <p className="text-[#d9e6ff] text-sm mb-4 leading-relaxed">{event.description}</p>
 
               {/* badges */}
               <div className="flex flex-wrap items-center gap-2 mb-4">
-                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs border border-white/10 bg-white/5 text-gray-300">
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs border border-[#4c72b9] bg-[#102a55] text-[#d9e6ff]">
                   📅 {event.date}
                 </span>
-                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs border border-white/10 bg-white/5 text-gray-300">
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs border border-[#4c72b9] bg-[#102a55] text-[#d9e6ff]">
                   ⏰ {event.time}
                 </span>
-                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs border border-white/10 bg-white/5 text-gray-300">
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs border border-[#4c72b9] bg-[#102a55] text-[#d9e6ff]">
                   {event.platform ? `🔗 ${event.platform}` : `📍 ${event.location}`}
                 </span>
                 {event.attendees && (
-                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs border border-white/10 bg-white/5 text-gray-300">
+                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs border border-[#4c72b9] bg-[#102a55] text-[#d9e6ff]">
                     👥 {event.attendees}
                   </span>
                 )}
@@ -263,14 +264,14 @@ const HIEventsPage = () => {
               {/* CTA */}
               <div className="mt-auto flex gap-3">
                 <button
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-md border border-purple-500/40 text-purple-300 hover:bg-purple-600 hover:text-white transition font-medium"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-md border border-[#5d86d1] bg-[#cfe1ff] text-[#08204a] hover:bg-[#e6f0ff] transition font-bold shadow-[0_2px_10px_rgba(0,0,0,0.18)]"
                   aria-label={`Register for ${event.title}`}
                   onClick={() => setRsvpEvent(event)}
                 >
                   Register Now
                 </button>
                 <button
-                  className="px-4 py-3 rounded-md border border-white/10 text-gray-200 hover:bg-white/10 transition"
+                  className="px-4 py-3 rounded-md border border-[#6f97de] bg-[#153469] text-[#f3f7ff] hover:bg-[#1a427f] transition font-semibold"
                   aria-label={`Add ${event.title} to calendar`}
                   onClick={() => downloadICS(event)}
                 >
@@ -283,7 +284,7 @@ const HIEventsPage = () => {
 
         {/* Empty state */}
         {filteredEvents.length === 0 && (
-          <div className="max-w-7xl mx-auto mt-10 text-center text-gray-300">No events match your filters.</div>
+          <div className="max-w-7xl mx-auto mt-10 text-center text-[#d9e6ff]">No events match your filters.</div>
         )}
       </main>
 

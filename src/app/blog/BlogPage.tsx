@@ -132,6 +132,8 @@ export default function BlogClient() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedBlog, setSelectedBlog] = useState<BlogPost | null>(null);
+  const featuredFirstTitle =
+    "Mapping the Invisible: Visualizing Human Intelligence as the New Standard for Student Performance";
 
   const categories = [
     "All",
@@ -149,10 +151,11 @@ export default function BlogClient() {
       excerpt:
         "Mental discipline is quiet control—how to stay steady, focused, and intentional in a world designed to distract you.",
       category: "Psychology",
-      image: "/images/Blog_%20Mental%20discipline%20/IMG-20260224-WA0017.jpg",
+      image: "/images/neuro_tech_suite.jpg",
       images: [
         "/images/Blog_%20Mental%20discipline%20/IMG-20260224-WA0015.jpg",
         "/images/Blog_%20Mental%20discipline%20/IMG-20260224-WA0016.jpg",
+        "/images/neurolens_and_band.jpg",
       ],
       tags: ["Mental Discipline", "Focus", "Habits", "Mindfulness"],
       content: `The Power of Mental Discipline in a Distracted World
@@ -634,12 +637,13 @@ And maybe that is what we need the most today – not more information, but more
         "Training the brain, transforming behavior—how neuroplasticity-guided experiences can support communication, regulation, and learning in autism.",
       category: "Research",
       image:
-        "/images/Autism and Neuroplasticity images /Building-better-connections-neuroplasticity-and-autism.jpg",
+        "/images/hi-labs-banner.jpg",
       images: [
         "/images/Autism and Neuroplasticity images /Neuroplasticity-1-scaled.webp",
         "/images/Autism and Neuroplasticity images /puzzle-child-illo-rf-gty-ps-230323_1679581047759_hpMain.jpg",
         "/images/Autism and Neuroplasticity images /autism_ninja_1140px.jpg",
         "/images/Autism and Neuroplasticity images /qnAvPOCTaZoSYlTL3pKPd_ae6c1601f043490a873e58caa0f1f18c.jpg",
+        "/images/banner.jpg",
       ],
       tags: [
         "Autism",
@@ -1075,17 +1079,23 @@ It is who you are becoming.`
     },
   ];
 
-  const filteredPosts = blogPosts.filter((post) => {
-    const matchesCategory =
-      selectedCategory === "All" || post.category === selectedCategory;
-    const matchesSearch =
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.tags.some((tag) =>
-        tag.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    return matchesCategory && matchesSearch;
-  });
+  const filteredPosts = blogPosts
+    .filter((post) => {
+      const matchesCategory =
+        selectedCategory === "All" || post.category === selectedCategory;
+      const matchesSearch =
+        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.tags.some((tag) =>
+          tag.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+      return matchesCategory && matchesSearch;
+    })
+    .sort((a, b) => {
+      if (a.title === featuredFirstTitle && b.title !== featuredFirstTitle) return -1;
+      if (b.title === featuredFirstTitle && a.title !== featuredFirstTitle) return 1;
+      return 0;
+    });
 
   return (
     <div className="blog-container pt-16 md:pt-24 pb-20">
