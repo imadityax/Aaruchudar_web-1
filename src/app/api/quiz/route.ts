@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import raw from "../../../../public/quiz-questions.json";
+import raw from "@/data/quiz-questions.json";
 
 export async function GET() {
   try {
