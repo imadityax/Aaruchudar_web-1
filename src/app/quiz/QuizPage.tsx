@@ -170,43 +170,53 @@ function QuizPage(): JSX.Element {
   }, [quizData, selectedAnswers, currentQuestion, score, stage, timeLeft, hiddenOptions, lifelines]);
 
   const loadQuiz = async () => {
-    setLoading(true);
-    try {
-      const controller = new AbortController();
-      const t = setTimeout(() => controller.abort(), 10000); // 10s timeout for mobile
-      const res = await fetch("/api/quiz", { signal: controller.signal, cache: "no-store" });
-      clearTimeout(t);
-      if (!res.ok) throw new Error(`Failed to load quiz (${res.status})`);
-      const data: any = await res.json();
+  setLoading(true);
 
-      if (data?.quiz?.questions && Array.isArray(data.quiz.questions)) {
-        let qs = data.quiz.questions.map((q: any) => ({
-          ...q,
-          correctAnswer: q.correctAnswer ?? q.correct ?? -1,
-        }));
+  try {
+    const res = await fetch("/api/quiz", {
+      cache: "no-store",
+    });
 
-        qs = shuffleArray(qs);
-        const TAKE = Math.min(15, qs.length);
-        data.quiz.questions = qs.slice(0, TAKE);
-      }
-
-      setQuizData(data);
-      setSelectedAnswers(new Array(data?.quiz?.questions?.length ?? 0).fill(-1));
-      setCurrentQuestion(0);
-      // setup timeLimit
-      const tl = data?.quiz?.timeLimit ?? 300; // default 5 min
-      setTimeLeft(tl);
-      setStage("quiz");
-      setHiddenOptions({});
-      setLifelines({ fifty: 1, skip: 1 });
-    } catch (err) {
-      console.error("Error loading quiz data:", err);
-      setQuizData(null);
-    } finally {
-      setLoading(false);
+    if (!res.ok) {
+      throw new Error(`Failed to load quiz (${res.status})`);
     }
-  };
 
+    const data: any = await res.json();
+
+    // ✅ Validate data
+    if (!data?.quiz?.questions || !Array.isArray(data.quiz.questions)) {
+      throw new Error("Invalid quiz format");
+    }
+
+    // ✅ Normalize + shuffle
+    let qs = data.quiz.questions.map((q: any) => ({
+      ...q,
+      correctAnswer: q.correctAnswer ?? q.correct ?? -1,
+    }));
+
+    qs = shuffleArray(qs);
+    const TAKE = Math.min(15, qs.length);
+    data.quiz.questions = qs.slice(0, TAKE);
+
+    // ✅ Set state safely
+    setQuizData(data);
+    setSelectedAnswers(new Array(data.quiz.questions.length).fill(-1));
+    setCurrentQuestion(0);
+    setTimeLeft(data.quiz.timeLimit ?? 300);
+    setStage("quiz");
+    setHiddenOptions({});
+    setLifelines({ fifty: 1, skip: 1 });
+
+  } catch (err) {
+    console.error("❌ Error loading quiz:", err);
+
+    // force proper error state
+    setQuizData(null);
+
+  } finally {
+    setLoading(false); // ✅ ALWAYS stop loader
+  }
+};
   // timer tick
   useEffect(() => {
     if (timeLeft == null || paused || stage !== "quiz") return;
@@ -258,42 +268,46 @@ function QuizPage(): JSX.Element {
   };
 
   const restart = async () => {
-    setLoading(true);
-    try {
-      const controller = new AbortController();
-      const t = setTimeout(() => controller.abort(), 10000);
-      const res = await fetch("/api/quiz", { signal: controller.signal, cache: "no-store" });
-      clearTimeout(t);
-      if (!res.ok) throw new Error(`Failed to load quiz (${res.status})`);
-      const data: any = await res.json();
+  setLoading(true);
 
-      if (data?.quiz?.questions && Array.isArray(data.quiz.questions)) {
-        let qs = data.quiz.questions.map((q: any) => ({
-          ...q,
-          correctAnswer: q.correctAnswer ?? q.correct ?? -1,
-        }));
+  try {
+    const res = await fetch("/api/quiz", {
+      cache: "no-store",
+    });
 
-        qs = shuffleArray(qs);
-        const TAKE = Math.min(15, qs.length);
-        data.quiz.questions = qs.slice(0, TAKE);
-      }
-
-      setQuizData(data);
-      setSelectedAnswers(new Array(data?.quiz?.questions?.length ?? 0).fill(-1));
-      setCurrentQuestion(0);
-      setScore(0);
-      setStage("quiz");
-      setTimeLeft(data?.quiz?.timeLimit ?? 300);
-      setPaused(false);
-      setHiddenOptions({});
-      setLifelines({ fifty: 1, skip: 1 });
-    } catch (err) {
-      console.error("Error restarting quiz:", err);
-      setQuizData(null);
-    } finally {
-      setLoading(false);
+    if (!res.ok) {
+      throw new Error(`Failed to load quiz (${res.status})`);
     }
-  };
+
+    const data: any = await res.json();
+
+    let qs = data.quiz.questions.map((q: any) => ({
+      ...q,
+      correctAnswer: q.correctAnswer ?? q.correct ?? -1,
+    }));
+
+    qs = shuffleArray(qs);
+    const TAKE = Math.min(15, qs.length);
+    data.quiz.questions = qs.slice(0, TAKE);
+
+    setQuizData(data);
+    setSelectedAnswers(new Array(data.quiz.questions.length).fill(-1));
+    setCurrentQuestion(0);
+    setScore(0);
+    setStage("quiz");
+    setTimeLeft(data.quiz.timeLimit ?? 300);
+    setPaused(false);
+    setHiddenOptions({});
+    setLifelines({ fifty: 1, skip: 1 });
+
+  } catch (err) {
+    console.error("❌ Error restarting quiz:", err);
+    setQuizData(null);
+
+  } finally {
+    setLoading(false);
+  }
+};
 
   const getResultMessage = () => {
     if (!quizData) return { title: "", message: "" };
