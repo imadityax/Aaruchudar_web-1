@@ -150,6 +150,7 @@ function QuizPage(): JSX.Element {
         setPaused(false);
         setHiddenOptions(saved.hiddenOptions || {});
         setLifelines(saved.lifelines || { fifty: 1, skip: 1 });
+        setLoading(false);
         return; // valid restore, skip fresh load
       }
 
