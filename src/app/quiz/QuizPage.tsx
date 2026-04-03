@@ -367,7 +367,6 @@ function QuizPage(): JSX.Element {
   useEffect(() => {
     if (redirectCountdown == null) return;
     if (redirectCountdown <= 0) {
-      router.push("/course");
       return;
     }
     const id = window.setTimeout(() => setRedirectCountdown((c) => (c != null ? c - 1 : c)), 1000);
