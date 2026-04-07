@@ -35,26 +35,32 @@ export default function Navbar() {
 
   const navItems = [
     { key: "home", label: "Home", href: "/" },
-    { key: "programs", label: "Programs", href: "/hi-labs", dropdown: [
-      { label: "Human Intelligence Labs", href: "/hi-labs" },
-      { label: "Human Intelligence Courses", href: "/hi-courses" },
-      { label: "Human Intelligence Workshops", href: "/hi-workshops" },
-      { label: "Human Intelligence Events", href: "/hi-events" },
-    ] },
-    { key: "neuro", label: "Neuro Tech", href: "/neuro", dropdown: [
-      { label: "Neuro Tech Suite System", href: "/neuro/tech-suite" },
-      { label: "Neuro Lens", href: "/neuro/lens" },
-      { label: "Neuro Band", href: "/neuro/band" },
-    ] },
+    {
+      key: "programs", label: "Programs", href: "/hi-labs", dropdown: [
+        { label: "Human Intelligence Labs", href: "/hi-labs" },
+        { label: "Human Intelligence Courses", href: "/hi-courses" },
+        { label: "Human Intelligence Workshops", href: "/hi-workshops" },
+        { label: "Human Intelligence Events", href: "/hi-events" },
+      ]
+    },
+    {
+      key: "neuro", label: "Neuro Tech", href: "/neuro", dropdown: [
+        { label: "Neuro Tech Suite System", href: "/neuro/tech-suite" },
+        { label: "Neuro Lens", href: "/neuro/lens" },
+        { label: "Neuro Band", href: "/neuro/band" },
+      ]
+    },
     { key: "research", label: "Research", href: "/research" },
     { key: "quiz", label: "Quiz", href: "/quiz" },
-    { key: "company", label: "Company", href: "/about", dropdown: [
-      { label: "About Us", href: "/about" },
-      { label: "Product", href: "/productpage" },
-      { label: "Blog", href: "/blog" },
-      { label: "Careers", href: "/careers" },
-      { label: "Contact", href: "/contact" },
-    ] },
+    {
+      key: "company", label: "Company", href: "/about", dropdown: [
+        { label: "About Us", href: "/about" },
+        { label: "Product", href: "/productpage" },
+        { label: "Blog", href: "/blog" },
+        { label: "Careers", href: "/careers" },
+        { label: "Contact", href: "/contact" },
+      ]
+    },
     { key: "franchise", label: "Franchise", href: "/franchise" },
   ];
 
@@ -71,15 +77,7 @@ export default function Navbar() {
     setOpenDropdown(null);
   };
 
-  const handleParentClick = (
-    e: React.MouseEvent,
-    key: "programs" | "neuro" | "company",
-    hasDropdown: boolean
-  ) => {
-    if (!hasDropdown) return;
-    e.preventDefault();
-    setOpenDropdown((prev) => (prev === key ? null : key));
-  };
+
 
   return (
     <header
@@ -130,21 +128,28 @@ export default function Navbar() {
                     onMouseEnter={() => hasDropdown && handleDropdownEnter(item.key as any)}
                     onMouseLeave={handleDropdownLeave}
                   >
-                    <Link
-                      href={item.href}
-                      role="menuitem"
-                      className={`${styles.navTab} text-[#D4AF37] ${active ? styles.tabUnderlineActive : styles.tabUnderline} flex items-center gap-1`}
-                      onClick={(e) => hasDropdown && handleParentClick(e, item.key as any, hasDropdown)}
-                      aria-haspopup={hasDropdown ? "menu" : undefined}
-                      aria-expanded={hasDropdown ? (openDropdown === item.key ? true : false) : undefined}
-                    >
-                      {item.label}
-                      {hasDropdown && (
+                    {hasDropdown ? (
+                      <button
+                        role="menuitem"
+                        className={`${styles.navTab} text-[#D4AF37] ${active ? styles.tabUnderlineActive : styles.tabUnderline} flex items-center gap-1 bg-transparent border-none cursor-pointer`}
+                        onClick={() => setOpenDropdown(openDropdown === item.key ? null : (item.key as "programs" | "neuro" | "company"))}
+                        aria-haspopup="menu"
+                        aria-expanded={openDropdown === item.key}
+                      >
+                        {item.label}
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 opacity-75">
                           <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.25 8.29a.75.75 0 01-.02-1.08z" clipRule="evenodd" />
                         </svg>
-                      )}
-                    </Link>
+                      </button>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        role="menuitem"
+                        className={`${styles.navTab} text-[#D4AF37] ${active ? styles.tabUnderlineActive : styles.tabUnderline}`}
+                      >
+                        {item.label}
+                      </Link>
+                    )}
 
                     {hasDropdown && openDropdown === item.key && (
                       <div
@@ -154,6 +159,8 @@ export default function Navbar() {
                         role="menu"
                         aria-label={`${item.label} submenu`}
                         className={`${styles.dropdownPanel} absolute left-0 top-full mt-2 z-50 min-w-48 whitespace-nowrap bg-black/85 backdrop-blur-md border border-white/10 rounded-md shadow-lg`}
+                        onMouseEnter={() => handleDropdownEnter(item.key as any)}
+                        onMouseLeave={handleDropdownLeave}
                       >
                         <ul className="p-2 space-y-1" role="none">
                           {item.dropdown!.map((dd) => (
@@ -162,7 +169,7 @@ export default function Navbar() {
                                 href={dd.href}
                                 role="menuitem"
                                 className={`${styles.dropdownItem} block px-3 py-2 text-sm text-[#D4AF37] rounded hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30`}
-                                onClick={closeMenu}
+                                onClick={() => setOpenDropdown(null)}
                               >
                                 {dd.label}
                               </Link>
@@ -210,30 +217,29 @@ export default function Navbar() {
                     <div
                       className={`flex items-center justify-between px-3 py-2 text-base ${active ? "text-[#D4AF37] border-l-2 border-[#D4AF37]" : "text-[#D4AF37]"}`}
                     >
-                      <Link
-                        href={hasDropdown ? item.href : item.href}
-                        className="flex-1"
-                        onClick={(e) => {
-                          if (hasDropdown) {
-                            e.preventDefault();
-                            setOpenDropdown((prev) => (prev === item.key ? null : (item.key as any)));
-                          } else {
-                            closeMenu();
-                          }
-                        }}
-                        aria-haspopup={hasDropdown ? "menu" : undefined}
-                        aria-expanded={hasDropdown ? (isOpen ? true : false) : undefined}
-                      >
-                        {item.label}
-                      </Link>
+                      {hasDropdown ? (
+                        <button
+                          className="flex-1 text-left bg-transparent border-none cursor-pointer"
+                          onClick={() => setOpenDropdown((prev) => (prev === item.key ? null : (item.key as "programs" | "neuro" | "company")))}
+                          aria-haspopup="menu"
+                          aria-expanded={isOpen}
+                        >
+                          {item.label}
+                        </button>
+                      ) : (
+                        <Link
+                          href={item.href}
+                          className="flex-1"
+                          onClick={closeMenu}
+                        >
+                          {item.label}
+                        </Link>
+                      )}
                       {hasDropdown && (
                         <button
                           aria-label={isOpen ? `Collapse ${item.label}` : `Expand ${item.label}`}
-                          className="text-xs text-[#D4AF37]"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setOpenDropdown((prev) => (prev === item.key ? null : (item.key as any)));
-                          }}
+                          className="text-xs text-[#D4AF37] bg-transparent border-none cursor-pointer"
+                          onClick={() => setOpenDropdown((prev) => (prev === item.key ? null : (item.key as "programs" | "neuro" | "company")))}
                         >
                           {isOpen ? "▲" : "▼"}
                         </button>
