@@ -744,6 +744,27 @@ body {
 .full-blog-heading.color-4 { color: #16a34a; } /* green */
 .full-blog-heading.color-5 { color: #d97706; } /* amber */
 
+.full-blog-list {
+  margin: 0 0 1.1rem 1.5rem;
+  padding: 0;
+  color: #0f172a;
+}
+
+.full-blog-list-unordered {
+  list-style: disc;
+}
+
+.full-blog-list-ordered {
+  list-style: decimal;
+}
+
+.full-blog-listItem {
+  margin: 0 0 0.55rem 0;
+  padding-left: 0.2rem;
+  font-size: 1.02rem;
+  line-height: 1.85;
+}
+
 .full-blog-inlineImageWrap {
   margin: 1rem 0 1.15rem;
   display: flex;
@@ -776,6 +797,14 @@ body {
 
   .full-blog-heading {
     font-size: 1.15rem;
+  }
+
+  .full-blog-list {
+    margin-left: 1.2rem;
+  }
+
+  .full-blog-listItem {
+    font-size: 0.98rem;
   }
 
   .full-blog-inlineImage {

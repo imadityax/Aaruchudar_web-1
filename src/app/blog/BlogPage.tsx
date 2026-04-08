@@ -20,6 +20,8 @@ type BlogPost = {
 type ContentBlock =
   | { type: "h2"; text: string; colorIndex: number }
   | { type: "p"; text: string }
+  | { type: "ul"; items: string[] }
+  | { type: "ol"; items: string[] }
   | { type: "img"; src: string; alt?: string };
 
 function parseContentToBlocks(
@@ -43,6 +45,8 @@ function parseContentToBlocks(
 
   const blocks: ContentBlock[] = [];
   let para: string[] = [];
+  let listItems: string[] = [];
+  let listType: "ul" | "ol" | null = null;
   let imgAutoIndex = 0;
   let headingIndex = 0;
 
@@ -52,9 +56,17 @@ function parseContentToBlocks(
     para = [];
   };
 
+  const flushList = () => {
+    if (!listType || listItems.length === 0) return;
+    blocks.push({ type: listType, items: listItems });
+    listItems = [];
+    listType = null;
+  };
+
   for (const line of lines) {
     if (!line) {
       flushParagraph();
+      flushList();
       continue;
     }
 
@@ -62,12 +74,31 @@ function parseContentToBlocks(
     const imgMatch = line.match(/^\[(?:image|img)(?::(\d+))?\]$/i);
     if (imgMatch) {
       flushParagraph();
+      flushList();
       const explicit = imgMatch[1] ? Number(imgMatch[1]) - 1 : undefined;
       const src = uniqueImages[explicit ?? imgAutoIndex];
       if (src) {
         blocks.push({ type: "img", src });
         if (explicit === undefined) imgAutoIndex++;
       }
+      continue;
+    }
+
+    const numberedMatch = line.match(/^(\d+)\.\s+(.+)$/);
+    if (numberedMatch) {
+      flushParagraph();
+      if (listType && listType !== "ol") flushList();
+      listType = "ol";
+      listItems.push(numberedMatch[2].trim());
+      continue;
+    }
+
+    const bulletMatch = line.match(/^[-•]\s+(.+)$/);
+    if (bulletMatch) {
+      flushParagraph();
+      if (listType && listType !== "ul") flushList();
+      listType = "ul";
+      listItems.push(bulletMatch[1].trim());
       continue;
     }
 
@@ -78,15 +109,18 @@ function parseContentToBlocks(
 
     if (looksLikeHeading) {
       flushParagraph();
+      flushList();
       blocks.push({ type: "h2", text: line, colorIndex: headingIndex % 6 });
       headingIndex++;
       continue;
     }
 
+    flushList();
     para.push(line);
   }
 
   flushParagraph();
+  flushList();
 
   // If blog provides extra images but no markers, distribute them through the article.
   if (uniqueImages.length > 0 && !blocks.some((b) => b.type === "img")) {
@@ -145,6 +179,267 @@ export default function BlogClient() {
   ];
 
   const blogPosts: BlogPost[] = [
+    {
+      id: 10,
+      title: "She Failed 3 Times, Then Her Brain Finally Clicked",
+      excerpt:
+        "Ananya failed repeatedly, but her brain was adapting in the background. A real story of neuroplasticity, persistence, and progress.",
+      category: "Intellectual Growth",
+      image: "/WhatsApp%20Image%202026-04-07%20at%2017.27.25.jpeg",
+      images: ["/WhatsApp%20Image%202026-04-07%20at%2017.27.25.jpeg"],
+      tags: ["Neuroplasticity", "Learning", "Growth Mindset", "Persistence"],
+      content: `She Failed 3 Times, Then Her Brain Finally Clicked
+
+Ananya stared at the number glowing on her screen - 32.
+
+For a few seconds, she didn't react. No frustration, no tears, just a quiet, sinking feeling she had started to recognize a little too well. This wasn't new. It was her third attempt at the same subject, and somehow, the result felt exactly the same every single time.
+
+Around her, everything seemed to be moving forward. Her classmates discussed answers confidently, compared scores, and planned what to study next. Ananya, on the other hand, felt stuck, like she was watching everyone else progress while she kept looping in the same place.
+
+That evening, her books stayed closed. She lay on her bed, staring at the ceiling, replaying the same thought over and over again: "Maybe I'm just not smart enough."
+
+It was a heavy thought, but also a convincing one. After all, what else could explain repeated failure?
+
+The next day, she showed up to class anyway. Not because she felt motivated, but because not showing up felt worse. As the teacher began explaining the same concept again, Ananya barely paid attention at first. She had heard this before, the same words, the same examples, the same confusion.
+
+But then, somewhere in the middle of the explanation, something shifted.
+
+It wasn't dramatic. There was no sudden burst of clarity or excitement. Just a small pause in her thoughts... and then a connection.
+
+For the first time, the concept didn't feel completely unfamiliar. It felt like something her mind could almost grasp. She leaned forward slightly, her focus sharpening without her even realizing it. The problem that once felt like a wall now felt like a puzzle, still challenging, but not impossible.
+
+What Ananya didn't realize in that moment was that her brain had been working all along, quietly adapting in the background. That subtle shift she felt was a result of Neuroplasticity, the brain's ability to reorganize and form new connections through repeated effort and exposure.
+
+Nothing changed overnight. She didn't suddenly become the best in class, and she still got things wrong. But something important had shifted. She stopped telling herself, "I can't do this," and started asking, "What am I missing?"
+
+With each attempt, things became slightly clearer. Concepts that once felt overwhelming began to feel familiar. Her mistakes didn't feel like proof of failure anymore, they started to feel like part of the process.
+
+Weeks later, she sat for the test again.
+
+This time, her heart still raced, and her hands were still a little nervous. But when she looked at the paper, something was different. The questions didn't intimidate her the way they used to. They felt recognizable, like something she had seen, struggled with, and slowly understood.
+
+When the results came, she took a deep breath before checking.
+
+67.
+
+It wasn't perfect. It wasn't extraordinary. But it was enough to make her pause... and smile.
+
+Because this time, it wasn't luck.
+
+It was progress.
+
+For the first time, she understood something most people don't realize soon enough, intelligence isn't fixed. It isn't something you're simply born with or without. It's something that grows, adapts, and strengthens every time you keep going, even when it feels pointless.
+
+Ananya didn't become smarter in a day.
+
+Her brain simply learned how to learn.
+
+And sometimes, that's all it takes, one small moment, one quiet shift...
+
+...the moment when everything finally clicks.`,
+    },
+    {
+      id: 11,
+      title: "Emotions: Your Greatest Strength or Silent Sabotage?",
+      excerpt:
+        "Emotions are signals, not enemies. Learn how they arise in the brain and how to regulate them without losing clarity.",
+      category: "Psychology",
+      image: "/63736b7750723ca6336813d7_Emotional%20dysregulation-min.jpg",
+      images: [],
+      tags: ["Emotional Intelligence", "Neuroscience", "Self-Awareness", "Regulation"],
+      content: `Emotions: Your Greatest Strength or Silent Sabotage?
+
+    Where Do Emotions Actually Come From?
+
+    Before we talk about controlling emotions, we need to understand one simple truth: emotions are not random. They are biological, structured, and deeply wired into you.
+
+    Inside your brain, a system called the limbic system is responsible for emotions:
+
+    - The amygdala detects threats and triggers fear or anger.
+    - The hippocampus stores emotional memories.
+    - The prefrontal cortex helps you think, pause, and decide.
+
+    When something happens in your life, your brain doesn’t “think” first. It feels first, reacts next, and only then thinks.
+
+    That’s why:
+
+    - You react instantly in anger.
+    - You feel anxious without clear reason.
+    - You regret decisions later.
+
+    It’s not weakness. It’s biology doing its job.
+
+    Emotions Are Natural - But Not Always Helpful
+
+    Every human experiences emotions:
+
+    - Happiness
+    - Fear
+    - Anger
+    - Sadness
+    - Love
+    - Anxiety
+
+    These are not problems. In fact, they are signals.
+
+    - Fear protects you.
+    - Anger shows boundaries.
+    - Sadness reflects loss.
+    - Happiness reinforces meaning.
+
+    But here’s the real issue: when emotions take control instead of guiding you, they start affecting your life.
+
+    The Hidden Problem: When Emotions Take Over
+
+    Think about real life:
+
+    - You say something in anger - regret later.
+    - You overthink - lose opportunities.
+    - You get attached emotionally - lose clarity.
+    - You feel anxious - avoid decisions.
+
+    In those moments, you are not choosing. Your emotions are choosing for you.
+
+    And slowly:
+
+    - Your clarity reduces.
+    - Your confidence drops.
+    - Your decisions become reactive.
+
+    This is where most people struggle - not because they are weak, but because they were never taught how to handle emotions.
+
+    Emotional Intelligence: The Missing Skill
+
+    We are taught:
+
+    - What to study
+    - What to achieve
+    - How to perform
+
+    But no one teaches how to handle what you feel.
+
+    Emotional intelligence is not about removing emotions. It’s about:
+
+    - Understanding them
+    - Managing them
+    - Using them wisely
+
+    Because the goal is not “Don’t feel.” It is “Feel, but don’t lose control.”
+
+    Why You Lose Control Over Emotions
+
+    There are three key reasons:
+
+    1. Instant Reaction System
+
+    Your brain is wired for survival, not clarity, so it reacts quickly - even if it’s wrong.
+
+    2. Emotional Memory
+
+    Past experiences silently influence your present reactions.
+
+    3. Lack of Awareness
+
+    Most people don’t even realize, “I am reacting emotionally right now.” Without awareness, control is impossible.
+
+    How to Regulate Your Emotions (Practical & Real)
+
+    Here are simple, real-life practices:
+
+    1. Pause Before Reaction
+
+    The most powerful habit.
+
+    When you feel triggered:
+
+    - Don’t respond immediately.
+    - Give yourself 5–10 seconds.
+    - Take one deep breath.
+    - Let the pause shift control from emotion to your thinking brain.
+
+    2. Name Your Emotion
+
+    Instead of saying “I feel bad,” ask:
+
+    - Am I angry?
+    - Am I anxious?
+    - Am I hurt?
+
+    Naming emotions reduces their intensity.
+
+    3. Write It Out
+
+    When your mind is cluttered:
+
+    - Write what you feel.
+    - Write why you feel it.
+
+    This moves emotions from inside to clarity outside.
+
+    4. Use Your Breath
+
+    Your breath directly affects your nervous system.
+
+    Try:
+
+    - Slow inhale for 4 seconds.
+    - Hold for 2 seconds.
+    - Exhale for 6 seconds.
+
+    This calms your emotional response instantly.
+
+    5. Reframe the Situation
+
+    Ask yourself:
+
+    - Is this situation really as big as I feel?
+    - What is the logical side of this?
+
+    This helps you balance emotion with reason.
+
+    6. Don’t Suppress - Channel
+
+    Suppressing emotions doesn’t work.
+
+    Instead:
+
+    - Talk to someone.
+    - Exercise.
+    - Create something.
+
+    Emotions need expression, not suppression.
+
+    7. The Balance: Emotion + Clarity
+
+    The goal is not to become emotionless.
+
+    Because:
+
+    - Without emotion, life feels empty.
+    - Without control, life feels chaotic.
+
+    The real power is balance.
+
+    When you learn to regulate emotions:
+
+    - You think clearly.
+    - You decide better.
+    - You respond instead of reacting.
+    - You become stable, confident, and aware.
+
+    Final Thought
+
+    Every human feels. But not every human understands what they feel.
+
+    And that difference changes everything.
+
+    Your emotions can either:
+
+    - Build your life.
+    - Break your clarity.
+
+    The choice is not in having emotions but in how you handle them.`,
+    },
     {
       id: 7,
       title: "The Power of Mental Discipline in a Distracted World",
@@ -880,7 +1175,7 @@ Live with greater independence
 The brain can learn, adapt, grow.`
     },
     {
-      id: 9,
+      id: 12,
       title: "Mapping the Invisible: Visualizing Human Intelligence as the New Standard for Student Performance",
       excerpt:
         "Beyond traditional grades—how Power BI dashboards and glassmorphism design transform student performance metrics into actionable insights for personal growth.",
@@ -1149,6 +1444,30 @@ It is who you are becoming.`
                   >
                     {block.text}
                   </h2>
+                );
+              }
+
+              if (block.type === "ul") {
+                return (
+                  <ul key={index} className="full-blog-list full-blog-list-unordered">
+                    {block.items.map((item, itemIndex) => (
+                      <li key={`${item}-${itemIndex}`} className="full-blog-listItem">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                );
+              }
+
+              if (block.type === "ol") {
+                return (
+                  <ol key={index} className="full-blog-list full-blog-list-ordered">
+                    {block.items.map((item, itemIndex) => (
+                      <li key={`${item}-${itemIndex}`} className="full-blog-listItem">
+                        {item}
+                      </li>
+                    ))}
+                  </ol>
                 );
               }
 
