@@ -180,6 +180,298 @@ export default function BlogClient() {
 
   const blogPosts: BlogPost[] = [
     {
+      id: 15,
+      title: "The Science Behind Gut Feeling - Is It Real, or Just in Your Head?",
+      excerpt:
+        "What gut feeling really is, how intuition forms in the brain, and when to trust it versus question it.",
+      category: "Psychology",
+      image: "/Shutterstock_2198678569.jpg",
+      images: ["/Shutterstock_2198678569.jpg"],
+      tags: [
+        "Intuition",
+        "Decision Making",
+        "Neuroscience",
+        "Self-Awareness",
+        "Emotional Intelligence",
+      ],
+      content: `The Science Behind Gut Feeling - Is It Real, or Just in Your Head?
+
+You’re about to make a decision.
+
+Nothing dramatic.
+Just something simple - choosing a job, trusting a person, saying yes or no.
+
+Logically, everything looks fine.
+But somewhere inside, something feels off.
+
+You can’t explain it.
+You don’t have proof.
+Still, that quiet inner voice says, "Wait."
+
+We call this a gut feeling.
+
+But what is it, really?
+Is it something we should trust... or something we should question?
+
+It’s Not Magic - Your Brain Is Working Fast
+
+Let’s clear one thing first.
+
+A gut feeling is not coming from your stomach.
+It’s coming from your brain - just faster than your conscious thinking.
+
+Your brain is constantly collecting information:
+
+Past experiences
+Patterns you’ve seen before
+Tiny details you didn’t consciously notice
+
+All of this gets stored quietly.
+
+When you face a situation, your brain doesn’t always "think step by step."
+Sometimes, it recognizes a pattern instantly and sends you a signal.
+
+That signal is what you feel as intuition.
+
+So when you say,
+
+"I don’t know why, but this doesn’t feel right..."
+
+What you actually mean is:
+
+"My brain has seen something like this before - and it’s warning me."
+
+Why It Feels So Real
+
+Gut feelings feel strong because they are not just thoughts, they are body reactions.
+
+A slight discomfort
+A sudden tension
+A calm sense of certainty
+
+This happens because your brain is connected to your body through the nervous system.
+
+Especially a part of the brain called the amygdala - responsible for detecting danger - can react before your logical brain even catches up.
+
+That’s why sometimes:
+
+You trust someone instantly
+Or feel uneasy without any clear reason
+
+Your brain is trying to protect you quickly, not explain everything slowly.
+
+But Here’s the Truth - Gut Feeling Is Not Always Right
+
+This is where most people get confused.
+
+Just because something feels real doesn’t mean it is accurate.
+
+Why?
+
+Because your gut feeling is based on your past, not necessarily your present reality.
+
+If your past experiences were:
+
+Limited
+Biased
+Emotionally intense
+Then your intuition can mislead you.
+
+For example:
+
+If you’ve been hurt before, you may feel "something is wrong" even with a good person
+
+If you’re afraid of failure, your gut may say "don’t try" - not because it’s wrong, but because it’s unfamiliar
+
+So sometimes, your gut is not protecting you. It’s just repeating your past patterns.
+
+So, Should You Trust It or Not?
+
+The real answer is not "always yes" or "always no."
+
+It’s this:
+
+Understand your gut before you follow it.
+
+There are two types of gut feelings:
+
+1. Clear Intuition (Useful)
+
+Calm, steady, not loud
+Often comes from experience and awareness
+Feels like quiet clarity
+
+2. Fear-Based Reaction (Misleading)
+
+Urgent, anxious, uncomfortable
+Comes from insecurity or past pain
+Pushes you to avoid or escape
+
+The problem is - both feel similar if you’re not aware.
+
+What You Can Do in Real Life
+
+Next time you feel something inside, don’t ignore it, but don’t blindly follow it either.
+
+Pause and ask yourself:
+
+"What exactly am I feeling?"
+"Is this coming from clarity or fear?"
+"Have I experienced something like this before?"
+
+This small pause activates your thinking brain (prefrontal cortex) helping you balance intuition with logic.
+
+Because the goal is not to choose between:
+
+Thinking or feeling
+
+The goal is to use:
+
+Thinking with feeling
+
+A Simple Way to Understand It
+
+Your gut feeling is like a first draft.
+
+It’s fast.
+It’s automatic.
+It gives you a direction.
+
+But just like any first draft - it needs a second look.
+
+Final Thought
+
+Your gut is not your enemy. But it’s not your final decision-maker either.
+
+It is a signal.
+A starting point.
+A message from your past trying to guide your present.
+
+The real intelligence lies in this:
+
+Knowing when your gut is showing you truth, and when it’s showing you fear.
+
+Because clarity doesn’t come from ignoring your instincts, and it doesn’t come from blindly trusting them either.
+
+It comes from understanding them.`,
+    },
+    {
+      id: 14,
+      title: "The Day He Stopped Saying Okay",
+      excerpt:
+        "A quiet workplace story about how attention, not just knowledge, can change performance and growth.",
+      category: "Intellectual Growth",
+      image: "/tired-exhausted-arabic-indian-man-600nw-2163297479.jpg",
+      images: ["/tired-exhausted-arabic-indian-man-600nw-2163297479.jpg"],
+      tags: [
+        "Workplace Learning",
+        "Self-Awareness",
+        "Attention",
+        "Career Growth",
+        "Human Intelligence",
+      ],
+      content: `The Day He Stopped Saying Okay
+
+Arjun got his first job. There was nothing dramatic about it, no big celebration - just a quiet feeling inside him: "Okay... life is starting now."
+
+In the first few days, he was careful. He listened more, spoke less, and tried to understand how everything worked. People explained things to him, and he nodded, saying, "Got it." But honestly, he didn’t fully understand. Still, he didn’t say that. Not because he wanted to lie, but because he didn’t want to look like he didn’t understand. So, he moved on.
+
+Days passed, and work started coming regularly - small tasks at first, then slightly bigger ones. Sometimes he understood, sometimes he didn’t. But from the outside, everything looked fine. He was working, submitting tasks, and managing things. Inside, however, something else was happening. He was guessing more than understanding, finishing more than learning, and avoiding small confusions. But he never sat down to notice any of this, because nothing had gone wrong yet.
+
+Then one day, it did. A task he worked on didn’t come out right. It wasn’t completely wrong, but it wasn’t right either. His manager looked at it and said, "You should have asked." That one line stayed with him, because he had thought of asking - he just didn’t do it.
+
+After that, he began noticing small things. Not big realizations, just small, uncomfortable ones. He saw how often he said "okay" without being clear, how quickly he moved on without thinking, and how he avoided asking that one extra question. These were tiny things - things that didn’t look like mistakes, but slowly became one.
+
+Nothing new had actually started happening. These things were always there. He had just never paid attention to them.
+
+The next time he got a task, he didn’t rush. He didn’t immediately say "okay." He paused for a few seconds and asked, "Can you explain this part once more?" It felt small, but also different.
+
+While working, whenever confusion came up again, he didn’t ignore it. He stayed there and tried to understand what exactly was unclear. Sometimes he figured it out himself, and sometimes he asked.
+
+Days were still busy, and work didn’t suddenly become easy. But something inside him became clearer.
+
+He started catching things earlier - before they turned into problems, before someone had to point them out. Not always, but more than before.
+
+Arjun didn’t become perfect. He didn’t become the smartest person in the room. He simply became someone who notices.
+
+And that quietly changed everything. There was less guessing, less silent confusion, and less "I’ll manage somehow."
+
+Most of the problems he faced earlier were not because he didn’t know. They were because he didn’t notice.
+
+We often think mistakes come from a lack of knowledge. But sometimes, they come from a lack of attention.
+
+Human intelligence is not always about knowing more. Sometimes, it is simply about not ignoring that small doubt, not rushing past an unclear moment, and not pretending everything is fine when it isn’t.
+
+Because the things we don’t notice don’t disappear. They wait... until they become something we can’t ignore. And by then, it’s no longer small.`,
+    },
+    {
+      id: 13,
+      title: "The Resume Is Dead: What Actually Gets You Hired Today?",
+      excerpt:
+        "Why hiring decisions now favor real-world thinking, adaptability, and communication over polished resumes.",
+      category: "Intellectual Growth",
+      image: "/images/PHOTO-2026-04-15-18-51-47.jpg",
+      images: ["/images/PHOTO-2026-04-15-18-51-47.jpg"],
+      tags: [
+        "Hiring",
+        "Career Readiness",
+        "Critical Thinking",
+        "Communication",
+        "Adaptability",
+      ],
+      content: `The Resume Is Dead: What Actually Gets You Hired Today?
+
+At Aaruchudar, we’ve observed something that challenges everything students have been told for years.
+
+Two students, almost identical on paper, walk into the same room. Their resumes tell a convincing story, strong academic scores, similar certifications, well-structured achievements. If hiring were based purely on this, the decision would be easy.
+
+But it never is.
+
+When placed in a real-world situation, the difference becomes impossible to ignore. One student approaches the problem with clarity, breaks it down, communicates their thoughts, and adapts along the way. The other, despite having the same qualifications, struggles to move beyond memorized knowledge.
+
+This is where the resume begins to lose its meaning.
+
+For a long time, resumes have been treated as the ultimate representation of a student’s capability. They summarize years of effort into a single page, creating an illusion of completeness. But the truth is, they only capture what is visible. They show outcomes, not the thinking behind them. They highlight achievements, but not the intelligence that produced them.
+
+And in today’s world, that distinction matters more than ever.
+
+At Aaruchudar, we focus on understanding human intelligence beyond marks and static records. What we’ve consistently seen is that real capability cannot be fully represented through grades or bullet points. Intelligence is not just about what you know, it’s about how you use what you know when it actually matters.
+
+This is exactly why hiring is changing.
+
+Employers are no longer satisfied with polished resumes alone. They are looking for individuals who can think independently, solve unfamiliar problems, and communicate their ideas with clarity. They want people who can adapt, not just repeat. People who can apply knowledge, not just store it.
+
+In this shift, the definition of “being qualified” is being rewritten.
+
+A student who understands concepts deeply but may not have perfect scores often performs better in real scenarios than someone who has relied solely on memorization. The ability to think critically, to connect ideas, and to respond effectively under pressure has become far more valuable than simply having the right answers.
+
+This is what truly gets noticed today.
+
+What makes someone stand out is no longer how impressive their resume looks, but how they approach a problem they’ve never seen before. It’s in the way they structure their thoughts, the confidence with which they communicate, and the flexibility they show when things don’t go as planned.
+
+These are not qualities you can fully capture on paper.
+
+They have to be observed, understood, and measured differently.
+
+At Aaruchudar, this is where our approach begins. By focusing on mapping human intelligence through real behavior and data-driven insights, we move beyond traditional evaluation methods. Instead of asking what a student has achieved, we explore how a student thinks, learns, and adapts.
+
+Because when you truly understand that, a resume becomes secondary.
+
+This doesn’t mean resumes have completely lost their place. They still serve as an introduction, a starting point. But they are no longer the deciding factor. The real decision is made based on what follows, how a person performs, thinks, and evolves in real situations.
+
+And that is something no document can fully represent.
+
+The future belongs to those who can demonstrate their intelligence in action. Those who can go beyond memorization and show real understanding. Those who can adapt to change and create value in unpredictable environments.
+
+At Aaruchudar, the goal is not to help students build better resumes.
+
+It is to help them become individuals who no longer need one to prove their worth.
+
+Because in the end, what truly gets you hired is not what’s written on a page,
+
+It’s what you bring to the table when the page is no longer enough.`,
+    },
+    {
       id: 10,
       title: "She Failed 3 Times, Then Her Brain Finally Clicked",
       excerpt:
